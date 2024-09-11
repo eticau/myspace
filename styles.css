@@ -30,20 +30,18 @@ header {
     padding: 10px 20px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative; /* Asegura que el header se ajuste dentro del contenedor */
-    z-index: 1; /* Asegura que el header esté por encima del contenido */
 }
 
 header a {
     margin-right: 20px;
     color: #333;
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease; /* Transición de color y transformación */
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 header a:hover {
     color: #00bfa6;
-    transform: translateY(-5px); /* Movimiento hacia arriba */
+    transform: translateY(-5px);
 }
 
 /* Estilos del modo oscuro para el header */
@@ -52,11 +50,11 @@ body.dark-mode header {
 }
 
 body.dark-mode header a {
-    color: #fff; /* Color del texto en modo oscuro */
+    color: #fff;
 }
 
 body.dark-mode header a:hover {
-    color: #00bfa6; /* Color del texto en hover en modo oscuro */
+    color: #00bfa6;
 }
 
 /* Logo */
@@ -73,23 +71,42 @@ body.dark-mode header a:hover {
     cursor: pointer;
 }
 
+/* Contenedor de perfil */
+.profile-container {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    gap: 20px; /* Espacio entre la imagen y el texto */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas más pequeñas */
+    padding: 20px;
+}
+
 /* Imagen de perfil */
+.profile-pic-container {
+    flex: 0 0 auto; /* La imagen no se expande ni se contrae */
+}
+
 .profile-pic {
-    width: 200px; /* Aumenta el tamaño de la imagen */
-    height: 200px; /* Aumenta el tamaño de la imagen */
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     border: 5px solid #00bfa6;
+}
+
+/* Texto del perfil */
+.profile-text {
+    flex: 1; /* El texto ocupa el espacio restante */
 }
 
 /* Texto principal */
 h1 .highlight {
     color: #00bfa6;
-    transition: transform 0.3s ease, color 0.3s ease; /* Transición de color y transformación */
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 h1 .highlight:hover {
-    transform: scale(1.1); /* Escala ligeramente el texto */
-    color: #009688; /* Cambia el color al pasar el cursor */
+    transform: scale(1.1);
+    color: #009688;
 }
 
 /* Botón principal */
@@ -100,42 +117,40 @@ h1 .highlight:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición de color y transformación */
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .main-btn:hover {
     background-color: #008f76;
-    transform: translateY(-3px); /* Movimiento hacia arriba */
+    transform: translateY(-3px);
 }
 
 /* Social icons */
 .socials {
     display: flex;
-    justify-content: center; /* Centra los íconos horizontalmente */
-    padding: 20px 0; /* Espaciado superior e inferior */
+    justify-content: center;
+    padding: 20px 0;
 }
 
 .socials a {
-    margin: 0 10px; /* Reduce el margen horizontal entre íconos */
+    margin: 0 10px;
 }
 
 .socials img {
     width: 40px;
-    transition: transform 0.3s ease, filter 0.3s ease; /* Transición de transformación y filtro */
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Iconos en modo claro */
 .socials img {
-    filter: grayscale(0%); /* Sin filtro en modo claro */
+    filter: grayscale(0%);
 }
 
 .socials img:hover {
-    transform: scale(1.2); /* Escala la imagen */
+    transform: scale(1.2);
 }
 
-/* Estilos del modo oscuro para iconos sociales */
 body.dark-mode .socials img {
-    filter: invert(1); /* Invertir colores para iconos en modo oscuro */
+    filter: invert(1);
 }
 
 /* Footer */
@@ -145,34 +160,15 @@ footer {
     font-size: 14px;
 }
 
-/* Estilos del modo oscuro */
-body.dark-mode header {
-    background-color: #333;
-}
-
-body.dark-mode .main-btn {
-    background-color: #333;
-    color: #fff;
-}
-
-body.dark-mode .main-btn:hover {
-    background-color: #555;
-}
-
 /* Secciones */
 section {
     padding: 50px 20px;
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    box-sizing: border-box;
 }
 
 section h2 {
     color: #00bfa6;
     margin-bottom: 20px;
-}
-
-section p {
-    font-size: 16px;
-    line-height: 1.6;
 }
 
 section p {
