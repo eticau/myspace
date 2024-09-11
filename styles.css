@@ -1,44 +1,108 @@
+/* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #fff;
 }
 
 header {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    color: white;
+header a {
+    margin-right: 20px;
+    color: #333;
     text-decoration: none;
 }
 
-section {
-    padding: 20px;
+header a:hover {
+    color: #00bfa6;
 }
 
-.proyecto {
-    background-color: #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Botón de tema */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.proyecto:hover {
-    background-color: #ccc;
+/* Imagen de perfil */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #00bfa6;
+}
+
+/* Texto principal */
+h1 .highlight {
+    color: #00bfa6;
+}
+
+/* Botón principal */
+.main-btn {
+    padding: 10px 20px;
+    background-color: #00bfa6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.main-btn:hover {
+    background-color: #008f76;
+}
+
+/* Social icons */
+.socials img {
+    width: 40px;
+    margin: 10px;
+    transition: transform 0.3s ease;
+}
+
+.socials img:hover {
+    transform: scale(1.2);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+/* Estilos del modo oscuro */
+body.dark-mode header {
+    background-color: #333;
+}
+
+body.dark-mode .main-btn {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .main-btn:hover {
+    background-color: #555;
 }
