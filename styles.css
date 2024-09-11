@@ -1,17 +1,16 @@
 /* Estilos generales */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
     color: #333;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    text-align: center; /* Centra todo el texto en la página */
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Modo oscuro */
 body.dark-mode {
-    background-color: #1a1a1a;
+    background: linear-gradient(135deg, #1a1a1a, #333);
     color: #fff;
 }
 
@@ -28,7 +27,6 @@ header a {
     margin-right: 20px;
     color: #333;
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 header a:hover {
@@ -49,23 +47,7 @@ header a:hover {
     cursor: pointer;
 }
 
-/* Contenedor de perfil */
-.profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    text-align: left; /* Alinea el texto a la izquierda dentro del contenedor */
-    margin: 0 auto; /* Centra el contenedor */
-    max-width: 1200px; /* Limita el ancho máximo del contenedor */
-}
-
 /* Imagen de perfil */
-.profile-pic-container {
-    flex: 0 0 auto;
-}
-
 .profile-pic {
     width: 200px;
     height: 200px;
@@ -73,29 +55,27 @@ header a:hover {
     border: 5px solid #00bfa6;
 }
 
+/* Contenedor del perfil */
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
 /* Texto del perfil */
 .profile-text {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    margin-left: 20px;
 }
 
-/* Elimina viñetas y márgenes */
-.details {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* Texto principal */
 h1 .highlight {
     color: #00bfa6;
 }
 
 /* Botón principal */
 .main-btn {
+    position: relative;
     padding: 10px 20px;
     background-color: #00bfa6;
     color: white;
@@ -103,26 +83,53 @@ h1 .highlight {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.main-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+    z-index: 0;
+}
+
+.main-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .main-btn:hover {
     background-color: #008f76;
+    color: #fff;
 }
 
-/* Social icons */
+/* Iconos de redes sociales */
 .socials {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    margin-top: 20px;
+}
+
+.socials a {
+    margin: 0 10px;
 }
 
 .socials img {
     width: 40px;
+    height: 40px;
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .socials img:hover {
     transform: scale(1.2);
+    filter: invert(1);
 }
 
 /* Footer */
@@ -137,10 +144,6 @@ body.dark-mode header {
     background-color: #333;
 }
 
-body.dark-mode header a {
-    color: #fff;
-}
-
 body.dark-mode .main-btn {
     background-color: #333;
     color: #fff;
@@ -150,6 +153,20 @@ body.dark-mode .main-btn:hover {
     background-color: #555;
 }
 
-body.dark-mode .socials img {
-    filter: invert(1); /* Cambia los íconos a blanco en modo oscuro */
+/* Sección de contenido */
+.section {
+    padding: 50px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
 }
