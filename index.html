@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etienne Cautures</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.png" type="image/png"> <!-- Favicon -->
 </head>
-<body class="light-mode">
+<body class="light-mode"> <!-- Clase por defecto light-mode -->
     <header>
         <div class="logo">EC</div>
         <nav>
             <a href="#home">Home</a>
-            <a href="#about">About Me</a>
-            <a href="#links">Useful Links</a>
+            <a href="#about-me">About Me</a>
+            <a href="#useful-links">Useful links</a>
         </nav>
         <button id="theme-toggle" class="theme-toggle">
             🌙
-        </button>
+        </button> <!-- Botón para cambiar el tema -->
     </header>
 
     <main>
-        <div class="profile-container">
+        <div id="home" class="profile-container">
             <div class="profile-pic-container">
                 <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
             </div>
@@ -50,6 +51,16 @@
                 </div>
             </div>
         </div>
+
+        <section id="about-me" class="section">
+            <h2>About Me</h2>
+            <p>Here is a detailed description about myself...</p>
+        </section>
+
+        <section id="useful-links" class="section">
+            <h2>Useful Links</h2>
+            <p>Here are some useful links...</p>
+        </section>
     </main>
 
     <footer>
