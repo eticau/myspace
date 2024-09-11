@@ -30,6 +30,8 @@ header {
     padding: 10px 20px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative; /* Asegura que el header se ajuste dentro del contenedor */
+    z-index: 1; /* Asegura que el header esté por encima del contenido */
 }
 
 header a {
@@ -107,9 +109,18 @@ h1 .highlight:hover {
 }
 
 /* Social icons */
+.socials {
+    display: flex;
+    justify-content: center; /* Centra los íconos horizontalmente */
+    padding: 20px 0; /* Espaciado superior e inferior */
+}
+
+.socials a {
+    margin: 0 10px; /* Reduce el margen horizontal entre íconos */
+}
+
 .socials img {
     width: 40px;
-    margin: 10px;
     transition: transform 0.3s ease, filter 0.3s ease; /* Transición de transformación y filtro */
 }
 
@@ -151,11 +162,17 @@ body.dark-mode .main-btn:hover {
 /* Secciones */
 section {
     padding: 50px 20px;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
 section h2 {
     color: #00bfa6;
     margin-bottom: 20px;
+}
+
+section p {
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 section p {
