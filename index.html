@@ -1,51 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Personal</title>
+    <title>Welcome</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="light-mode"> <!-- Clase por defecto light-mode -->
     <header>
-        <h1>Bienvenido a mi CV interactivo</h1>
+        <div class="logo">EC</div>
         <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobremi">Sobre mí</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
+            <a href="#">Home</a>
+            <a href="#">About Me</a>
+            <a href="#">Useful links</a>
         </nav>
+        <button id="theme-toggle" class="theme-toggle">
+            🌙
+        </button> <!-- Botón para cambiar el tema -->
     </header>
 
-    <section id="inicio">
-        <h2>Inicio</h2>
-        <p>Soy [Tu nombre], un [tu profesión] apasionado por [tu área de especialización].</p>
-    </section>
+    <main>
+        <div class="profile">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+            <h1>Hi, I'm <span class="highlight">Eti</span> 👋</h1>
+            <p>I'm a little crazy guy.</p>
+            <ul class="details">
+                <li>🍵 fueled by mate</li>
+                <li>🌍 from Rosario, Argentina</li>
+                <li>🎓 studying Mechanical Engineering at UNR</li>
+                <li>📧 cautures@gmail.com</li>
+            </ul>
+            <button class="main-btn">LINKS FACULTAD Y DEMAS</button>
+            <div class="socials">
+                <a href="#"><img src="telegram-icon.png" alt="Telegram"></a>
+                <a href="#"><img src="github-icon.png" alt="GitHub"></a>
+                <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </main>
 
-    <section id="sobremi">
-        <h2>Sobre mí</h2>
-        <p>Detalles sobre tus estudios, habilidades, y experiencia.</p>
-    </section>
-
-    <section id="proyectos">
-        <h2>Proyectos</h2>
-        <div class="proyecto" onclick="mostrarDetalle('proyecto1')">Proyecto 1</div>
-        <div class="proyecto" onclick="mostrarDetalle('proyecto2')">Proyecto 2</div>
-        <div id="detalle"></div>
-    </section>
-
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <form id="form-contacto">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
+    <footer>
+        <p>Created with ❤️ by Etienne Cautures © 2024</p>
+    </footer>
 
     <script src="scripts.js"></script>
 </body>
