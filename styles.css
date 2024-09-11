@@ -110,11 +110,21 @@ h1 .highlight:hover {
 .socials img {
     width: 40px;
     margin: 10px;
-    transition: transform 0.3s ease; /* Transición de transformación */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Transición de transformación y filtro */
+}
+
+/* Iconos en modo claro */
+.socials img {
+    filter: grayscale(0%); /* Sin filtro en modo claro */
 }
 
 .socials img:hover {
     transform: scale(1.2); /* Escala la imagen */
+}
+
+/* Estilos del modo oscuro para iconos sociales */
+body.dark-mode .socials img {
+    filter: invert(1); /* Invertir colores para iconos en modo oscuro */
 }
 
 /* Footer */
