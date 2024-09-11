@@ -9,6 +9,14 @@ body {
     text-align: center; /* Centra el texto en el body */
 }
 
+/* Contenedor centralizado */
+.container {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 20px;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
 /* Modo oscuro */
 body.dark-mode {
     background-color: #1a1a1a;
@@ -28,7 +36,7 @@ header a {
     margin-right: 20px;
     color: #333;
     text-decoration: none;
-    transition: transform 0.3s ease; /* Animación de movimiento al pasar el mouse */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transición de color y transformación */
 }
 
 header a:hover {
@@ -61,11 +69,12 @@ header a:hover {
 /* Texto principal */
 h1 .highlight {
     color: #00bfa6;
-    transition: transform 0.3s ease; /* Animación de movimiento al pasar el mouse */
+    transition: transform 0.3s ease, color 0.3s ease; /* Transición de color y transformación */
 }
 
 h1 .highlight:hover {
     transform: scale(1.1); /* Escala ligeramente el texto */
+    color: #009688; /* Cambia el color al pasar el cursor */
 }
 
 /* Botón principal */
@@ -76,22 +85,23 @@ h1 .highlight:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición de color y transformación */
 }
 
 .main-btn:hover {
     background-color: #008f76;
+    transform: translateY(-3px); /* Movimiento hacia arriba */
 }
 
 /* Social icons */
 .socials img {
     width: 40px;
     margin: 10px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; /* Transición de transformación */
 }
 
 .socials img:hover {
-    transform: scale(1.2);
+    transform: scale(1.2); /* Escala la imagen */
 }
 
 /* Footer */
