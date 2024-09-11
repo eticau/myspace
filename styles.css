@@ -6,6 +6,7 @@ body {
     background-color: #f4f4f4;
     color: #333;
     transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center; /* Centra el texto en el body */
 }
 
 /* Modo oscuro */
@@ -27,10 +28,12 @@ header a {
     margin-right: 20px;
     color: #333;
     text-decoration: none;
+    transition: transform 0.3s ease; /* Animación de movimiento al pasar el mouse */
 }
 
 header a:hover {
     color: #00bfa6;
+    transform: translateY(-5px); /* Movimiento hacia arriba */
 }
 
 /* Logo */
@@ -49,8 +52,8 @@ header a:hover {
 
 /* Imagen de perfil */
 .profile-pic {
-    width: 150px;
-    height: 150px;
+    width: 200px; /* Aumenta el tamaño de la imagen */
+    height: 200px; /* Aumenta el tamaño de la imagen */
     border-radius: 50%;
     border: 5px solid #00bfa6;
 }
@@ -58,6 +61,11 @@ header a:hover {
 /* Texto principal */
 h1 .highlight {
     color: #00bfa6;
+    transition: transform 0.3s ease; /* Animación de movimiento al pasar el mouse */
+}
+
+h1 .highlight:hover {
+    transform: scale(1.1); /* Escala ligeramente el texto */
 }
 
 /* Botón principal */
@@ -105,4 +113,19 @@ body.dark-mode .main-btn {
 
 body.dark-mode .main-btn:hover {
     background-color: #555;
+}
+
+/* Secciones */
+section {
+    padding: 50px 20px;
+}
+
+section h2 {
+    color: #00bfa6;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 16px;
+    line-height: 1.6;
 }
