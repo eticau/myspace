@@ -44,6 +44,19 @@ header a:hover {
     transform: translateY(-5px); /* Movimiento hacia arriba */
 }
 
+/* Estilos del modo oscuro para el header */
+body.dark-mode header {
+    background-color: #333;
+}
+
+body.dark-mode header a {
+    color: #fff; /* Color del texto en modo oscuro */
+}
+
+body.dark-mode header a:hover {
+    color: #00bfa6; /* Color del texto en hover en modo oscuro */
+}
+
 /* Logo */
 .logo {
     font-size: 24px;
