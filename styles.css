@@ -1,61 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etienne Cautures</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="light-mode">
-    <header>
-        <div class="logo">EC</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About Me</a>
-            <a href="#links">Useful Links</a>
-        </nav>
-        <button id="theme-toggle" class="theme-toggle">
-            🌙
-        </button>
-    </header>
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center; /* Centra el texto en el body */
+}
 
-    <main>
-        <div class="profile-container">
-            <div class="profile-pic-container">
-                <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
-            </div>
-            <div class="profile-text">
-                <h1>Hi, I'm <span class="highlight">Eti</span> 👋</h1>
-                <p>I'm a little crazy guy.</p>
-                <ul class="details">
-                    <li>🧉 fueled by mate</li>
-                    <li>🌍 from Rosario, Argentina</li>
-                    <li>🎓 studying Mechanical Engineering at UNR</li>
-                    <li>📧 cautures@gmail.com</li>
-                </ul>
-                <button class="main-btn">LINKS FACULTAD Y DEMAS</button>
-                <div class="socials">
-                    <a href="https://t.me/eticau" target="_blank">
-                        <img src="images/telegram-icon.png" alt="Telegram">
-                    </a>
-                    <a href="https://github.com/eticau" target="_blank">
-                        <img src="images/github-icon.png" alt="GitHub">
-                    </a>
-                    <a href="https://www.linkedin.com/in/etienne-cautures" target="_blank">
-                        <img src="images/linkedin-icon.png" alt="LinkedIn">
-                    </a>
-                    <a href="https://www.instagram.com/eticau" target="_blank">
-                        <img src="images/instagram-icon.png" alt="Instagram">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
+/* Contenedor centralizado */
+.container {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 20px;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
 
-    <footer>
-        <p>Created with ❤️ by Etienne Cautures © 2024</p>
-    </footer>
+/* Modo oscuro */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #fff;
+}
 
-    <script src="scripts.js"></script>
-</body>
-</html>
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header a {
+    margin-right: 20px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+header a:hover {
+    color: #00bfa6;
+    transform: translateY(-5px);
+}
+
+/* Estilos del modo oscuro para el header */
+body.dark-mode header {
+    background-color: #333;
+}
+
+body.dark-mode header a {
+    color: #fff;
+}
+
+body.dark-mode header a:hover {
+    color: #00bfa6;
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Botón de tema */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Contenedor de perfil */
+.profile-container {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    gap: 20px; /* Espacio entre la imagen y el texto */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas más pequeñas */
+    padding: 20px;
+}
+
+/* Imagen de perfil */
+.profile-pic-container {
+    flex: 0 0 auto; /* La imagen no se expande ni se contrae */
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #00bfa6;
+}
+
+/* Texto del perfil */
+.profile-text {
+    flex: 1; /* El texto ocupa el espacio restante */
+}
+
+/* Estilos para la lista de detalles */
+.profile-text .details {
+    list-style-type: none; /* Elimina las viñetas */
+    padding: 0; /* Elimina el padding por defecto */
+    margin: 0; /* Elimina el margen por defecto */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos de la lista horizontalmente */
+}
+
+.profile-text .details li {
+    margin: 5px 0; /* Espacio entre los elementos de la lista */
+}
+
+/* Texto principal */
+h1 .highlight {
+    color: #00bfa6;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+h1 .highlight:hover {
+    transform: scale(1.1);
+    color: #009688;
+}
+
+/* Botón principal */
+.main-btn {
+    padding: 10px 20px;
+    background-color: #00bfa6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.main-btn:hover {
+    background-color: #008f76;
+    transform: translateY(-3px);
+}
+
+/* Social icons */
+.socials {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.socials a {
+    margin: 0 10px;
+}
+
+.socials img {
+    width: 40px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.socials img {
+    filter: grayscale(0%);
+}
+
+.socials img:hover {
+    transform: scale(1.2);
+}
+
+body.dark-mode .socials img {
+    filter: invert(1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
+}
