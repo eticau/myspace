@@ -7,8 +7,8 @@ themeToggle.addEventListener('click', () => {
 
     // Cambiar el ícono del botón
     if (body.classList.contains('dark-mode')) {
-        themeToggle.textContent = '☀️';  // Cambia a un ícono de sol para el modo claro
+        themeToggle.textContent = '🌕';  // Cambia a un ícono de sol para el modo claro
     } else {
-        themeToggle.textContent = '🌙';  // Cambia a un ícono de luna para el modo oscuro
+        themeToggle.textContent = '🌑';  // Cambia a un ícono de luna para el modo oscuro
     }
 });
