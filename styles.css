@@ -144,6 +144,14 @@ body.dark-mode header {
     background-color: #333;
 }
 
+body.dark-mode header a {
+    color: #fff;
+}
+
+body.dark-mode header a:hover {
+    color: #00bfa6;
+}
+
 body.dark-mode .main-btn {
     background-color: #333;
     color: #fff;
@@ -157,6 +165,17 @@ body.dark-mode .main-btn:hover {
 .section {
     padding: 50px 20px;
     border-bottom: 1px solid #ddd;
+}
+
+/* Eliminar viñetas de la lista */
+.details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.details li {
+    margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {
