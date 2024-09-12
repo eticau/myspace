@@ -14,6 +14,7 @@ body.dark-mode {
     color: #fff;
 }
 
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
@@ -23,14 +24,22 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilo de enlaces en modo claro */
 header a {
     margin-right: 20px;
-    color: #333;
+    color: #333; /* Color oscuro en modo claro */
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
+/* Enlaces al pasar el cursor */
 header a:hover {
-    color: #00bfa6;
+    color: #00bfa6; /* Color verde al pasar el cursor en ambos modos */
+}
+
+/* Estilo de enlaces en modo oscuro */
+body.dark-mode header a {
+    color: #fff; /* Color blanco para los enlaces en modo oscuro */
 }
 
 /* Logo */
@@ -62,7 +71,6 @@ header a:hover {
     justify-content: center;
     text-align: center;
     padding: 20px;
-    flex-direction: column;
 }
 
 /* Texto del perfil */
@@ -72,6 +80,12 @@ header a:hover {
 
 h1 .highlight {
     color: #00bfa6;
+}
+
+/* Lista sin viñetas */
+ul.details {
+    list-style-type: none; /* Elimina las viñetas */
+    padding: 0;
 }
 
 /* Botón principal */
@@ -111,67 +125,6 @@ h1 .highlight {
     color: #fff;
 }
 
-/* Animación para el emoji que saluda */
-.waving-emoji {
-    display: inline-block;
-    animation: wave-animation 1.5s infinite;
-}
-
-/* Animación para el emoji que saluda */
-.waving-emoji {
-    display: inline-block;
-    animation: wave-animation 1.5s infinite ease-in-out;
-}
-
-/* Animación para el emoji que saluda */
-.waving-emoji {
-    display: inline-block;
-    animation: wave-animation 3s infinite; /* Duración total de 3 segundos (2s de animación + 1s de pausa) */
-}
-
-/* Animación del saludo */
-@keyframes wave-animation {
-    0% {
-        transform: rotate(0deg);
-    }
-    15% {
-        transform: rotate(-10deg);
-    }
-    30% {
-        transform: rotate(0deg);
-    }
-    45% {
-        transform: rotate(8deg);
-    }
-    60% {
-        transform: rotate(0deg);
-    }
-    75% {
-        transform: rotate(-8deg);
-    }
-    90% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(0deg); /* Termina la animación en la posición inicial y espera 1 segundo */
-    }
-}
-
-
-
-
-
-/* Quitar viñetas de la lista */
-.details {
-    list-style-type: none; /* Elimina las viñetas */
-    padding: 0; /* Elimina el padding predeterminado */
-    margin: 0; /* Elimina el margin predeterminado */
-}
-
-.details li {
-    margin-bottom: 10px; /* Espacio entre los ítems de la lista */
-}
-
 /* Iconos de redes sociales */
 .socials {
     display: flex;
@@ -199,21 +152,40 @@ footer {
     text-align: center;
     margin-top: 50px;
     font-size: 14px;
-    padding: 20px;
 }
 
-/* Estilos del modo oscuro */
-body.dark-mode header {
-    background-color: #333;
+/* Animación para el emoji que saluda */
+.waving-emoji {
+    display: inline-block;
+    animation: wave-animation 2s infinite 1s; /* Duración total de 2 segundos, con 1 segundo de pausa */
 }
 
-body.dark-mode .main-btn {
-    background-color: #333;
-    color: #fff;
-}
-
-body.dark-mode .main-btn:hover {
-    background-color: #555;
+/* Animación del saludo */
+@keyframes wave-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    15% {
+        transform: rotate(-10deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+    45% {
+        transform: rotate(8deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-8deg);
+    }
+    90% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg); /* Pausa en la posición inicial */
+    }
 }
 
 /* Sección de contenido */
