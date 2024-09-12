@@ -1,191 +1,77 @@
-/* Estilos generales */
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
-    color: #333;
-    transition: background 0.3s ease, color 0.3s ease;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etienne Cautures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Favicon -->
+</head>
+<body class="light-mode"> <!-- Clase por defecto light-mode -->
+    <header>
+        <div class="logo">EC</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#links">Useful Links</a>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle">
+            🌕
+        </button> <!-- Botón para cambiar el tema -->
+    </header>
 
-/* Modo oscuro */
-body.dark-mode {
-    background: linear-gradient(135deg, #1a1a1a, #333);
-    color: #fff;
-}
+    <main>
+        <section id="home" class="profile-container">
+            <div class="profile">
+                <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
+                <div class="profile-text">
+                    <h1>Hi, I'm <span class="highlight">Eti</span> 👋</h1>
+                    <p>I'm a little crazy guy.</p>
+                    <ul class="details">
+                        <li>🧉 fueled by mate</li>
+                        <li>🌍 from Rosario, Argentina</li>
+                        <li>🎓 studying Mechanical Engineering at UNR</li>
+                        <li>📧 cautures@gmail.com</li>
+                    </ul>
+                    <button class="main-btn">LINKS FACULTAD Y DEMAS</button>
+                </div>
+            </div>
+        </section>
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p>Contenido sobre mí...</p>
+        </section>
 
-header a {
-    margin-right: 20px;
-    color: #333;
-    text-decoration: none;
-}
+        <section id="links" class="section">
+            <h2>Useful Links</h2>
+            <p>Enlaces útiles...</p>
+        </section>
 
-header a:hover {
-    color: #00bfa6;
-}
+        <!-- Sección de iconos sociales justo después de "Useful Links" -->
+        <section id="socials" class="section">
+            <h2>Connect with Me</h2>
+            <div class="socials">
+                <a href="https://t.me/eticau" target="_blank">
+                    <img src="images/telegram-icon.png" alt="Telegram">
+                </a>
+                <a href="https://github.com/eticau" target="_blank">
+                    <img src="images/github-icon.png" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/etienne-cautures" target="_blank">
+                    <img src="images/linkedin-icon.png" alt="LinkedIn">
+                </a>
+                <a href="https://www.instagram.com/eticau" target="_blank">
+                    <img src="images/instagram-icon.png" alt="Instagram">
+                </a>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Created with ❤️ by Etienne Cautures © 2024</p>
+        </footer>
+    </main>
 
-/* Logo */
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Botón de tema */
-.theme-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* Imagen de perfil */
-.profile-pic {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 5px solid #00bfa6;
-}
-
-/* Contenedor del perfil */
-.profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-}
-
-/* Texto del perfil */
-.profile-text {
-    margin-left: 20px;
-}
-
-h1 .highlight {
-    color: #00bfa6;
-}
-
-/* Botón principal */
-.main-btn {
-    position: relative;
-    padding: 10px 20px;
-    background-color: #00bfa6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.main-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%) scale(0);
-    border-radius: 50%;
-    transition: transform 0.5s ease;
-    z-index: 0;
-}
-
-.main-btn:hover::before {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.main-btn:hover {
-    background-color: #008f76;
-    color: #fff;
-}
-
-/* Iconos de redes sociales */
-.socials {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.socials a {
-    margin: 0 10px;
-}
-
-.socials img {
-    width: 40px;
-    height: 40px;
-    transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-.socials img:hover {
-    transform: scale(1.2);
-    filter: invert(1);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 14px;
-}
-
-/* Estilos del modo oscuro */
-body.dark-mode header {
-    background-color: #333;
-}
-
-body.dark-mode header a {
-    color: #fff;
-}
-
-body.dark-mode header a:hover {
-    color: #00bfa6;
-}
-
-body.dark-mode .main-btn {
-    background-color: #333;
-    color: #fff;
-}
-
-body.dark-mode .main-btn:hover {
-    background-color: #555;
-}
-
-/* Sección de contenido */
-.section {
-    padding: 50px 20px;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Eliminar viñetas de la lista */
-.details {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.details li {
-    margin-bottom: 10px;
-}
-
-@media (max-width: 768px) {
-    .profile-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .profile-pic {
-        width: 150px;
-        height: 150px;
-    }
-}
+    <script src="scripts.js"></script>
+</body>
+</html>
