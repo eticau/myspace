@@ -126,7 +126,7 @@ h1 .highlight {
 /* Animación para el emoji que saluda */
 .waving-emoji {
     display: inline-block;
-    animation: wave-animation 4s infinite;
+    animation: wave-animation 3s infinite; /* Duración total de 3 segundos (2s de animación + 1s de pausa) */
 }
 
 /* Animación del saludo */
@@ -153,9 +153,10 @@ h1 .highlight {
         transform: rotate(0deg);
     }
     100% {
-        transform: rotate(0deg);
+        transform: rotate(0deg); /* Termina la animación en la posición inicial y espera 1 segundo */
     }
 }
+
 
 
 
