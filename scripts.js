@@ -1,54 +1,89 @@
-// Botón para cambiar entre modo oscuro y claro
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-
-    // Cambiar el ícono del botón
-    if (body.classList.contains('dark-mode')) {
-        themeToggle.textContent = '🌕';  // Cambia a un ícono de sol para el modo claro
-    } else {
-        themeToggle.textContent = '🌑';  // Cambia a un ícono de luna para el modo oscuro
-    }
-});
-
-// Funcionalidad del chatbot
-const chatInput = document.getElementById('chat-input');
-const sendBtn = document.getElementById('send-btn');
-const chatOutput = document.getElementById('chat-output');
-
-// Respuestas predefinidas del chatbot
-const responses = {
-    "hola": "¡Hola! ¿Cómo puedo ayudarte hoy?",
-    "cómo estás": "Estoy bien, gracias por preguntar. ¿Y tú?",
-    "adiós": "¡Hasta luego! Que tengas un buen día."
-};
-
-// Enviar mensaje del usuario
-sendBtn.addEventListener('click', () => {
-    const userMessage = chatInput.value.toLowerCase().trim();
-    if (userMessage) {
-        addMessage(userMessage, 'user');
-        chatInput.value = '';
-        const botResponse = responses[userMessage] || "Lo siento, no entiendo tu mensaje.";
-        addMessage(botResponse, 'bot');
-    }
-});
-
-// Agregar mensaje al chat
-function addMessage(message, sender) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
-    messageDiv.textContent = message;
-    chatOutput.appendChild(messageDiv);
-    chatOutput.scrollTop = chatOutput.scrollHeight;  // Desplazar hacia abajo
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+    color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-// También enviar mensaje al presionar Enter
-chatInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        sendBtn.click();
-    }
-});
+/* Barra de Progreso */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background-color: #00bfa6;
+    z-index: 1000;
+    transition: width 0.3s ease;
+}
 
+/* Modo oscuro */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    color: #fff;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header a {
+    margin-right: 20px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #00bfa6;
+}
+
+body.dark-mode header a {
+    color: #fff;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Botón de tema */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Animaciones al desplazarse */
+[data-aos="fade-up"] {
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Barra de progreso */
+#progress-bar {
+    background-color: #00bfa6;
+    height: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    z-index: 999;
+}
+
+/* Otros estilos como el perfil, botones, etc., se mantienen como en versiones anteriores */
