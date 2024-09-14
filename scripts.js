@@ -1,56 +1,54 @@
-// Modo oscuro
+// Botón para cambiar entre modo oscuro y claro
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark-mode');
-    themeToggle.textContent = body.classList.contains('dark-mode') ? '🌕' : '🌑';
-});
 
-// Saludo personalizado
-const greeting = document.getElementById('greeting');
-const hours = new Date().getHours();
-let greetMessage = "Hi, I'm Eti";
-
-if (hours < 12) {
-    greetMessage = "Good morning, I'm Eti";
-} else if (hours < 18) {
-    greetMessage = "Good afternoon, I'm Eti";
-} else {
-    greetMessage = "Good evening, I'm Eti";
-}
-
-greeting.innerHTML = `${greetMessage} <span class="waving-emoji">🤚🏻</span>`;
-
-// Chatbot básico
-const chatBot = document.getElementById('chatbot');
-const sendBtn = document.getElementById('send-btn');
-const chatInput = document.getElementById('chat-input');
-const chatOutput = document.getElementById('chat-output');
-
-sendBtn.addEventListener('click', () => {
-    const userMessage = chatInput.value.trim();
-    if (userMessage) {
-        const botResponse = `You said: ${userMessage}`;
-        const p = document.createElement('p');
-        p.textContent = botResponse;
-        chatOutput.appendChild(p);
-        chatInput.value = '';
+    // Cambiar el ícono del botón
+    if (body.classList.contains('dark-mode')) {
+        themeToggle.textContent = '🌕';  // Cambia a un ícono de sol para el modo claro
+    } else {
+        themeToggle.textContent = '🌑';  // Cambia a un ícono de luna para el modo oscuro
     }
 });
 
-// Efectos de desplazamiento
-const sections = document.querySelectorAll('.section');
+// Funcionalidad del chatbot
+const chatInput = document.getElementById('chat-input');
+const sendBtn = document.getElementById('send-btn');
+const chatOutput = document.getElementById('chat-output');
 
-const revealSection = () => {
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if (sectionTop < windowHeight - 100) {
-            section.classList.add('visible');
-        }
-    });
+// Respuestas predefinidas del chatbot
+const responses = {
+    "hola": "¡Hola! ¿Cómo puedo ayudarte hoy?",
+    "cómo estás": "Estoy bien, gracias por preguntar. ¿Y tú?",
+    "adiós": "¡Hasta luego! Que tengas un buen día."
 };
 
-window.addEventListener('scroll', revealSection);
+// Enviar mensaje del usuario
+sendBtn.addEventListener('click', () => {
+    const userMessage = chatInput.value.toLowerCase().trim();
+    if (userMessage) {
+        addMessage(userMessage, 'user');
+        chatInput.value = '';
+        const botResponse = responses[userMessage] || "Lo siento, no entiendo tu mensaje.";
+        addMessage(botResponse, 'bot');
+    }
+});
+
+// Agregar mensaje al chat
+function addMessage(message, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+    messageDiv.textContent = message;
+    chatOutput.appendChild(messageDiv);
+    chatOutput.scrollTop = chatOutput.scrollHeight;  // Desplazar hacia abajo
+}
+
+// También enviar mensaje al presionar Enter
+chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        sendBtn.click();
+    }
+});
+
