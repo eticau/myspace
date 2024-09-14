@@ -25,7 +25,7 @@
             <div class="profile">
                 <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
                 <div class="profile-text">
-                    <h1>Hi, I'm <span class="highlight">Eti</span> <span class="waving-emoji">🤚🏻</span></h1>
+                    <h1 id="greeting">Hi, I'm <span class="highlight">Eti</span> <span class="waving-emoji">🤚🏻</span></h1>
                     <p>I'm a little crazy guy.</p>
                     <ul class="details">
                         <li>🧉 fueled by mate</li>
@@ -68,6 +68,14 @@
             <p>Created with ❤️ by Etienne Cautures © 2024</p>
         </footer>
     </main>
+
+    <div id="chatbot">
+        <div id="chat-window">
+            <div id="chat-output"></div>
+            <input type="text" id="chat-input" placeholder="Escribe un mensaje...">
+            <button id="send-btn">Enviar</button>
+        </div>
+    </div>
 
     <script src="scripts.js"></script>
 </body>
