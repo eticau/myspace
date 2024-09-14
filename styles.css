@@ -1,207 +1,93 @@
-/* Estilos generales */
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
-    color: #333;
-    transition: background 0.3s ease, color 0.3s ease;
+/* Chatbot básico */
+#chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
 }
 
-/* Modo oscuro */
-body.dark-mode {
-    background: linear-gradient(135deg, #1a1a1a, #333);
-    color: #fff;
-}
-
-/* Header */
-header {
+#chat-window {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
 }
 
-/* Estilo de enlaces en modo claro */
-header a {
-    margin-right: 20px;
-    color: #333; /* Color oscuro en modo claro */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-/* Enlaces al pasar el cursor */
-header a:hover {
-    color: #00bfa6; /* Color verde al pasar el cursor en ambos modos */
-}
-
-/* Estilo de enlaces en modo oscuro */
-body.dark-mode header a {
-    color: #fff; /* Color blanco para los enlaces en modo oscuro */
-}
-
-/* Logo */
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Botón de tema */
-.theme-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* Imagen de perfil */
-.profile-pic {
-    width: 200px;
+#chat-output {
     height: 200px;
-    border-radius: 50%;
-    border: 5px solid #00bfa6;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
 }
 
-/* Contenedor del perfil */
-.profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
+#chat-input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 
-/* Texto del perfil */
-.profile-text {
-    margin-left: 20px;
-}
-
-h1 .highlight {
-    color: #00bfa6;
-}
-
-/* Lista sin viñetas */
-ul.details {
-    list-style-type: none; /* Elimina las viñetas */
-    padding: 0;
-}
-
-/* Botón principal */
-.main-btn {
-    position: relative;
-    padding: 10px 20px;
+#send-btn {
+    padding: 8px 16px;
     background-color: #00bfa6;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    overflow: hidden;
-    z-index: 1;
 }
 
-.main-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%) scale(0);
-    border-radius: 50%;
-    transition: transform 0.5s ease;
-    z-index: 0;
+#send-btn:hover {
+    background-color: #008f76;
 }
 
-.main-btn:hover::before {
-    transform: translate(-50%, -50%) scale(1);
+/* Efectos de desplazamiento */
+.section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover animations en íconos y botones */
+.socials img:hover {
+    transform: scale(1.3);
+    filter: contrast(1.5);
 }
 
 .main-btn:hover {
     background-color: #008f76;
     color: #fff;
+    transform: translateY(-3px);
 }
 
-/* Iconos de redes sociales */
-.socials {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+/* Mejoras al modo oscuro */
+body.dark-mode {
+    background-color: #181818;
+    color: #f4f4f4;
 }
 
-.socials a {
-    margin: 0 10px;
+body.dark-mode header a {
+    color: #f4f4f4;
 }
 
-.socials img {
-    width: 40px;
-    height: 40px;
-    transition: filter 0.3s ease, transform 0.3s ease;
+body.dark-mode .main-btn {
+    background-color: #00bfa6;
+    color: #fff;
 }
 
-.socials img:hover {
-    transform: scale(1.2);
-    filter: invert(1);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 14px;
-}
-
-/* Animación para el emoji que saluda */
-.waving-emoji {
-    display: inline-block;
-    animation: wave-animation 2s infinite 1s; /* Duración total de 2 segundos, con 1 segundo de pausa */
-}
-
-/* Animación del saludo */
-@keyframes wave-animation {
-    0% {
-        transform: rotate(0deg);
-    }
-    15% {
-        transform: rotate(-10deg);
-    }
-    30% {
-        transform: rotate(0deg);
-    }
-    45% {
-        transform: rotate(8deg);
-    }
-    60% {
-        transform: rotate(0deg);
-    }
-    75% {
-        transform: rotate(-8deg);
-    }
-    90% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(0deg); /* Pausa en la posición inicial */
-    }
-}
-
-/* Sección de contenido */
-.section {
-    padding: 50px 20px;
-    border-bottom: 1px solid #ddd;
-}
-
+/* Medios responsivos */
 @media (max-width: 768px) {
     .profile-container {
         flex-direction: column;
-        text-align: center;
-    }
-
-    .profile-pic {
-        width: 150px;
-        height: 150px;
     }
 }
