@@ -12,13 +12,3 @@ themeToggle.addEventListener('click', () => {
         themeToggle.textContent = '🌑';  // Cambia a un ícono de luna para el modo oscuro
     }
 });
-
-// Mostrar/ocultar el chatbot en función del desplazamiento
-document.addEventListener('scroll', () => {
-    const linksSection = document.getElementById('links');
-    if (window.scrollY > 100) {
-        body.classList.add('scrolled');
-    } else {
-        body.classList.remove('scrolled');
-    }
-});
