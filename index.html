@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etienne Cautures</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Favicon -->
 </head>
 <body class="light-mode">
     <header>
@@ -16,14 +15,13 @@
             <a href="#about">About Me</a>
             <a href="#links">Useful Links</a>
         </nav>
-        <button id="theme-toggle" class="theme-toggle">🌑</button>
+        <button id="theme-toggle" class="theme-toggle">
+            🌑
+        </button> <!-- Botón para cambiar el tema -->
     </header>
 
-    <!-- Barra de Progreso -->
-    <div id="progress-bar"></div>
-
     <main>
-        <section id="home" class="profile-container" data-aos="fade-up">
+        <section id="home" class="profile-container">
             <div class="profile">
                 <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
                 <div class="profile-text">
@@ -37,6 +35,7 @@
                     </ul>
                     <button class="main-btn">LINKS FACULTAD Y DEMÁS</button>
                     
+                    <!-- Íconos de redes sociales debajo del botón -->
                     <div class="socials">
                         <a href="https://t.me/eticau" target="_blank">
                             <img src="images/telegram-icon.png" alt="Telegram">
@@ -55,25 +54,25 @@
             </div>
         </section>
 
-        <section id="about" class="section" data-aos="fade-up">
+        <section id="about" class="section">
             <h2>About Me</h2>
             <p>Contenido sobre mí...</p>
         </section>
 
-        <section id="links" class="section" data-aos="fade-up">
+        <section id="links" class="section">
             <h2>Useful Links</h2>
             <p>Enlaces útiles...</p>
         </section>
-
+        
         <footer>
             <p>Created with ❤️ by Etienne Cautures © 2024</p>
         </footer>
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <div id="chatbot-container">
+        <iframe src="https://your-chatbot-url.com" frameborder="0"></iframe>
+    </div>
+
     <script src="scripts.js"></script>
-    <script>
-        AOS.init(); // Iniciar AOS para las animaciones
-    </script>
 </body>
 </html>
