@@ -24,22 +24,22 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Enlaces en modo claro */
+/* Estilo de enlaces en modo claro */
 header a {
     margin-right: 20px;
-    color: #333;
+    color: #333; /* Color oscuro en modo claro */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 /* Enlaces al pasar el cursor */
 header a:hover {
-    color: #00bfa6;
+    color: #00bfa6; /* Color verde al pasar el cursor en ambos modos */
 }
 
-/* Enlaces en modo oscuro */
+/* Estilo de enlaces en modo oscuro */
 body.dark-mode header a {
-    color: #fff;
+    color: #fff; /* Color blanco para los enlaces en modo oscuro */
 }
 
 /* Logo */
@@ -84,7 +84,7 @@ h1 .highlight {
 
 /* Lista sin viñetas */
 ul.details {
-    list-style-type: none;
+    list-style-type: none; /* Elimina las viñetas */
     padding: 0;
 }
 
@@ -157,25 +157,53 @@ footer {
 /* Animación para el emoji que saluda */
 .waving-emoji {
     display: inline-block;
-    animation: wave-animation 2s infinite 1s;
+    animation: wave-animation 2s infinite 1s; /* Duración total de 2 segundos, con 1 segundo de pausa */
 }
 
 /* Animación del saludo */
 @keyframes wave-animation {
-    0% { transform: rotate(0deg); }
-    15% { transform: rotate(-10deg); }
-    30% { transform: 0deg; }
-    45% { transform: rotate(8deg); }
-    60% { transform: 0deg; }
-    75% { transform: rotate(-8deg); }
-    90% { transform: 0deg; }
-    100% { transform: 0deg; }
+    0% {
+        transform: rotate(0deg);
+    }
+    15% {
+        transform: rotate(-10deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+    45% {
+        transform: rotate(8deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-8deg);
+    }
+    90% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg); /* Pausa en la posición inicial */
+    }
 }
 
 /* Sección de contenido */
 .section {
     padding: 50px 20px;
     border-bottom: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
 }
 
 /* Chatbot Styles */
@@ -216,4 +244,21 @@ footer {
 }
 
 #send-btn:hover {
-    background
+    background-color: #008f76;
+}
+
+.user-message {
+    text-align: right;
+    background-color: #d1e7dd;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.bot-message {
+    text-align: left;
+    background-color: #f8d7da;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
