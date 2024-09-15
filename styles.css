@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -5,90 +6,211 @@ body {
     background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
     color: #333;
     transition: background 0.3s ease, color 0.3s ease;
-    overflow: hidden; /* Para mantener el botón troll dentro de la página */
 }
 
-.dark-mode {
+/* Modo oscuro */
+body.dark-mode {
     background: linear-gradient(135deg, #1a1a1a, #333);
     color: #fff;
 }
 
+/* Header */
 header {
-    background-color: #fff;
-    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.dark-mode header {
-    background-color: #333; /* Fondo oscuro para el modo oscuro */
-    color: #fff; /* Asegurarse de que el texto sea visible */
-}
-
-nav a {
+/* Estilo de enlaces en modo claro */
+header a {
+    margin-right: 20px;
+    color: #333; /* Color oscuro en modo claro */
     text-decoration: none;
-    color: #333;
-    margin: 0 10px;
     transition: color 0.3s ease;
 }
 
-.dark-mode nav a {
-    color: #fff; /* Color del texto para el modo oscuro */
+/* Enlaces al pasar el cursor */
+header a:hover {
+    color: #00bfa6; /* Color verde al pasar el cursor en ambos modos */
 }
 
+/* Estilo de enlaces en modo oscuro */
+body.dark-mode header a {
+    color: #fff; /* Color blanco para los enlaces en modo oscuro */
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Botón de tema */
 .theme-toggle {
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 24px;
     cursor: pointer;
-    transition: color 0.3s ease;
 }
 
-.dark-mode .theme-toggle {
-    color: #fff;
+/* Imagen de perfil */
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #00bfa6;
 }
 
+/* Contenedor del perfil */
 .profile-container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 100vh;
-}
-
-.profile {
+    justify-content: center;
     text-align: center;
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-
-.highlight {
-    color: #ff4d4d;
-}
-
-.socials img {
-    width: 30px;
-    margin: 0 10px;
-}
-
-footer {
-    text-align: center;
-    margin-top: 50px;
-}
-
-main {
     padding: 20px;
 }
 
-/* Botón Troll */
-.troll-button {
+/* Texto del perfil */
+.profile-text {
+    margin-left: 20px;
+}
+
+h1 .highlight {
+    color: #00bfa6;
+}
+
+/* Lista sin viñetas */
+ul.details {
+    list-style-type: none; /* Elimina las viñetas */
+    padding: 0;
+}
+
+/* Botón principal */
+.main-btn {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #00bfa6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.main-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+    z-index: 0;
+}
+
+.main-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.main-btn:hover {
+    background-color: #008f76;
+    color: #fff;
+}
+
+/* Iconos de redes sociales */
+.socials {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.socials a {
+    margin: 0 10px;
+}
+
+.socials img {
+    width: 40px;
+    height: 40px;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.socials img:hover {
+    transform: scale(1.2);
+    filter: invert(1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+/* Animación para el emoji que saluda */
+.waving-emoji {
+    display: inline-block;
+    animation: wave-animation 2s infinite 1s; /* Duración total de 2 segundos, con 1 segundo de pausa */
+}
+
+/* Animación del saludo */
+@keyframes wave-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    15% {
+        transform: rotate(-10deg);
+    }
+    30% {
+        transform: rotate(0deg);
+    }
+    45% {
+        transform: rotate(8deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-8deg);
+    }
+    90% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg); /* Pausa en la posición inicial */
+    }
+}
+
+/* Sección de contenido */
+.section {
+    padding: 50px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Botón troll */
+.troll-btn {
+    position: absolute; /* Para que pueda moverse libremente en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrado inicialmente */
+    background-color: #ff5555; /* Color llamativo */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: top 0.3s ease, left 0.3s ease;
+}
+
+/* Botón troll con movimiento dinámico */
+.moving-troll-btn {
     position: absolute;
     top: 50px;
     left: 50px;
@@ -98,15 +220,11 @@ main {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    z-index: 9999; /* Siempre visible por encima */
+    transition: transform 0.2s ease, top 0.3s ease, left 0.3s ease;
+    z-index: 9999;
 }
 
-.troll-button:hover {
-    background-color: #ff1a1a;
-}
-
-@keyframes slow-move {
+@keyframes troll-move {
     0% { top: 50px; left: 50px; }
     25% { top: 200px; left: 100px; }
     50% { top: 300px; left: 200px; }
@@ -114,7 +232,29 @@ main {
     100% { top: 50px; left: 50px; }
 }
 
-/* Botón troll en movimiento */
-.moving {
-    animation: slow-move 10s infinite;
+.moving-troll-btn:hover {
+    transform: translate(20px, 20px); /* Mueve el botón cuando se intenta hacer hover */
+}
+
+/* Movimiento lento y continuo */
+.moving-troll-btn.moving {
+    animation: troll-move 10s infinite;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+
+    .moving-troll-btn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
 }
