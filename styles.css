@@ -163,7 +163,7 @@ footer {
     text-align: center;
     margin-top: 50px;
     font-size: 14px;
-    position: relative;
+    opacity: 0.6;
 }
 
 /* Animación para el emoji que saluda */
@@ -200,31 +200,45 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.05s ease;
+    transition: background-color 0.3s ease;
     z-index: 9999;
+    /* Inicialmente se mueve como un salvapantallas de DVD */
+    animation: dvd-move 10s linear infinite;
 }
 
-/* Animación del botón troll */
+/* Movimiento de salvapantallas de DVD */
+@keyframes dvd-move {
+    0% { top: 50px; left: 50px; }
+    25% { top: 50px; left: calc(100% - 100px); }
+    50% { top: calc(100% - 50px); left: calc(100% - 100px); }
+    75% { top: calc(100% - 50px); left: 50px; }
+    100% { top: 50px; left: 50px; }
+}
+
+/* Movimiento del botón troll cuando el cursor está cerca */
+.troll-btn.active {
+    animation: none;
+}
+
+/* Colores del botón troll como un arcoíris */
 @keyframes rainbow {
     0% { background-color: #ff4d4d; }
     14% { background-color: #ff6f61; }
     28% { background-color: #ffcc00; }
     42% { background-color: #33cc33; }
-    57% { background-color: #00bfff; }
-    71% { background-color: #9933ff; }
-    85% { background-color: #ff3399; }
+    57% { background-color: #3399ff; }
+    71% { background-color: #c066ff; }
+    85% { background-color: #ff66b2; }
     100% { background-color: #ff4d4d; }
 }
 
-/* Movimiento tipo salvapantallas de DVD */
-.troll-btn.moving {
-    animation: dvd-screen-saver 10s linear infinite, rainbow 2s infinite;
+.troll-btn.color-changing {
+    animation: rainbow 5s linear infinite;
 }
 
-@keyframes dvd-screen-saver {
-    0% { transform: translate(0, 0); }
-    25% { transform: translate(calc(100vw - 100%), 0); }
-    50% { transform: translate(calc(100vw - 100%), calc(100vh - 100%)); }
-    75% { transform: translate(0, calc(100vh - 100%)); }
-    100% { transform: translate(0, 0); }
+/* Efecto de escalado en textos */
+.profile-text p:hover, 
+ul.details li:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
 }
