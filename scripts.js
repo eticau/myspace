@@ -22,22 +22,25 @@ let randomY = Math.floor(Math.random() * window.innerHeight);
 trollButton.addEventListener('mouseover', () => {
     randomX = Math.floor(Math.random() * (window.innerWidth - trollButton.offsetWidth));
     randomY = Math.floor(Math.random() * (window.innerHeight - trollButton.offsetHeight));
-    trollButton.style.left = ${randomX}px;
-    trollButton.style.top = ${randomY}px;
+    trollButton.style.left = `${randomX}px`;
+    trollButton.style.top = `${randomY}px`;
 });
 
 // Movimiento del botón troll cuando el mouse se aleja
 document.addEventListener('mousemove', (event) => {
     if (!trollButton.matches(':hover')) {
         trollButton.style.transition = 'transform 0.3s ease, left 0.3s ease, top 0.3s ease';
-        trollButton.style.left = ${Math.floor(Math.random() * (window.innerWidth - trollButton.offsetWidth))}px;
-        trollButton.style.top = ${Math.floor(Math.random() * (window.innerHeight - trollButton.offsetHeight))}px;
-        trollButton.style.transform = scale(${Math.random() * (1.5 - 1) + 1});
+        trollButton.style.left = `${Math.floor(Math.random() * (window.innerWidth - trollButton.offsetWidth))}px`;
+        trollButton.style.top = `${Math.floor(Math.random() * (window.innerHeight - trollButton.offsetHeight))}px`;
+        trollButton.style.transform = `scale(${Math.random() * (1.5 - 1) + 1})`;
+
+        // Cambiar el color del botón a un color arcoíris
+        trollButton.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
     }
 });
 
 // Hacer que el botón troll salte a una posición más lejana al intentar hacer clic
 trollButton.addEventListener('mousedown', () => {
-    trollButton.style.left = ${Math.floor(Math.random() * (window.innerWidth - trollButton.offsetWidth))}px;
-    trollButton.style.top = ${Math.floor(Math.random() * (window.innerHeight - trollButton.offsetHeight))}px;
+    trollButton.style.left = `${Math.floor(Math.random() * (window.innerWidth - trollButton.offsetWidth))}px`;
+    trollButton.style.top = `${Math.floor(Math.random() * (window.innerHeight - trollButton.offsetHeight))}px`;
 });
