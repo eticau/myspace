@@ -1,4 +1,4 @@
-/* General Styles */
+/* Estilos generales */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -8,7 +8,7 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Dark Mode */
+/* Modo oscuro */
 body.dark-mode {
     background: linear-gradient(135deg, #1a1a1a, #333);
     color: #fff;
@@ -24,20 +24,22 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation */
-nav a {
+/* Estilo de enlaces en modo claro */
+header a {
     margin-right: 20px;
-    color: #333;
+    color: #333; /* Color oscuro en modo claro */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-nav a:hover {
-    color: #00bfa6;
+/* Enlaces al pasar el cursor */
+header a:hover {
+    color: #00bfa6; /* Color verde al pasar el cursor en ambos modos */
 }
 
-body.dark-mode nav a {
-    color: #fff;
+/* Estilo de enlaces en modo oscuro */
+body.dark-mode header a {
+    color: #fff; /* Color blanco para los enlaces en modo oscuro */
 }
 
 /* Logo */
@@ -46,7 +48,7 @@ body.dark-mode nav a {
     font-weight: bold;
 }
 
-/* Theme Toggle Button */
+/* Botón de tema */
 .theme-toggle {
     background: none;
     border: none;
@@ -54,20 +56,15 @@ body.dark-mode nav a {
     cursor: pointer;
 }
 
-/* Profile Picture */
+/* Imagen de perfil */
 .profile-pic {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     border: 5px solid #00bfa6;
-    transition: transform 0.3s ease;
 }
 
-.profile-pic:hover {
-    transform: scale(1.05);
-}
-
-/* Profile Container */
+/* Contenedor del perfil */
 .profile-container {
     display: flex;
     align-items: center;
@@ -76,23 +73,22 @@ body.dark-mode nav a {
     padding: 20px;
 }
 
-/* Profile Text */
+/* Texto del perfil */
 .profile-text {
     margin-left: 20px;
 }
 
-/* Highlight Text */
 h1 .highlight {
     color: #00bfa6;
 }
 
-/* Details List */
+/* Lista sin viñetas */
 ul.details {
-    list-style-type: none;
+    list-style-type: none; /* Elimina las viñetas */
     padding: 0;
 }
 
-/* Main Button */
+/* Botón principal */
 .main-btn {
     position: relative;
     padding: 10px 20px;
@@ -129,7 +125,7 @@ ul.details {
     color: #fff;
 }
 
-/* Social Icons */
+/* Iconos de redes sociales */
 .socials {
     display: flex;
     justify-content: center;
@@ -158,12 +154,13 @@ footer {
     font-size: 14px;
 }
 
-/* Waving Emoji Animation */
+/* Animación para el emoji que saluda */
 .waving-emoji {
     display: inline-block;
-    animation: wave-animation 2s infinite 1s;
+    animation: wave-animation 2s infinite 1s; /* Duración total de 2 segundos, con 1 segundo de pausa */
 }
 
+/* Animación del saludo */
 @keyframes wave-animation {
     0% {
         transform: rotate(0deg);
@@ -187,18 +184,31 @@ footer {
         transform: rotate(0deg);
     }
     100% {
-        transform: rotate(0deg);
+        transform: rotate(0deg); /* Pausa en la posición inicial */
     }
 }
 
-/* Section Styles */
+/* Sección de contenido */
 .section {
     padding: 50px 20px;
     border-bottom: 1px solid #ddd;
 }
 
+/* Botón troll */
+.troll-btn {
+    position: absolute; /* Para que pueda moverse libremente en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrado inicialmente */
+    background-color: #ff5555; /* Color llamativo */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: top 0.3s ease, left 0.3s ease;
+}
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .profile-container {
         flex-direction: column;
@@ -209,14 +219,4 @@ footer {
         width: 150px;
         height: 150px;
     }
-}
-
-/* Useful Links Section Animation */
-#links {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
-
-body.scrolled #links {
-    opacity: 1;
 }
