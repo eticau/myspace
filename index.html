@@ -1,67 +1,77 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
-    color: #333;
-    transition: background 0.3s ease, color 0.3s ease;
-    overflow: hidden; /* Para mantener el botón troll dentro de la página */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etienne Cautures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Favicon -->
+</head>
+<body class="light-mode">
+    <header>
+        <div class="logo">EC</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#links">Useful Links</a>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle">
+            🌑
+        </button> <!-- Botón para cambiar el tema -->
+    </header>
 
-.dark-mode {
-    background: linear-gradient(135deg, #1a1a1a, #333);
-    color: #fff;
-}
+    <main>
+        <section id="home" class="profile-container">
+            <div class="profile">
+                <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
+                <div class="profile-text">
+                    <h1>Hi, I'm <span class="highlight">Eti</span> <span class="waving-emoji">🤚🏻</span></h1>
+                    <p>I'm a little crazy guy.</p>
+                    <ul class="details">
+                        <li>🧉 fueled by mate</li>
+                        <li>🌍 from Rosario, Argentina</li>
+                        <li>🎓 studying Mechanical Engineering at UNR</li>
+                        <li>📧 cautures@gmail.com</li>
+                    </ul>
+                    <button class="main-btn">LINKS FACULTAD Y DEMÁS</button>
+                    
+                    <!-- Íconos de redes sociales debajo del botón -->
+                    <div class="socials">
+                        <a href="https://t.me/eticau" target="_blank">
+                            <img src="images/telegram-icon.png" alt="Telegram">
+                        </a>
+                        <a href="https://github.com/eticau" target="_blank">
+                            <img src="images/github-icon.png" alt="GitHub">
+                        </a>
+                        <a href="https://www.linkedin.com/in/etienne-cautures" target="_blank">
+                            <img src="images/linkedin-icon.png" alt="LinkedIn">
+                        </a>
+                        <a href="https://www.instagram.com/eticau" target="_blank">
+                            <img src="images/instagram-icon.png" alt="Instagram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-.troll-button {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    padding: 10px 20px;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p>Contenido sobre mí...</p>
+        </section>
 
-.troll-button:hover {
-    background-color: #ff1a1a;
-}
+        <section id="links" class="section">
+            <h2>Useful Links</h2>
+            <p>Enlaces útiles...</p>
+        </section>
+        
+        <!-- Botón troll -->
+        <button id="troll-button" class="troll-button">CLICK HERE</button>
 
-.profile-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+        <footer>
+            <p>Created with ❤️ by Etienne Cautures © 2024</p>
+        </footer>
+    </main>
 
-.profile {
-    text-align: center;
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-
-.highlight {
-    color: #ff4d4d;
-}
-
-.socials img {
-    width: 30px;
-    margin: 0 10px;
-}
-
-footer {
-    text-align: center;
-    margin-top: 50px;
-}
-
-main {
-    padding: 20px;
-}
+    <script src="scripts.js"></script>
+</body>
+</html>
