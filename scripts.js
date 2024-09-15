@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cursorPos = { x: e.clientX, y: e.clientY };
     });
 
-    // Cambia la posición del botón troll a una posición aleatoria 
+    // Cambia la posición del botón troll a una posición aleatoria
     function moveTrollButton() {
         const buttonRect = trollBtn.getBoundingClientRect();
         const windowWidth = window.innerWidth;
