@@ -22,6 +22,7 @@ header {
     padding: 10px 20px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
 /* Estilo de enlaces en modo claro */
@@ -40,11 +41,6 @@ header a:hover {
 /* Estilo de enlaces en modo oscuro */
 body.dark-mode header a {
     color: #fff; /* Color blanco para los enlaces en modo oscuro */
-}
-
-/* Fondo de header en modo oscuro */
-body.dark-mode header {
-    background-color: #333; /* Fondo oscuro para el header */
 }
 
 /* Logo */
@@ -67,11 +63,7 @@ body.dark-mode header {
     height: 200px;
     border-radius: 50%;
     border: 5px solid #00bfa6;
-    transition: transform 0.3s ease; /* Animación de agrandamiento */
-}
-
-.profile-pic:hover {
-    transform: scale(1.1); /* Agranda la foto de perfil al pasar el cursor */
+    transition: transform 0.3s ease;
 }
 
 /* Contenedor del perfil */
@@ -96,17 +88,6 @@ h1 .highlight {
 ul.details {
     list-style-type: none; /* Elimina las viñetas */
     padding: 0;
-}
-
-/* Animación para los textos */
-.reaction-text {
-    display: inline-block;
-    transition: transform 0.2s ease, font-size 0.2s ease;
-}
-
-.reaction-text:hover {
-    transform: translateY(-5px); /* Mueve el texto un poco hacia arriba */
-    font-size: 1.1em; /* Agranda un poco el texto */
 }
 
 /* Botón principal */
@@ -218,30 +199,46 @@ footer {
     top: 50px;
     left: 50px;
     padding: 10px 20px;
-    background-color: #ff6347;
+    background-color: #ff4d4d; /* Color llamativo */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: transform 0.1s ease, top 0.3s ease, left 0.3s ease, background-color 0.3s ease;
     z-index: 9999;
-    transition: transform 0.3s ease, top 0.3s ease, left 0.3s ease;
-    animation: troll-move 5s infinite;
 }
 
+/* Movimiento inicial del botón troll */
 @keyframes troll-move {
     0% { transform: translate(0, 0); }
-    25% { transform: translate(50px, 50px); }
-    50% { transform: translate(-50px, -50px); }
-    75% { transform: translate(50px, -50px); }
-    100% { transform: translate(-50px, 50px); }
+    25% { transform: translate(150px, 150px); }
+    50% { transform: translate(300px, 0); }
+    75% { transform: translate(150px, -150px); }
+    100% { transform: translate(0, 0); }
 }
 
-/* Botón troll al hacer clic */
-.troll-btn:active {
-    animation: troll-click 0.5s forwards;
+.troll-btn {
+    animation: troll-move 3s infinite linear;
+    background: linear-gradient(45deg, #ff0000, #ff00ff, #ff6600, #66ff00, #00ffff, #ff00ff);
+    background-size: 600% 600%;
+    animation: rainbow 10s ease infinite;
 }
 
-@keyframes troll-click {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(calc(100vw - 50px), calc(100vh - 50px)); }
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Botón troll al pasar el mouse */
+.troll-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Texto de perfil al pasar el cursor */
+.profile-text li {
+    transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.profile-text li:hover {
+    transform: scale(1.1);
 }
