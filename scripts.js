@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         darkMode = !darkMode;
     });
 
-    // Movimiento del botón troll
+    // Movimiento del botón  troll
     trollButton.addEventListener('mouseover', () => {
         const randomTop = Math.floor(Math.random() * (window.innerHeight - trollButton.clientHeight));
         const randomLeft = Math.floor(Math.random() * (window.innerWidth - trollButton.clientWidth));
