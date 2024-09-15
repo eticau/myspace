@@ -195,21 +195,7 @@ footer {
 }
 
 /* Botón troll */
-.troll-btn {
-    position: absolute; /* Para que pueda moverse libremente en la pantalla */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centrado inicialmente */
-    background-color: #ff5555; /* Color llamativo */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: top 0.3s ease, left 0.3s ease;
-}
-
-/* Botón troll con movimiento dinámico */
+/* Botón troll */
 .moving-troll-btn {
     position: absolute;
     top: 50px;
@@ -224,6 +210,7 @@ footer {
     z-index: 9999;
 }
 
+/* Movimiento inicial del botón troll */
 @keyframes troll-move {
     0% { top: 50px; left: 50px; }
     25% { top: 200px; left: 100px; }
@@ -232,29 +219,22 @@ footer {
     100% { top: 50px; left: 50px; }
 }
 
-.moving-troll-btn:hover {
-    transform: translate(20px, 20px); /* Mueve el botón cuando se intenta hacer hover */
-}
-
-/* Movimiento lento y continuo */
+/* Movimiento continuo y lento */
 .moving-troll-btn.moving {
     animation: troll-move 10s infinite;
 }
 
+/* Aceleración y movimiento al intentar hacer clic */
+.moving-troll-btn:hover {
+    transform: translate(150px, 150px); /* Incrementa la distancia al hacer hover */
+    transition: transform 0.05s ease; /* Aumenta la velocidad del movimiento */
+}
+
 /* Adaptación para móviles */
 @media (max-width: 768px) {
-    .profile-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .profile-pic {
-        width: 150px;
-        height: 150px;
-    }
-
     .moving-troll-btn {
         font-size: 12px;
         padding: 8px 16px;
     }
 }
+
