@@ -32,10 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 trollButton.style.top = `${top}px`;
                 trollButton.style.left = `${left}px`;
             } else {
-                animateTrollButton(); // Recalcular si la posición no es válida
+                // Recalcular si la posición no es válida
+                setTimeout(animateTrollButton, 100);
             }
-
-            requestAnimationFrame(animateTrollButton);
         }
 
         animateTrollButton();
