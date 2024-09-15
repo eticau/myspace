@@ -169,22 +169,19 @@ footer {
         transform: rotate(-10deg);
     }
     30% {
-        transform: rotate(0deg);
+        transform: 0;
     }
     45% {
-        transform: rotate(8deg);
+        transform: 8deg;
     }
     60% {
-        transform: rotate(0deg);
+        transform: 0;
     }
     75% {
-        transform: rotate(-8deg);
-    }
-    90% {
-        transform: rotate(0deg);
+        transform: -8deg;
     }
     100% {
-        transform: rotate(0deg); /* Pausa en la posición inicial */
+        transform: 0;
     }
 }
 
@@ -196,34 +193,20 @@ footer {
 
 /* Botón troll */
 .troll-btn {
-    position: absolute; /* Para que pueda moverse libremente en la pantalla */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centrado inicialmente */
-    background-color: #ff5555; /* Color llamativo */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: top 0.3s ease, left 0.3s ease;
-}
-
-/* Botón troll con movimiento dinámico */
-.moving-troll-btn {
     position: absolute;
     top: 50px;
     left: 50px;
     padding: 10px 20px;
-    background-color: #ff4d4d;
+    background-color: #ff4d4d; /* Color llamativo */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s ease, top 0.3s ease, left 0.3s ease;
+    transition: transform 0.05s ease, top 0.3s ease, left 0.3s ease;
     z-index: 9999;
 }
 
+/* Movimiento inicial del botón troll */
 @keyframes troll-move {
     0% { top: 50px; left: 50px; }
     25% { top: 200px; left: 100px; }
@@ -232,13 +215,14 @@ footer {
     100% { top: 50px; left: 50px; }
 }
 
-.moving-troll-btn:hover {
-    transform: translate(20px, 20px); /* Mueve el botón cuando se intenta hacer hover */
+.troll-btn.moving {
+    animation: troll-move 10s infinite;
 }
 
-/* Movimiento lento y continuo */
-.moving-troll-btn.moving {
-    animation: troll-move 10s infinite;
+/* Aceleración y movimiento al intentar hacer clic */
+.troll-btn:hover {
+    transform: translate(100px, 100px); /* Incrementa la distancia al hacer hover */
+    transition: transform 0.05s ease; /* Aumenta la velocidad del movimiento */
 }
 
 /* Adaptación para móviles */
@@ -253,7 +237,7 @@ footer {
         height: 150px;
     }
 
-    .moving-troll-btn {
+    .troll-btn {
         font-size: 12px;
         padding: 8px 16px;
     }
