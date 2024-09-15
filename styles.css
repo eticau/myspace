@@ -1,127 +1,169 @@
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
     color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-header {
-    background-color: var(--header-bg-color);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-}
-
-nav a {
-    margin: 0 15px;
-    color: var(--nav-text-color);
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #ff4081;
-}
-
-.profile-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding-top: 60px; /* Para compensar el header fijo */
-    background-color: #ffffff;
-}
-
-.profile {
-    text-align: center;
-}
-
-.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    transition: transform 0.3s;
-}
-
-.profile-pic:hover {
-    transform: scale(1.2); /* Agrandar imagen al pasar el mouse */
-}
-
-.profile-text h1 {
-    font-size: 2.5em;
-}
-
-.profile-text p, .profile-text ul li {
-    font-size: 1.2em;
-    transition: transform 0.2s, font-size 0.2s;
-}
-
-.profile-text p:hover, .profile-text ul li:hover {
-    transform: translateY(-5px);
-    font-size: 1.25em;
-}
-
-.details {
-    list-style: none;
-    padding: 0;
-}
-
-.socials img {
-    width: 30px;
-    margin: 10px;
-}
-
-.socials img:hover {
-    transform: scale(1.1);
-}
-
-.section {
-    padding: 100px 20px;
-    background-color: #e0e0e0;
-}
-
-.footer-text {
-    text-align: center;
-    font-size: 14px;
-    opacity: 0.6; /* Transparencia del texto del footer */
-}
-
-/* Tema claro y oscuro */
-.light-mode {
-    --header-bg-color: #ffffff;
-    --nav-text-color: #333;
-}
-
-.dark-mode {
-    --header-bg-color: #333;
-    --nav-text-color: #ffffff;
-    background-color: #222;
+/* Modo oscuro */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a1a, #333);
     color: #fff;
 }
 
-/* Estilos del botón troll */
-.troll-btn {
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Fondo del header en modo oscuro */
+body.dark-mode header {
+    background-color: #333;
+}
+
+/* Estilo de enlaces en modo claro */
+header a {
+    margin-right: 20px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Enlaces al pasar el cursor */
+header a:hover {
+    color: #00bfa6;
+}
+
+/* Estilo de enlaces en modo oscuro */
+body.dark-mode header a {
+    color: #fff;
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Botón de tema */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Imagen de perfil */
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #00bfa6;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedor del perfil */
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Texto del perfil */
+.profile-text {
+    margin-left: 20px;
+}
+
+h1 .highlight {
+    color: #00bfa6;
+}
+
+/* Lista sin viñetas */
+ul.details {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Botón principal */
+.main-btn {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #00bfa6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.main-btn::before {
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    padding: 10px 20px;
-    background-color: #ff4081;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+    z-index: 0;
 }
 
-.troll-btn:hover {
-    background-color: #e91e63;
+.main-btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.main-btn:hover {
+    background-color: #008f76;
+    color: #fff;
+}
+
+/* Iconos de redes sociales */
+.socials {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.socials a {
+    margin: 0 10px;
+}
+
+.socials img {
+    width: 40px;
+    height: 40px;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.socials img:hover {
+    transform: scale(1.2);
+    filter: invert(1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
+    position: relative;
 }
 
 /* Animación para el emoji que saluda */
@@ -141,11 +183,48 @@ nav a:hover {
     100% { transform: rotate(0deg); }
 }
 
-/* Footer centrado */
-footer {
+/* Sección de contenido */
+.section {
+    padding: 50px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Botón troll */
+.troll-btn {
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 10px 0;
-    background-color: transparent;
+    top: 50px;
+    left: 50px;
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.05s ease;
+    z-index: 9999;
+}
+
+/* Animación del botón troll */
+@keyframes rainbow {
+    0% { background-color: #ff4d4d; }
+    14% { background-color: #ff6f61; }
+    28% { background-color: #ffcc00; }
+    42% { background-color: #33cc33; }
+    57% { background-color: #00bfff; }
+    71% { background-color: #9933ff; }
+    85% { background-color: #ff3399; }
+    100% { background-color: #ff4d4d; }
+}
+
+/* Movimiento tipo salvapantallas de DVD */
+.troll-btn.moving {
+    animation: dvd-screen-saver 10s linear infinite, rainbow 2s infinite;
+}
+
+@keyframes dvd-screen-saver {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(calc(100vw - 100%), 0); }
+    50% { transform: translate(calc(100vw - 100%), calc(100vh - 100%)); }
+    75% { transform: translate(0, calc(100vh - 100%)); }
+    100% { transform: translate(0, 0); }
 }
