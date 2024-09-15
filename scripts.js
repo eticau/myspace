@@ -1,40 +1,43 @@
-// Scripts para el tema oscuro y el botón troll
+// script.js
 
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-toggle');
-    const trollButton = document.getElementById('troll-button');
-    let darkMode = false;
-    
-    // Cambio de tema
-    themeToggle.addEventListener('click', () => {
-        darkMode = !darkMode;
-        document.body.classList.toggle('dark-mode', darkMode);
-        themeToggle.textContent = darkMode ? '🌕' : '🌑';
-    });
-
-    // Movimiento aleatorio del botón troll
-    function moveTrollButton() {
-        let top = parseFloat(trollButton.style.top) || 50;
-        let left = parseFloat(trollButton.style.left) || 50;
-        let mouseX = event.clientX;
-        let mouseY = event.clientY;
-
-        // Actualiza la posición evitando el cursor
-        do {
-            top += Math.random() * 100 - 50;
-            left += Math.random() * 100 - 50;
-        } while (Math.abs(mouseX - left) < 100 && Math.abs(mouseY - top) < 100);
-
-        if (top < 0) top = 0;
-        if (left < 0) left = 0;
-        if (top > window.innerHeight - trollButton.offsetHeight) top = window.innerHeight - trollButton.offsetHeight;
-        if (left > window.innerWidth - trollButton.offsetWidth) left = window.innerWidth - trollButton.offsetWidth;
-
-        trollButton.style.top = `${top}px`;
-        trollButton.style.left = `${left}px`;
-
-        requestAnimationFrame(moveTrollButton);
+// Cambio de tema
+document.getElementById('theme-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const themeIcon = document.getElementById('theme-toggle');
+    if (document.body.classList.contains('dark-mode')) {
+        themeIcon.textContent = '🌕'; // Ícono de sol para el modo oscuro
+    } else {
+        themeIcon.textContent = '🌑'; // Ícono de luna para el modo claro
     }
+});
 
-    moveTrollButton();
+// Botón troll
+const trollButton = document.getElementById('troll-button');
+
+// Variables de posición aleatoria
+let randomX = Math.floor(Math.random() * window.innerWidth);
+let randomY = Math.floor(Math.random() * window.innerHeight);
+
+// Mueve el botón troll a una posición aleatoria cuando el mouse se acerca
+trollButton.addEventListener('mouseover', () => {
+    randomX = Math.floor(Math.random() * (window.innerWidth - trollButton.offsetWidth));
+    randomY = Math.floor(Math.random() * (window.innerHeight - trollButton.offsetHeight));
+    trollButton.style.left = ${randomX}px;
+    trollButton.style.top = ${randomY}px;
+});
+
+// Movimiento del botón troll cuando el mouse se aleja
+document.addEventListener('mousemove', (event) => {
+    if (!trollButton.matches(':hover')) {
+        trollButton.style.transition = 'transform 0.3s ease, left 0.3s ease, top 0.3s ease';
+        trollButton.style.left = ${Math.floor(Math.random() * (window.innerWidth - trollButton.offsetWidth))}px;
+        trollButton.style.top = ${Math.floor(Math.random() * (window.innerHeight - trollButton.offsetHeight))}px;
+        trollButton.style.transform = scale(${Math.random() * (1.5 - 1) + 1});
+    }
+});
+
+// Hacer que el botón troll salte a una posición más lejana al intentar hacer clic
+trollButton.addEventListener('mousedown', () => {
+    trollButton.style.left = ${Math.floor(Math.random() * (window.innerWidth - trollButton.offsetWidth))}px;
+    trollButton.style.top = ${Math.floor(Math.random() * (window.innerHeight - trollButton.offsetHeight))}px;
 });
