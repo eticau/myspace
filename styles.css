@@ -24,6 +24,11 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Header en modo oscuro */
+body.dark-mode header {
+    background-color: #1a1a1a; /* Fondo oscuro en modo oscuro */
+}
+
 /* Estilo de enlaces en modo claro */
 header a {
     margin-right: 20px;
