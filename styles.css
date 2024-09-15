@@ -1,4 +1,4 @@
-/* Estilos generaless */
+/* Estilos generales */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -20,32 +20,31 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #fff;
+    background-color: #fff; /* Color claro en modo claro */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
-/* Fondo del header en modo oscuro */
+/* Estilo de enlaces en modo oscuro */
 body.dark-mode header {
-    background-color: #333;
-}
+    background-color: #333; /* Color oscuro en modo oscuro */
 
 /* Estilo de enlaces en modo claro */
 header a {
     margin-right: 20px;
-    color: #333;
+    color: #333; /* Color oscuro en modo claro */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 /* Enlaces al pasar el cursor */
 header a:hover {
-    color: #00bfa6;
+    color: #00bfa6; /* Color verde al pasar el cursor en ambos modos */
 }
 
 /* Estilo de enlaces en modo oscuro */
 body.dark-mode header a {
-    color: #fff;
+    color: #fff; /* Color blanco para los enlaces en modo oscuro */
 }
 
 /* Logo */
@@ -71,10 +70,6 @@ body.dark-mode header a {
     transition: transform 0.3s ease;
 }
 
-.profile-pic:hover {
-    transform: scale(1.1);
-}
-
 /* Contenedor del perfil */
 .profile-container {
     display: flex;
@@ -95,7 +90,7 @@ h1 .highlight {
 
 /* Lista sin viñetas */
 ul.details {
-    list-style-type: none;
+    list-style-type: none; /* Elimina las viñetas */
     padding: 0;
 }
 
@@ -168,18 +163,32 @@ footer {
 /* Animación para el emoji que saluda */
 .waving-emoji {
     display: inline-block;
-    animation: wave-animation 2s infinite 1s;
+    animation: wave-animation 2s infinite 1s; /* Duración total de 2 segundos, con 1 segundo de pausa */
 }
 
 /* Animación del saludo */
 @keyframes wave-animation {
-    0% { transform: rotate(0deg); }
-    15% { transform: rotate(-10deg); }
-    30% { transform: rotate(0deg); }
-    45% { transform: rotate(8deg); }
-    60% { transform: rotate(0deg); }
-    75% { transform: rotate(-8deg); }
-    100% { transform: rotate(0deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    15% {
+        transform: rotate(-10deg);
+    }
+    30% {
+        transform: 0;
+    }
+    45% {
+        transform: 8deg;
+    }
+    60% {
+        transform: 0;
+    }
+    75% {
+        transform: -8deg;
+    }
+    100% {
+        transform: 0;
+    }
 }
 
 /* Sección de contenido */
@@ -194,29 +203,46 @@ footer {
     top: 50px;
     left: 50px;
     padding: 10px 20px;
-    background-color: #ff4d4d;
+    background-color: #ff4d4d; /* Color llamativo */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: top 0.3s ease, left 0.3s ease;
+    transition: transform 0.1s ease, top 0.3s ease, left 0.3s ease, background-color 0.3s ease;
     z-index: 9999;
 }
 
-.troll-btn.moving {
-    animation: troll-move 10s infinite;
-}
-
-.troll-btn:hover {
-    transform: translate(100px, 100px);
-    transition: transform 0.05s ease;
-}
-
-/* Movimiento más suave y aleatorio */
+/* Movimiento inicial del botón troll */
 @keyframes troll-move {
-    0% { top: 50px; left: 50px; }
-    25% { top: 200px; left: 100px; }
-    50% { top: 300px; left: 200px; }
-    75% { top: 100px; left: 400px; }
-    100% { top: 50px; left: 50px; }
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(150px, 150px); }
+    50% { transform: translate(300px, 0); }
+    75% { transform: translate(150px, -150px); }
+    100% { transform: translate(0, 0); }
+}
+
+.troll-btn {
+    animation: troll-move 3s infinite linear;
+    background: linear-gradient(45deg, #ff0000, #ff00ff, #ff6600, #66ff00, #00ffff, #ff00ff);
+    background-size: 600% 600%;
+    animation: rainbow 10s ease infinite;
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Botón troll al pasar el mouse */
+.troll-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Texto de perfil al pasar el cursor */
+.profile-text li {
+    transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.profile-text li:hover {
+    transform: scale(1.1);
 }
