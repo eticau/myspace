@@ -9,6 +9,13 @@ const trollButton = document.getElementById('troll-button');
 let speedX = 3, speedY = 3;
 let positionX = Math.random() * window.innerWidth;
 let positionY = Math.random() * window.innerHeight;
+let mouseX = 0, mouseY = 0;
+
+// Detectar la posición del cursor una sola vez
+window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
 
 function moveTrollButton() {
     const buttonRect = trollButton.getBoundingClientRect();
@@ -25,22 +32,20 @@ function moveTrollButton() {
     trollButton.style.top = `${positionY}px`;
 
     // Acelerar si el cursor se acerca
-    window.addEventListener('mousemove', (e) => {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
+    const distance = Math.hypot(mouseX - positionX, mouseY - positionY);
 
-        const distance = Math.hypot(mouseX - positionX, mouseY - positionY);
+    if (distance < 200) {
+        speedX = Math.sign(speedX) * 10;
+        speedY = Math.sign(speedY) * 10;
+    } else {
+        speedX = Math.sign(speedX) * 3;
+        speedY = Math.sign(speedY) * 3;
+    }
 
-        if (distance < 200) {
-            speedX = Math.sign(speedX) * 10;
-            speedY = Math.sign(speedY) * 10;
-        } else {
-            speedX = Math.sign(speedX) * 3;
-            speedY = Math.sign(speedY) * 3;
-        }
-    });
-
-    requestAnimationFrame(moveTrollButton);
+    // Limitar la frecuencia de actualización para mejorar el rendimiento
+    setTimeout(() => {
+        requestAnimationFrame(moveTrollButton);
+    }, 16); // Aproximadamente 60 FPS
 }
 
 // Iniciar el movimiento del botón troll
