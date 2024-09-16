@@ -1,52 +1,57 @@
-// Tema oscuro y claro
+// Cambio de idioma
+const languageToggle = document.getElementById('language-toggle');
+const aboutText = document.getElementById('about-text');
+
+const texts = {
+    en: "I’m a passionate and curious mechanical engineering student from Rosario, Argentina. My journey is fueled by a constant desire to learn and grow, whether it's solving complex problems or exploring new hobbies. I thrive on creativity and a bit of craziness that helps me think outside the box. When I'm not immersed in my studies, you'll likely find me enjoying a cup of mate 🧉 or working on exciting personal projects. Through this page, I aim to share my work, interests, and experiences, hoping to connect with like-minded individuals. Feel free to reach out—I’d love to hear from you!",
+    es: "Soy un estudiante de ingeniería mecánica apasionado y curioso de Rosario, Argentina. Mi viaje está impulsado por un deseo constante de aprender y crecer, ya sea resolviendo problemas complejos o explorando nuevos pasatiempos. Me nutro de la creatividad y un poco de locura que me ayuda a pensar fuera de la caja. Cuando no estoy inmerso en mis estudios, probablemente me encuentres disfrutando de un mate 🧉 o trabajando en proyectos personales emocionantes. A través de esta página, quiero compartir mi trabajo, intereses y experiencias, con la esperanza de conectarme con personas afines. ¡No dudes en contactarme, me encantaría saber de ti!"
+};
+
+let currentLanguage = 'en';
+
+languageToggle.addEventListener('click', () => {
+    currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+    aboutText.textContent = texts[currentLanguage];
+    languageToggle.textContent = currentLanguage === 'en' ? 'EN | ES' : 'ES | EN';
+});
+
+// Cambio de tema (modo claro/oscuro)
 const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
 themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
+    body.classList.toggle('dark-mode');
+    themeToggle.textContent = body.classList.contains('dark-mode') ? '🌞' : '🌑';
 });
 
-// Botón troll que se mueve como salvapantallas
+// Funcionalidad del botón troll
 const trollButton = document.getElementById('troll-button');
-let speedX = 3, speedY = 3;
-let positionX = Math.random() * window.innerWidth;
-let positionY = Math.random() * window.innerHeight;
-let mouseX = 0, mouseY = 0;
-
-// Detectar la posición del cursor una sola vez
-window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
+let trollInterval;
+let speedX = 2, speedY = 2;
+let posX = 0, posY = 0;
 
 function moveTrollButton() {
-    const buttonRect = trollButton.getBoundingClientRect();
-    
-    // Cambiar dirección si choca con los bordes
-    if (buttonRect.left + buttonRect.width >= window.innerWidth || buttonRect.left <= 0) speedX *= -1;
-    if (buttonRect.top + buttonRect.height >= window.innerHeight || buttonRect.top <= 0) speedY *= -1;
+    const trollRect = trollButton.getBoundingClientRect();
+    const maxX = window.innerWidth - trollRect.width;
+    const maxY = window.innerHeight - trollRect.height;
 
-    // Mover el botón
-    positionX += speedX;
-    positionY += speedY;
+    posX += speedX;
+    posY += speedY;
 
-    trollButton.style.left = `${positionX}px`;
-    trollButton.style.top = `${positionY}px`;
+    if (posX < 0 || posX > maxX) speedX *= -1;
+    if (posY < 0 || posY > maxY) speedY *= -1;
 
-    // Acelerar si el cursor se acerca
-    const distance = Math.hypot(mouseX - positionX, mouseY - positionY);
-
-    if (distance < 200) {
-        speedX = Math.sign(speedX) * 10;
-        speedY = Math.sign(speedY) * 10;
-    } else {
-        speedX = Math.sign(speedX) * 3;
-        speedY = Math.sign(speedY) * 3;
-    }
-
-    // Limitar la frecuencia de actualización para mejorar el rendimiento
-    setTimeout(() => {
-        requestAnimationFrame(moveTrollButton);
-    }, 16); // Aproximadamente 60 FPS
+    trollButton.style.left = `${posX}px`;
+    trollButton.style.top = `${posY}px`;
 }
 
-// Iniciar el movimiento del botón troll
-moveTrollButton();
+trollButton.addEventListener('mouseover', () => {
+    if (!trollInterval) {
+        trollInterval = setInterval(moveTrollButton, 10);
+    }
+});
+
+trollButton.addEventListener('click', () => {
+    clearInterval(trollInterval);
+    trollInterval = null;
+});
