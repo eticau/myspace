@@ -1,21 +1,28 @@
+// Tema oscuro y claro
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
+
+// Botón troll que se mueve como salvapantallas
 const trollButton = document.getElementById('troll-button');
 let speedX = 3, speedY = 3;
 let positionX = Math.random() * window.innerWidth;
 let positionY = Math.random() * window.innerHeight;
-let isNearCursor = false; // Bandera para evitar el cambio de color constante
+let mouseX = 0, mouseY = 0;
+
+// Detectar la posición del cursor una sola vez
+window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
 
 function moveTrollButton() {
     const buttonRect = trollButton.getBoundingClientRect();
     
-    // Cambiar dirección y color si choca con los bordes
-    if (buttonRect.left + buttonRect.width >= window.innerWidth || buttonRect.left <= 0) {
-        speedX *= -1;
-        changeButtonColor();
-    }
-    if (buttonRect.top + buttonRect.height >= window.innerHeight || buttonRect.top <= 0) {
-        speedY *= -1;
-        changeButtonColor();
-    }
+    // Cambiar dirección si choca con los bordes
+    if (buttonRect.left + buttonRect.width >= window.innerWidth || buttonRect.left <= 0) speedX *= -1;
+    if (buttonRect.top + buttonRect.height >= window.innerHeight || buttonRect.top <= 0) speedY *= -1;
 
     // Mover el botón
     positionX += speedX;
@@ -24,36 +31,22 @@ function moveTrollButton() {
     trollButton.style.left = `${positionX}px`;
     trollButton.style.top = `${positionY}px`;
 
-    requestAnimationFrame(moveTrollButton);
-}
-
-// Función para cambiar el color del botón solo cuando rebota en los bordes
-function changeButtonColor() {
-    const colors = ['#ff4d4d', '#ff6f61', '#ffcc00', '#66ff66', '#0099ff', '#9966ff', '#ff33cc'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    trollButton.style.backgroundColor = randomColor;
-}
-
-// Función para cambiar la velocidad si el cursor se acerca
-function checkCursorProximity(e) {
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-
+    // Acelerar si el cursor se acerca
     const distance = Math.hypot(mouseX - positionX, mouseY - positionY);
 
-    if (distance < 200 && !isNearCursor) {
+    if (distance < 200) {
         speedX = Math.sign(speedX) * 10;
         speedY = Math.sign(speedY) * 10;
-        isNearCursor = true; // Cambia el estado solo cuando esté cerca
-    } else if (distance >= 200 && isNearCursor) {
+    } else {
         speedX = Math.sign(speedX) * 3;
         speedY = Math.sign(speedY) * 3;
-        isNearCursor = false; // Cambia el estado cuando ya no esté cerca
     }
-}
 
-// Escuchar el evento del mouse para detectar la proximidad
-window.addEventListener('mousemove', checkCursorProximity);
+    // Limitar la frecuencia de actualización para mejorar el rendimiento
+    setTimeout(() => {
+        requestAnimationFrame(moveTrollButton);
+    }, 16); // Aproximadamente 60 FPS
+}
 
 // Iniciar el movimiento del botón troll
 moveTrollButton();
