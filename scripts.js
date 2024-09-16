@@ -1,4 +1,4 @@
-// Cambio de idioma
+// Cambio de idioma 
 const languageToggle = document.getElementById('language-toggle');
 const aboutText = document.getElementById('about-text');
 
