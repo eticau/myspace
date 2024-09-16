@@ -8,247 +8,37 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Modo oscuro */
-body.dark-mode {
-    background: linear-gradient(135deg, #1a1a1a, #333);
-    color: #fff;
-}
-
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
-
-/* Fondo del header en modo oscuro */
-body.dark-mode header {
-    background-color: #333;
-}
-
-/* Estilo de enlaces en modo claro */
-header a {
-    margin-right: 20px;
+/* Estilo del botón de idiomas */
+.language-toggle {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 20px;
     color: #333;
-    text-decoration: none;
     transition: color 0.3s ease;
 }
 
-/* Enlaces al pasar el cursor */
-header a:hover {
-    color: #00bfa6;
-}
-
-/* Estilo de enlaces en modo oscuro */
-body.dark-mode header a {
+/* Modo oscuro para el botón de idiomas */
+body.dark-mode .language-toggle {
     color: #fff;
 }
 
-/* Logo */
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Botón de tema */
-.theme-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* Imagen de perfil */
-.profile-pic {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 5px solid #00bfa6;
-    transition: transform 0.3s ease;
-}
-
-.profile-pic:hover {
-    transform: scale(1.1);
-}
-
-/* Texto animado */
-.animated-text:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-}
-
-/* Contenedor del perfil */
-.profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-}
-
-/* Texto del perfil */
-.profile-text {
-    margin-left: 20px;
-}
-
-h1 .highlight {
-    color: #00bfa6;
-}
-
-/* Lista sin viñetas */
-ul.details {
-    list-style-type: none;
-    padding: 0;
-}
-
-/* Botón principal */
-.main-btn {
-    position: relative;
-    padding: 10px 20px;
-    background-color: #00bfa6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.main-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%) scale(0);
-    border-radius: 50%;
-    transition: transform 0.5s ease;
-    z-index: 0;
-}
-
-.main-btn:hover::before {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.main-btn:hover {
-    background-color: #008f76;
-    color: #fff;
-}
-
-/* Iconos de redes sociales */
-.socials {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.socials a {
-    margin: 0 10px;
-}
-
-.socials img {
-    width: 40px;
-    height: 40px;
-    transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-.socials img:hover {
-    transform: scale(1.2);
-    filter: invert(1);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 14px;
-    position: relative;
-}
-
-/* Animación para el emoji que saluda */
-.emoji-salute {
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.emoji-salute:hover {
-    transform: rotate(15deg);
-}
-
-/* Botón Troll */
-.troll-btn {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    padding: 10px 20px;
-    background-color: #ff00ff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-/* Animación del botón Troll */
-.troll-btn {
-    background: linear-gradient(45deg, #ff00ff, #00ffff);
-    animation: color-change 2s infinite;
-}
-
-@keyframes color-change {
-    0% { background-color: #ff00ff; }
-    50% { background-color: #00ffff; }
-    100% { background-color: #ff00ff; }
-}
-
-/* Texto del footer */
-.footer-text {
-    font-size: 12px;
-    opacity: 0.6;
-}
-
-/* Estilo para la sección "About Me" */
-.about-section {
-    text-align: center;
-    padding: 20px;
-}
-
-.about-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.about-description {
+/* Sección About Me */
+#about-text {
     font-size: 18px;
     line-height: 1.6;
-}
-
-/* Enlaces útiles */
-.section {
-    padding: 20px;
     text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.section-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-/* Estilos responsivos */
-@media (max-width: 768px) {
-    .profile-container {
-        flex-direction: column;
-    }
-
-    .profile-text {
-        margin-left: 0;
-        margin-top: 20px;
-    }
+/* Estilo para el texto en modo oscuro */
+body.dark-mode #about-text {
+    background-color: #2c2c2c;
+    color: #fff;
 }
