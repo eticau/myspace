@@ -1,10 +1,10 @@
-// Cambio de idioma 
+// Cambio de idioma
 const languageToggle = document.getElementById('language-toggle');
 const aboutText = document.getElementById('about-text');
 
 const texts = {
     en: "I’m a passionate and curious mechanical engineering student from Rosario, Argentina. My journey is fueled by a constant desire to learn and grow, whether it's solving complex problems or exploring new hobbies. I thrive on creativity and a bit of craziness that helps me think outside the box. When I'm not immersed in my studies, you'll likely find me enjoying a cup of mate 🧉 or working on exciting personal projects. Through this page, I aim to share my work, interests, and experiences, hoping to connect with like-minded individuals. Feel free to reach out—I’d love to hear from you!",
-    es: "Soy un estudiante de ingeniería mecánica apasionado y curioso de Rosario, Argentina. Mi viaje está impulsado por un deseo constante de aprender y crecer, ya sea resolviendo problemas complejos o explorando nuevos pasatiempos. Me nutro de la creatividad y un poco de locura que me ayuda a pensar fuera de la caja. Cuando no estoy inmerso en mis estudios, probablemente me encuentres disfrutando de un mate 🧉 o trabajando en proyectos personales emocionantes. A través de esta página, quiero compartir mi trabajo, intereses y experiencias, con la esperanza de conectarme con personas afines. ¡No dudes en contactarme, me encantaría saber de ti!"
+    es: "Soy un estudiante de ingeniería mecánica apasionado y curioso de Rosario, Argentina. Mi viaje está impulsado por un deseo constante de aprender y crecer, ya sea resolviendo problemas complejos o explorando nuevos pasatiempos. Me esfuerzo por la creatividad y un poco de locura que me ayuda a pensar fuera de la caja. Cuando no estoy inmerso en mis estudios, probablemente me encuentres disfrutando de una taza de mate 🧉 o trabajando en emocionantes proyectos personales. A través de esta página, espero compartir mi trabajo, intereses y experiencias, con la esperanza de conectar con personas afines. ¡No dudes en ponerte en contacto, me encantaría saber de ti!"
 };
 
 let currentLanguage = 'en';
@@ -15,43 +15,33 @@ languageToggle.addEventListener('click', () => {
     languageToggle.textContent = currentLanguage === 'en' ? 'EN | ES' : 'ES | EN';
 });
 
-// Cambio de tema (modo claro/oscuro)
+// Cambio de tema
 const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
 
 themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    themeToggle.textContent = body.classList.contains('dark-mode') ? '🌞' : '🌑';
+    document.body.classList.toggle('dark-mode');
+    themeToggle.textContent = document.body.classList.contains('dark-mode') ? '🌕' : '🌑';
 });
 
-// Funcionalidad del botón troll
+// Movimiento del botón troll
 const trollButton = document.getElementById('troll-button');
-let trollInterval;
-let speedX = 2, speedY = 2;
-let posX = 0, posY = 0;
+const buttonSize = 50; // Tamaño del botón
 
-function moveTrollButton() {
-    const trollRect = trollButton.getBoundingClientRect();
-    const maxX = window.innerWidth - trollRect.width;
-    const maxY = window.innerHeight - trollRect.height;
+function moveButton() {
+    const maxX = window.innerWidth - buttonSize;
+    const maxY = window.innerHeight - buttonSize;
 
-    posX += speedX;
-    posY += speedY;
+    let posX = Math.random() * maxX;
+    let posY = Math.random() * maxY;
 
-    if (posX < 0 || posX > maxX) speedX *= -1;
-    if (posY < 0 || posY > maxY) speedY *= -1;
-
-    trollButton.style.left = `${posX}px`;
-    trollButton.style.top = `${posY}px`;
+    trollButton.style.left = posX + 'px';
+    trollButton.style.top = posY + 'px';
 }
 
-trollButton.addEventListener('mouseover', () => {
-    if (!trollInterval) {
-        trollInterval = setInterval(moveTrollButton, 10);
-    }
-});
+function animateButton() {
+    setInterval(() => {
+        moveButton();
+    }, 1000); // Mueve el botón cada segundo
+}
 
-trollButton.addEventListener('click', () => {
-    clearInterval(trollInterval);
-    trollInterval = null;
-});
+animateButton();
