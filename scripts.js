@@ -1,28 +1,20 @@
-// Tema oscuro y claro
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-});
-
-// Botón troll que se mueve como salvapantallas
 const trollButton = document.getElementById('troll-button');
 let speedX = 3, speedY = 3;
 let positionX = Math.random() * window.innerWidth;
 let positionY = Math.random() * window.innerHeight;
-let mouseX = 0, mouseY = 0;
-
-// Detectar la posición del cursor una sola vez
-window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
 
 function moveTrollButton() {
     const buttonRect = trollButton.getBoundingClientRect();
     
-    // Cambiar dirección si choca con los bordes
-    if (buttonRect.left + buttonRect.width >= window.innerWidth || buttonRect.left <= 0) speedX *= -1;
-    if (buttonRect.top + buttonRect.height >= window.innerHeight || buttonRect.top <= 0) speedY *= -1;
+    // Cambiar dirección y color si choca con los bordes
+    if (buttonRect.left + buttonRect.width >= window.innerWidth || buttonRect.left <= 0) {
+        speedX *= -1;
+        changeButtonColor();
+    }
+    if (buttonRect.top + buttonRect.height >= window.innerHeight || buttonRect.top <= 0) {
+        speedY *= -1;
+        changeButtonColor();
+    }
 
     // Mover el botón
     positionX += speedX;
@@ -32,20 +24,29 @@ function moveTrollButton() {
     trollButton.style.top = `${positionY}px`;
 
     // Acelerar si el cursor se acerca
-    const distance = Math.hypot(mouseX - positionX, mouseY - positionY);
+    window.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
 
-    if (distance < 200) {
-        speedX = Math.sign(speedX) * 10;
-        speedY = Math.sign(speedY) * 10;
-    } else {
-        speedX = Math.sign(speedX) * 3;
-        speedY = Math.sign(speedY) * 3;
-    }
+        const distance = Math.hypot(mouseX - positionX, mouseY - positionY);
 
-    // Limitar la frecuencia de actualización para mejorar el rendimiento
-    setTimeout(() => {
-        requestAnimationFrame(moveTrollButton);
-    }, 16); // Aproximadamente 60 FPS
+        if (distance < 200) {
+            speedX = Math.sign(speedX) * 10;
+            speedY = Math.sign(speedY) * 10;
+        } else {
+            speedX = Math.sign(speedX) * 3;
+            speedY = Math.sign(speedY) * 3;
+        }
+    });
+
+    requestAnimationFrame(moveTrollButton);
+}
+
+// Función para cambiar el color del botón
+function changeButtonColor() {
+    const colors = ['#ff4d4d', '#ff6f61', '#ffcc00', '#66ff66', '#0099ff', '#9966ff', '#ff33cc'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    trollButton.style.backgroundColor = randomColor;
 }
 
 // Iniciar el movimiento del botón troll
