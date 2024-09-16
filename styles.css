@@ -173,64 +173,82 @@ footer {
 }
 
 /* Animación para el emoji que saluda */
-.waving-emoji {
+.emoji-salute {
     display: inline-block;
-    animation: wave-animation 2s infinite 1s;
+    transition: transform 0.3s ease;
 }
 
-/* Animación del saludo */
-@keyframes wave-animation {
-    0% { transform: rotate(0deg); }
-    15% { transform: rotate(-10deg); }
-    30% { transform: rotate(0deg); }
-    45% { transform: rotate(8deg); }
-    60% { transform: rotate(0deg); }
-    75% { transform: rotate(-8deg); }
-    100% { transform: rotate(0deg); }
+.emoji-salute:hover {
+    transform: rotate(15deg);
 }
 
-/* Sección de contenido */
-.section {
-    padding: 50px 20px;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Botón troll */
+/* Botón Troll */
 .troll-btn {
-    position: absolute;
-    top: 50px;
-    left: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
     padding: 10px 20px;
-    background-color: #ff4d4d;
+    background-color: #ff00ff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.05s ease;
-    z-index: 9999;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Animación del botón troll */
-@keyframes rainbow {
-    0% { background-color: #ff4d4d; }
-    14% { background-color: #ff6f61; }
-    28% { background-color: #ffcc00; }
-    42% { background-color: #66ff66; }
-    56% { background-color: #0099ff; }
-    70% { background-color: #9966ff; }
-    84% { background-color: #ff33cc; }
-    100% { background-color: #ff4d4d; }
-}
-
+/* Animación del botón Troll */
 .troll-btn {
-    animation: rainbow 3s infinite;
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    animation: color-change 2s infinite;
 }
 
-/* Footer text */
+@keyframes color-change {
+    0% { background-color: #ff00ff; }
+    50% { background-color: #00ffff; }
+    100% { background-color: #ff00ff; }
+}
+
+/* Texto del footer */
 .footer-text {
-    color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+/* Estilo para la sección "About Me" */
+.about-section {
     text-align: center;
-    margin-top: 50px;
-    font-size: 14px;
-    position: relative;
+    padding: 20px;
+}
+
+.about-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.about-description {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Enlaces útiles */
+.section {
+    padding: 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile-text {
+        margin-left: 0;
+        margin-top: 20px;
+    }
 }
