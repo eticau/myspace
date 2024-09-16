@@ -18,6 +18,11 @@
         <button id="theme-toggle" class="theme-toggle">
             🌑
         </button> <!-- Botón para cambiar el tema -->
+
+        <!-- Botón para cambiar de idioma -->
+        <button id="language-toggle" class="language-toggle">
+            EN | ES
+        </button>
     </header>
 
     <main>
@@ -25,78 +30,57 @@
             <div class="profile">
                 <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
                 <div class="profile-text">
-                    <h1>Hi, I'm Etienne 🤚🏻</h1>
+                    <h1>Hi, I'm <span class="highlight">Eti</span> <span class="waving-emoji">🤚🏻</span></h1>
                     <p>I'm a little crazy guy.</p>
-                    <p>🧉 fueled by mate</p>
-                    <p>🌍 from Rosario, Argentina</p>
-                    <p>🎓 studying Mechanical Engineering at UNR</p>
-                    <p>📧 cautures@gmail.com</p>
-                    <button class="main-btn">Contact Me</button>
+                    <ul class="details">
+                        <li>🧉 fueled by mate</li>
+                        <li>🌍 from Rosario, Argentina</li>
+                        <li>🎓 studying Mechanical Engineering at UNR</li>
+                        <li>📧 cautures@gmail.com</li>
+                    </ul>
+                    <button class="main-btn">LINKS FACULTAD Y DEMÁS</button>
+
+                    <!-- Íconos de redes sociales debajo del botón -->
+                    <div class="socials">
+                        <a href="https://t.me/eticau" target="_blank">
+                            <img src="images/telegram-icon.png" alt="Telegram">
+                        </a>
+                        <a href="https://github.com/eticau" target="_blank">
+                            <img src="images/github-icon.png" alt="GitHub">
+                        </a>
+                        <a href="https://www.linkedin.com/in/etienne-cautures" target="_blank">
+                            <img src="images/linkedin-icon.png" alt="LinkedIn">
+                        </a>
+                        <a href="https://www.instagram.com/etiennecautures" target="_blank">
+                            <img src="images/instagram-icon.png" alt="Instagram">
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="about-section">
-            <div class="about-content">
-                <h2 class="about-title">About Me</h2>
-                <p class="about-description">
-                    Hey! I'm Etienne, a passionate <strong>Mechanical Engineering student</strong> from <strong>Rosario, Argentina</strong>. I'm deeply curious about how things work, and I love learning and tackling challenges with a hands-on approach. I’m currently honing my skills in various engineering fields, aiming to combine my technical knowledge with innovative problem-solving strategies.
-                </p>
-                <p class="about-description">
-                    On the personal side, you could say I’m fueled by <strong>mate 🧉</strong>, and I believe that a little bit of craziness keeps life fun! When I'm not immersed in studying or working on a project, you'll probably find me exploring new ideas or sipping mate while brainstorming the next big thing. Let’s connect and create something awesome together!
-                </p>
-            </div>
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <!-- Texto dinámico para cambiar de idioma -->
+            <p id="about-text">
+                I’m a passionate and curious mechanical engineering student from Rosario, Argentina. My journey is fueled by a constant desire to learn and grow, whether it's solving complex problems or exploring new hobbies. I thrive on creativity and a bit of craziness that helps me think outside the box. When I'm not immersed in my studies, you'll likely find me enjoying a cup of mate 🧉 or working on exciting personal projects. Through this page, I aim to share my work, interests, and experiences, hoping to connect with like-minded individuals. Feel free to reach out—I’d love to hear from you!
+            </p>
         </section>
 
         <section id="links" class="section">
-            <h2 class="section-title">Useful Links</h2>
-            <ul class="details">
-                <li><a href="https://www.linkedin.com/in/etiennecautures" target="_blank">LinkedIn</a></li>
-                <li><a href="https://github.com/etiennecautures" target="_blank">GitHub</a></li>
-                <li><a href="https://www.instagram.com/etiennecautures" target="_blank">Instagram</a></li>
-                <!-- Agregar más enlaces si es necesario -->
-            </ul>
+            <h2>Useful Links</h2>
+            <p>Enlaces útiles...</p>
         </section>
+
+        <!-- Botón troll -->
+        <button id="troll-button" class="troll-btn">CLICK HERE</button>
+
+        <footer>
+            <p class="footer-text">Created with ❤️ by Etienne Cautures © 2024</p>
+        </footer>
     </main>
 
-    <footer>
-        <p class="footer-text">Created with ❤️ by Etienne Cautures © 2024</p>
-    </footer>
-
-    <button class="troll-btn">Troll Button</button>
-
-    <!-- Script para el botón de cambio de tema -->
-    <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            themeToggle.textContent = document.body.classList.contains('dark-mode') ? '🌕' : '🌑';
-        });
-    </script>
-
-    <!-- Script para el botón troll -->
-    <script>
-        const trollBtn = document.querySelector('.troll-btn');
-        function moveButton(event) {
-            const { clientX: mouseX, clientY: mouseY } = event;
-            const { offsetWidth: btnWidth, offsetHeight: btnHeight } = trollBtn;
-            const { innerWidth: winWidth, innerHeight: winHeight } = window;
-
-            let x = mouseX - btnWidth / 2;
-            let y = mouseY - btnHeight / 2;
-
-            if (x < 0) x = 0;
-            if (x > winWidth - btnWidth) x = winWidth - btnWidth;
-            if (y < 0) y = 0;
-            if (y > winHeight - btnHeight) y = winHeight - btnHeight;
-
-            trollBtn.style.transform = `translate(${x}px, ${y}px)`;
-        }
-
-        document.addEventListener('mousemove', moveButton);
-    </script>
-
-    <!-- Script para el chatbot -->
+    <script src="scripts.js"></script>
     <script src="//code.tidio.co/uitkphdloncipchbl8bjq8vkhqx5yfng.js" async></script>
 </body>
 </html>
