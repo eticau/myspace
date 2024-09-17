@@ -4,7 +4,7 @@ themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 });
 
-// Botón de cambio de idioma
+// Cambio de idioma
 const languageToggle = document.getElementById('language-toggle');
 const elementsToTranslate = document.querySelectorAll('[data-en], [data-es]');
 
