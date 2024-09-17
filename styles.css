@@ -25,12 +25,11 @@ header {
     transition: background-color 0.3s ease;
 }
 
-/* Fondo del header en modo oscuro */
 body.dark-mode header {
     background-color: #333;
 }
 
-/* Estilo de enlaces en modo claro */
+/* Enlaces */
 header a {
     margin-right: 20px;
     color: #333;
@@ -38,14 +37,12 @@ header a {
     transition: color 0.3s ease;
 }
 
-/* Enlaces al pasar el cursor */
-header a:hover {
-    color: #00bfa6;
-}
-
-/* Estilo de enlaces en modo oscuro */
 body.dark-mode header a {
     color: #fff;
+}
+
+header a:hover {
+    color: #00bfa6;
 }
 
 /* Logo */
@@ -55,11 +52,25 @@ body.dark-mode header a {
 }
 
 /* Botón de tema */
-.theme-toggle {
+.theme-toggle, .language-toggle {
     background: none;
     border: none;
     font-size: 24px;
     cursor: pointer;
+    margin-left: 10px;
+}
+
+.language-toggle {
+    font-size: 22px;
+}
+
+/* Contenedor del perfil */
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
 }
 
 /* Imagen de perfil */
@@ -75,15 +86,7 @@ body.dark-mode header a {
     transform: scale(1.1);
 }
 
-/* Contenedor del perfil */
-.profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-}
-
+/* Texto del perfil */
 .profile-text {
     margin-left: 20px;
 }
@@ -97,78 +100,7 @@ ul.details {
     padding: 0;
 }
 
-/* Botón principal */
-.main-btn {
-    position: relative;
-    padding: 10px 20px;
-    background-color: #00bfa6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.main-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%) scale(0);
-    border-radius: 50%;
-    transition: transform 0.5s ease;
-    z-index: 0;
-}
-
-.main-btn:hover::before {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.main-btn:hover {
-    background-color: #008f76;
-    color: #fff;
-}
-
-/* Iconos de redes sociales */
-.socials {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.socials a {
-    margin: 0 10px;
-}
-
-.socials img {
-    width: 40px;
-    height: 40px;
-    transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-.socials img:hover {
-    transform: scale(1.2);
-    filter: invert(1);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 14px;
-}
-
-/* Texto del footer */
-.footer-text {
-    color: rgba(0, 0, 0, 0.5);
-}
-
-/* Sección "About Me" */
+/* Sección About Me */
 .about-me {
     background: #f8f9fa;
     padding: 40px 20px;
@@ -195,23 +127,6 @@ footer {
 .about-me .highlight {
     color: #00bfa6;
     font-weight: bold;
-}
-
-.about-me .mate-icon {
-    font-size: 22px;
-    vertical-align: middle;
-}
-
-.about-me .reach-out {
-    text-align: center;
-    font-size: 20px;
-    margin-top: 20px;
-    font-weight: bold;
-    color: #333;
-}
-
-.about-me .creativity {
-    font-style: italic;
 }
 
 /* Animación del emoji de saludo */
