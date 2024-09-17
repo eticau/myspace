@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etienne Cautures</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"> <!-- Favicon -->
 </head>
 <body class="light-mode">
     <header>
@@ -15,8 +15,10 @@
             <a href="#about" data-en="About Me" data-es="Sobre mí">About Me</a>
             <a href="#links" data-en="Useful Links" data-es="Enlaces útiles">Useful Links</a>
         </nav>
-        <button id="theme-toggle" class="theme-toggle">🌑</button>
-        <button id="language-toggle" class="language-toggle" data-lang="en">🇺🇸</button>
+        <div class="controls">
+            <button id="theme-toggle" class="theme-toggle">🌑</button>
+            <button id="language-toggle" class="language-toggle" data-lang="en">🇺🇸</button>
+        </div>
     </header>
 
     <main>
@@ -24,7 +26,7 @@
             <div class="profile">
                 <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
                 <div class="profile-text">
-                    <h1 data-en="Hi, I'm" data-es="Hola, soy"><span class="highlight">Eti</span> <span class="waving-emoji">🤚🏻</span></h1>
+                    <h1><span class="highlight" data-en="Hi, I'm" data-es="Hola, soy">Hi, I'm</span> <span class="highlight">Eti</span> <span class="waving-emoji">🤚🏻</span></h1>
                     <p data-en="I'm a little crazy guy." data-es="Soy un chico un poco loco."></p>
                     <ul class="details">
                         <li data-en="🧉 fueled by mate" data-es="🧉 a base de mate"></li>
@@ -71,6 +73,5 @@
     </main>
 
     <script src="scripts.js"></script>
-    <script src="//code.tidio.co/uitkphdloncipchbl8bjq8vkhqx5yfng.js" async></script>
 </body>
 </html>
