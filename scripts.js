@@ -4,14 +4,30 @@ themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 });
 
-// Botón troll que se mueve como salvapantallas
+// Botón de cambio de idioma
+const languageToggle = document.getElementById('language-toggle');
+const elementsToTranslate = document.querySelectorAll('[data-en], [data-es]');
+
+languageToggle.addEventListener('click', () => {
+    const currentLang = languageToggle.getAttribute('data-lang');
+    const newLang = currentLang === 'en' ? 'es' : 'en';
+    
+    languageToggle.setAttribute('data-lang', newLang);
+    languageToggle.textContent = newLang === 'en' ? '🇺🇸' : '🇪🇸';
+
+    elementsToTranslate.forEach(el => {
+        el.textContent = el.getAttribute(`data-${newLang}`);
+    });
+});
+
+// Botón troll que se mueve
 const trollButton = document.getElementById('troll-button');
 let speedX = 3, speedY = 3;
 let positionX = Math.random() * window.innerWidth;
 let positionY = Math.random() * window.innerHeight;
 let mouseX = 0, mouseY = 0;
 
-// Detectar la posición del cursor una sola vez
+// Detectar la posición del cursor
 window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
@@ -20,18 +36,15 @@ window.addEventListener('mousemove', (e) => {
 function moveTrollButton() {
     const buttonRect = trollButton.getBoundingClientRect();
     
-    // Cambiar dirección si choca con los bordes
     if (buttonRect.left + buttonRect.width >= window.innerWidth || buttonRect.left <= 0) speedX *= -1;
     if (buttonRect.top + buttonRect.height >= window.innerHeight || buttonRect.top <= 0) speedY *= -1;
 
-    // Mover el botón
     positionX += speedX;
     positionY += speedY;
 
     trollButton.style.left = `${positionX}px`;
     trollButton.style.top = `${positionY}px`;
 
-    // Acelerar si el cursor se acerca
     const distance = Math.hypot(mouseX - positionX, mouseY - positionY);
 
     if (distance < 200) {
@@ -44,8 +57,7 @@ function moveTrollButton() {
 
     setTimeout(() => {
         requestAnimationFrame(moveTrollButton);
-    }, 16); // Aproximadamente 60 FPS
+    }, 16);
 }
 
-// Iniciar el movimiento del botón troll
 moveTrollButton();
