@@ -29,19 +29,18 @@ body.dark-mode header {
     background-color: #333;
 }
 
-/* Enlaces */
-header a {
+header nav a {
     margin-right: 20px;
     color: #333;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-body.dark-mode header a {
+body.dark-mode header nav a {
     color: #fff;
 }
 
-header a:hover {
+header nav a:hover {
     color: #00bfa6;
 }
 
@@ -51,26 +50,17 @@ header a:hover {
     font-weight: bold;
 }
 
-/* Botón de tema */
+/* Botones de tema e idioma */
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
 .theme-toggle, .language-toggle {
     background: none;
     border: none;
     font-size: 24px;
     cursor: pointer;
-    margin-left: 10px;
-}
-
-.language-toggle {
-    font-size: 22px;
-}
-
-/* Contenedor del perfil */
-.profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
 }
 
 /* Imagen de perfil */
@@ -86,7 +76,15 @@ header a:hover {
     transform: scale(1.1);
 }
 
-/* Texto del perfil */
+/* Contenedor del perfil */
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
 .profile-text {
     margin-left: 20px;
 }
@@ -98,6 +96,42 @@ h1 .highlight {
 ul.details {
     list-style-type: none;
     padding: 0;
+}
+
+/* Botón principal */
+.main-btn {
+    padding: 10px 20px;
+    background-color: #00bfa6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.main-btn:hover {
+    background-color: #008f76;
+}
+
+/* Iconos de redes sociales */
+.socials {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.socials a {
+    margin: 0 10px;
+}
+
+.socials img {
+    width: 40px;
+    height: 40px;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.socials img:hover {
+    transform: scale(1.2);
 }
 
 /* Sección About Me */
@@ -112,7 +146,6 @@ ul.details {
 .about-me h2 {
     font-size: 28px;
     color: #00bfa6;
-    margin-bottom: 20px;
     text-align: center;
     letter-spacing: 1px;
 }
@@ -126,23 +159,6 @@ ul.details {
 
 .about-me .highlight {
     color: #00bfa6;
-    font-weight: bold;
-}
-
-/* Animación del emoji de saludo */
-.waving-emoji {
-    display: inline-block;
-    animation: wave-animation 2s infinite 1s;
-}
-
-@keyframes wave-animation {
-    0% { transform: rotate(0deg); }
-    15% { transform: rotate(-10deg); }
-    30% { transform: rotate(0deg); }
-    45% { transform: rotate(8deg); }
-    60% { transform: rotate(0deg); }
-    75% { transform: rotate(-8deg); }
-    100% { transform: rotate(0deg); }
 }
 
 /* Botón troll */
@@ -170,4 +186,11 @@ ul.details {
     70% { background-color: #9966ff; }
     84% { background-color: #ff33cc; }
     100% { background-color: #ff4d4d; }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
 }
