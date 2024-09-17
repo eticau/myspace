@@ -1,4 +1,4 @@
-// Tema oscuro y claro
+// Modo oscuro y claro
 const themeToggle = document.getElementById('theme-toggle');
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
@@ -7,6 +7,13 @@ themeToggle.addEventListener('click', () => {
 // Cambio de idioma
 const languageToggle = document.getElementById('language-toggle');
 const elementsToTranslate = document.querySelectorAll('[data-en], [data-es]');
+
+// Cargar idioma por defecto
+window.addEventListener('DOMContentLoaded', () => {
+    elementsToTranslate.forEach(el => {
+        el.textContent = el.getAttribute('data-en');
+    });
+});
 
 languageToggle.addEventListener('click', () => {
     const currentLang = languageToggle.getAttribute('data-lang');
