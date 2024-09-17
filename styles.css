@@ -14,6 +14,12 @@ body.dark-mode {
     color: #fff;
 }
 
+/* Ajuste de sección "About Me" en modo oscuro */
+body.dark-mode .about-me {
+    background-color: #444;
+    color: #fff;
+}
+
 /* Header */
 header {
     display: flex;
@@ -134,6 +140,10 @@ ul.details {
     transform: scale(1.2);
 }
 
+body.dark-mode .socials img {
+    filter: invert(1);
+}
+
 /* Sección About Me */
 .about-me {
     background: #f8f9fa;
@@ -159,6 +169,12 @@ ul.details {
 
 .about-me .highlight {
     color: #00bfa6;
+}
+
+/* Animación al pasar el cursor */
+.main-btn:hover, .socials img:hover, .profile-pic:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 /* Botón troll */
