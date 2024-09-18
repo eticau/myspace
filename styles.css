@@ -56,16 +56,15 @@ header nav a:hover {
     font-weight: bold;
 }
 
-/* Botones de tema e idioma */
+/* Botones de tema e idioma con iconos */
 .controls {
     display: flex;
     gap: 10px;
 }
 
-.theme-toggle, .language-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
+.theme-toggle img, .language-toggle img {
+    width: 30px;
+    height: 30px;
     cursor: pointer;
 }
 
@@ -122,12 +121,13 @@ ul.details {
 /* Iconos de redes sociales */
 .socials {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin-top: 20px;
 }
 
 .socials a {
-    margin: 0 10px;
+    margin: 5px 10px;
 }
 
 .socials img {
