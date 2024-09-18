@@ -1,11 +1,15 @@
-// Modo oscuro y claro
+// Modo oscuro y claro con iconos de sol/luna
 const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
+    themeIcon.src = document.body.classList.contains('dark-mode') ? 'images/sun_icon.png' : 'images/moon_icon.png';
 });
 
-// Cambio de idioma
+// Cambio de idioma con banderas
 const languageToggle = document.getElementById('language-toggle');
+const languageIcon = document.getElementById('language-icon');
 const elementsToTranslate = document.querySelectorAll('[data-en], [data-es]');
 
 // Cargar idioma por defecto
@@ -20,7 +24,7 @@ languageToggle.addEventListener('click', () => {
     const newLang = currentLang === 'en' ? 'es' : 'en';
     
     languageToggle.setAttribute('data-lang', newLang);
-    languageToggle.textContent = newLang === 'en' ? '🇺🇸' : '🇪🇸';
+    languageIcon.src = newLang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
 
     elementsToTranslate.forEach(el => {
         el.textContent = el.getAttribute(`data-${newLang}`);
