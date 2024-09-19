@@ -1,37 +1,86 @@
-// Escena básica con Three.js
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webgl') });
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();  // Evita el envío por defecto del formulario
 
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+    // Parámetros para enviar el formulario con EmailJS
+    const serviceID = 'default_service';
+    const templateID = 'template_xxx';  // Reemplaza con tu ID de plantilla de EmailJS
 
-// Crear un cubo
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+            showThankYouModal();
+        }, (err) => {
+            document.getElementById('form-status').textContent = 'Failed to send message. Please try again.';
+            document.getElementById('form-status').style.color = 'red';
+        });
 
-camera.position.z = 5;
-
-// Animar el cubo
-function animate() {
-  requestAnimationFrame(animate);
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
-  renderer.render(scene, camera);
-}
-animate();
-
-// Interactividad con GSAP
-const exploreButton = document.getElementById('explore-button');
-exploreButton.addEventListener('click', () => {
-  gsap.to(cube.scale, { duration: 1, x: 2, y: 2, z: 2, ease: "elastic.out(1, 0.5)" });
+    // Opcional: Limpiar el formulario después de enviarlo
+    this.reset();
 });
 
-// Manejo del resize de la ventana
-window.addEventListener('resize', () => {
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
+// Función para mostrar el modal de agradecimiento
+function showThankYouModal() {
+    const modal = document.getElementById('thank-you-modal');
+    const overlay = document.getElementById('thank-you-overlay');
+    
+    modal.style.display = 'block';
+    overlay.style.display = 'block';
+
+    // Cerrar el modal
+    document.getElementById('close-thank-you').addEventListener('click', function() {
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+    });
+}
+
+// AOS Animations
+AOS.init({
+    duration: 1000, // Duración de las animaciones
+    once: true // Animación solo se ejecuta una vez
+});
+
+// Modo oscuro y claro con iconos de sol/luna
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    themeIcon.src = document.body.classList.contains('dark-mode') ? 'images/sun_icon.png' : 'images/moon_icon.png';
+});
+
+// Cambio de idioma con banderas
+const languageToggle = document.getElementById('language-toggle');
+const languageIcon = document.getElementById('language-icon');
+const elementsToTranslate = document.querySelectorAll('[data-en], [data-es]');
+
+// Cargar idioma por defecto
+window.addEventListener('DOMContentLoaded', () => {
+    elementsToTranslate.forEach(el => {
+        el.textContent = el.getAttribute('data-en');
+    });
+});
+
+languageToggle.addEventListener('click', () => {
+    const currentLang = languageToggle.getAttribute('data-lang');
+    const newLang = currentLang === 'en' ? 'es' : 'en';
+    
+    languageToggle.setAttribute('data-lang', newLang);
+    languageIcon.src = newLang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
+
+    elementsToTranslate.forEach(el => {
+        el.textContent = el.getAttribute(`data-${newLang}`);
+    });
+});
+
+// Efectos de desplazamiento personalizados
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', function() {
+    sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+            section.classList.add('visible');
+        } else {
+            section.classList.remove('visible');
+        }
+    });
 });
