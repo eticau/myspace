@@ -3,7 +3,7 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
     // Parámetros para enviar el formulario con EmailJS
     const serviceID = 'default_service';
-    const templateID = 'template_xxx';  // Reemplaza con tu ID de plantilla de EmailJS
+    const templateID = 'template_58y3vvk';  // Reemplaza con tu ID de plantilla de EmailJS
 
     emailjs.sendForm(serviceID, templateID, this)
         .then(() => {
