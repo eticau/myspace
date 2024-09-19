@@ -1,24 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Portafolio Creativo 3D</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etienne Cautures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <!-- AOS Animations -->
+    <!-- EmailJS script -->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "3moVSUz7NDcZAn6QB", // Tu Public Key de EmailJS
+            });
+        })();
+    </script>
 </head>
-<body>
-  <div class="canvas-container">
-    <canvas id="webgl"></canvas>
-  </div>
-  
-  <div class="ui-container">
-    <h1>Mi Portafolio Creativo</h1>
-    <p>Hola, soy [Tu Nombre], un diseñador y desarrollador creativo.</p>
-    <button id="explore-button">Explorar más</button>
-  </div>
+<body class="light-mode">
+    <header>
+        <div class="logo" data-aos="fade-down" data-aos-duration="1000">EC</div>
+        <nav>
+            <a href="#home" data-en="Home" data-es="Inicio">Home</a>
+            <a href="#about" data-en="About Me" data-es="Sobre mí">About Me</a>
+            <a href="#links" data-en="Useful Links" data-es="Enlaces útiles">Useful Links</a>
+            <a href="#contact" data-en="Contact Me" data-es="Contáctame">Contact Me</a>
+        </nav>
+        <div class="controls">
+            <button id="theme-toggle" class="theme-toggle">
+                <img id="theme-icon" src="images/moon_icon.png" alt="Toggle Theme">
+            </button>
+            <button id="language-toggle" class="language-toggle" data-lang="en">
+                <img id="language-icon" src="images/united_states_flag.png" alt="Change Language">
+            </button>
+        </div>
+    </header>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-  <script src="main.js"></script>
+    <main>
+        <!-- Profile Section -->
+        <section id="home" class="profile-container">
+            <div class="profile" data-aos="zoom-in" data-aos-duration="1000">
+                <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
+                <div class="profile-text">
+                    <h1><span class="highlight" data-en="Hi, I'm" data-es="Hola, soy">Hi, I'm</span> <span class="highlight">Eti</span> <span class="waving-emoji">🤚🏻</span></h1>
+                    <p data-en="I'm a little crazy guy." data-es="Soy un chico un poco loco.">I'm a little crazy guy.</p>
+                    <ul class="details">
+                        <li data-en="🧉 fueled by mate" data-es="🧉 a base de mate">🧉 fueled by mate</li>
+                        <li data-en="🌍 from Rosario, Argentina" data-es="🌍 de Rosario, Argentina">🌍 from Rosario, Argentina</li>
+                        <li>📧 cautures@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="section about-me" data-aos="fade-up" data-aos-duration="1000">
+            <h2 data-en="About Me" data-es="Sobre mí">About Me</h2>
+            <p class="intro" data-en="I’m a passionate and curious..." data-es="Soy un apasionado...">
+                I’m a passionate and curious mechanical engineering student...
+            </p>
+        </section>
+
+        <!-- Useful Links Section -->
+        <section id="links" class="section" data-aos="fade-left" data-aos-duration="1000">
+            <h2 data-en="Useful Links" data-es="Enlaces útiles">Useful Links</h2>
+            <p data-en="Useful resources and links..." data-es="Recursos y enlaces útiles...">Useful resources and links...</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact" data-aos="fade-right" data-aos-duration="1000">
+            <h2 data-en="Contact Me" data-es="Contáctame">Contact Me</h2>
+            <form id="contact-form">
+                <input type="text" name="name" id="name" placeholder="Your Name" required>
+                <input type="email" name="email" id="email" placeholder="Your Email" required>
+                <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="submit-btn">Send</button>
+            </form>
+            <p id="form-status"></p>
+        </section>
+
+        <footer>
+            <p class="footer-text" data-en="Created with ❤️ by Etienne Cautures © 2024" data-es="Creado con ❤️ por Etienne Cautures © 2024">Created with ❤️ by Etienne Cautures © 2024</p>
+        </footer>
+    </main>
+
+    <!-- AOS Animations script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();  // Initialize AOS animations
+    </script>
+
+    <!-- Custom Scripts -->
+    <script src="scripts.js"></script>
 </body>
 </html>
