@@ -1,134 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etienne Cautures</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Portafolio Creativo 3D</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="light-mode">
-    <header>
-        <div class="logo">EC</div>
-        <nav>
-            <a href="#home" data-en="Home" data-es="Inicio">Home</a>
-            <a href="#about" data-en="About Me" data-es="Sobre mí">About Me</a>
-            <a href="#links" data-en="Useful Links" data-es="Enlaces útiles">Useful Links</a>
-        </nav>
-        <div class="controls">
-            <!-- Botón para modo oscuro/claro con imágenes -->
-            <button id="theme-toggle" class="theme-toggle">
-                <img id="theme-icon" src="images/moon_icon.png" alt="Toggle Theme">
-            </button>
-            <!-- Botón para cambiar idioma con imágenes de banderas -->
-            <button id="language-toggle" class="language-toggle" data-lang="en">
-                <img id="language-icon" src="images/united_states_flag.png" alt="Change Language">
-            </button>
-        </div>
-    </header>
+<body>
+  <div class="canvas-container">
+    <canvas id="webgl"></canvas>
+  </div>
+  
+  <div class="ui-container">
+    <h1>Mi Portafolio Creativo</h1>
+    <p>Hola, soy [Tu Nombre], un diseñador y desarrollador creativo.</p>
+    <button id="explore-button">Explorar más</button>
+  </div>
 
-    <main>
-        <section id="home" class="profile-container">
-            <div class="profile">
-                <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
-                <div class="profile-text">
-                    <h1><span class="highlight" data-en="Hi, I'm" data-es="Hola, soy">Hi, I'm</span> <span class="highlight">Eti</span> <span class="waving-emoji">🤚🏻</span></h1>
-                    <p data-en="I'm a little crazy guy." data-es="Soy un chico un poco loco.">I'm a little crazy guy.</p>
-                    <ul class="details">
-                        <li data-en="🧉 fueled by mate" data-es="🧉 a base de mate">🧉 fueled by mate</li>
-                        <li data-en="🌍 from Rosario, Argentina" data-es="🌍 de Rosario, Argentina">🌍 from Rosario, Argentina</li>
-                        <li data-en="🎓 studying Mechanical Engineering at UNR" data-es="🎓 estudiando Ingeniería Mecánica en la UNR">🎓 studying Mechanical Engineering at UNR</li>
-                        <li>📧 cautures@gmail.com</li>
-                    </ul>
-                    <button class="main-btn" data-en="Faculty and Other Links" data-es="Links de Facultad y Otros">Faculty and Other Links</button>
-                    <div class="socials">
-                        <!-- Aquí están los íconos de redes sociales existentes -->
-                        <a href="https://t.me/eticau" target="_blank">
-                            <img src="images/telegram-icon.png" alt="Telegram">
-                        </a>
-                        <a href="https://github.com/eticau" target="_blank">
-                            <img src="images/github-icon.png" alt="GitHub">
-                        </a>
-                        <a href="https://www.linkedin.com/in/etienne-cautures" target="_blank">
-                            <img src="images/linkedin-icon.png" alt="LinkedIn">
-                        </a>
-                        <a href="https://www.instagram.com/etiennecautures" target="_blank">
-                            <img src="images/instagram-icon.png" alt="Instagram">
-                        </a>
-
-                        <!-- Nuevos íconos añadidos -->
-                        <a href="https://link.mercadopago.com.ar/cautures" target="_blank">
-                            <img src="images/mp_icon.png" alt="MercadoPago">
-                        </a>
-                        <a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00N3UKN92P" target="_blank">
-                            <img src="images/binance_icon.png" alt="Binance">
-                        </a>
-                        <a href="https://mailto:cautures@gmail.com" target="_blank">
-                            <img src="images/gmail_icon.png" alt="Gmail">
-                        </a>
-                        <a href="https://steamcommunity.com/profiles/76561199548541362/" target="_blank">
-                            <img src="images/steam_icon.png" alt="Steam">
-                        </a>
-                        <a href="https://www.snapchat.com/add/etiennecautures?share_id=bmzplnBvbgg&locale=es-US" target="_blank">
-                            <img src="images/snapchat_icon.png" alt="Snapchat">
-                        </a>
-                        <a href="https://open.spotify.com/user/31yimezgzgq3gndjvcdae7tskena" target="_blank">
-                            <img src="images/spotify_icon.png" alt="Spotify">
-                        </a>
-                        <a href="https://x.com/etiennecautures" target="_blank">
-                            <img src="images/twitter_icon.png" alt="Twitter">
-                        </a>
-                        <a href="https://www.tiktok.com/@etiennecautures" target="_blank">
-                            <img src="images/tiktok_icon.png" alt="TikTok">
-                        </a>
-                        <a href="https://www.youtube.com/@etiennecautures2877" target="_blank">
-                            <img src="images/youtube_icon.png" alt="YouTube">
-                        </a>
-                        <a href="https://www.twitch.tv/eticau" target="_blank">
-                            <img src="images/twitch_icon.png" alt="Twitch">
-                        </a>
-                        <a href="https://paypal.me/cautures " target="_blank">
-                            <img src="images/paypal_icon.png" alt="PayPal">
-                        </a>
-                        <a href="https://www.reddit.com/user/etiennecautures/" target="_blank">
-                            <img src="images/reddit_icon.png" alt="Reddit">
-                        </a>
-                        <a href="https://discord.gg/6hrJjxQZff" target="_blank">
-                            <img src="images/discord_icon.png" alt="Discord">
-                        </a>
-                        <a href="https://ar.pinterest.com/cautures1209/" target="_blank">
-                            <img src="images/pinterest_icon.png" alt="Pinterest">
-                        </a>
-                        <a href="https://wa.me/5492477344114" target="_blank">
-                            <img src="images/whatsapp_icon.png" alt="WhatsApp">
-                        </a>
-                         <a href="https://vsco.co/3713nn3/gallery" target="_blank">
-                            <img src="images/vsco_icon.png" alt="VSCO">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section about-me">
-            <h2 data-en="About Me" data-es="Sobre mí">About Me</h2>
-            <p class="intro" data-en="I’m a passionate and curious mechanical engineering student from Rosario, Argentina. My journey is fueled by a constant desire to learn and grow, whether it's solving complex problems or exploring new hobbies." data-es="Soy un apasionado y curioso estudiante de ingeniería mecánica de Rosario, Argentina. Mi camino está impulsado por un deseo constante de aprender y crecer, ya sea resolviendo problemas complejos o explorando nuevos pasatiempos.">I’m a passionate and curious mechanical engineering student from Rosario, Argentina. My journey is fueled by a constant desire to learn and grow, whether it's solving complex problems or exploring new hobbies.</p>
-            <p class="creativity" data-en="I thrive on creativity and a bit of craziness that helps me think outside the box. When I'm not immersed in my studies, you'll likely find me enjoying a cup of mate 🧉 or working on exciting personal projects." data-es="Me destaco por mi creatividad y un poco de locura que me ayuda a pensar fuera de lo convencional. Cuando no estoy inmerso en mis estudios, probablemente me encuentres disfrutando de un mate 🧉 o trabajando en emocionantes proyectos personales.">I thrive on creativity and a bit of craziness that helps me think outside the box. When I'm not immersed in my studies, you'll likely find me enjoying a cup of mate 🧉 or working on exciting personal projects.</p>
-            <p class="reach-out" data-en="Through this page, I aim to share my work, interests, and experiences, hoping to connect with like-minded individuals. Feel free to reach out—I'd love to hear from you!" data-es="A través de esta página, quiero compartir mi trabajo, intereses y experiencias, con la esperanza de conectarme con personas afines. ¡No dudes en contactarme, me encantaría saber de ti!">Through this page, I aim to share my work, interests, and experiences, hoping to connect with like-minded individuals. Feel free to reach out—I'd love to hear from you!</p>
-        </section>
-
-        <section id="links" class="section">
-            <h2 data-en="Useful Links" data-es="Enlaces útiles">Useful Links</h2>
-            <p data-en="Useful resources and links..." data-es="Recursos y enlaces útiles...">Useful resources and links...</p>
-        </section>
-
-        <button id="troll-button" class="troll-btn" data-en="CLICK HERE" data-es="HAZ CLICK AQUÍ">CLICK HERE</button>
-
-        <footer>
-            <p class="footer-text" data-en="Created with ❤️ by Etienne Cautures © 2024" data-es="Creado con ❤️ por Etienne Cautures © 2024">Created with ❤️ by Etienne Cautures © 2024</p>
-        </footer>
-    </main>
-
-    <script src="scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
