@@ -1,74 +1,37 @@
-// Modo oscuro y claro con iconos de sol/luna
-const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
+// Escena básica con Three.js
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webgl') });
 
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    themeIcon.src = document.body.classList.contains('dark-mode') ? 'images/sun_icon.png' : 'images/moon_icon.png';
-});
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-// Cambio de idioma con banderas
-const languageToggle = document.getElementById('language-toggle');
-const languageIcon = document.getElementById('language-icon');
-const elementsToTranslate = document.querySelectorAll('[data-en], [data-es]');
+// Crear un cubo
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
 
-// Cargar idioma por defecto
-window.addEventListener('DOMContentLoaded', () => {
-    elementsToTranslate.forEach(el => {
-        el.textContent = el.getAttribute('data-en');
-    });
-});
+camera.position.z = 5;
 
-languageToggle.addEventListener('click', () => {
-    const currentLang = languageToggle.getAttribute('data-lang');
-    const newLang = currentLang === 'en' ? 'es' : 'en';
-    
-    languageToggle.setAttribute('data-lang', newLang);
-    languageIcon.src = newLang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
-
-    elementsToTranslate.forEach(el => {
-        el.textContent = el.getAttribute(`data-${newLang}`);
-    });
-});
-
-// Botón troll que se mueve
-const trollButton = document.getElementById('troll-button');
-let speedX = 3, speedY = 3;
-let positionX = Math.random() * window.innerWidth;
-let positionY = Math.random() * window.innerHeight;
-let mouseX = 0, mouseY = 0;
-
-// Detectar la posición del cursor
-window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-function moveTrollButton() {
-    const buttonRect = trollButton.getBoundingClientRect();
-    
-    if (buttonRect.left + buttonRect.width >= window.innerWidth || buttonRect.left <= 0) speedX *= -1;
-    if (buttonRect.top + buttonRect.height >= window.innerHeight || buttonRect.top <= 0) speedY *= -1;
-
-    positionX += speedX;
-    positionY += speedY;
-
-    trollButton.style.left = `${positionX}px`;
-    trollButton.style.top = `${positionY}px`;
-
-    const distance = Math.hypot(mouseX - positionX, mouseY - positionY);
-
-    if (distance < 200) {
-        speedX = Math.sign(speedX) * 10;
-        speedY = Math.sign(speedY) * 10;
-    } else {
-        speedX = Math.sign(speedX) * 3;
-        speedY = Math.sign(speedY) * 3;
-    }
-
-    setTimeout(() => {
-        requestAnimationFrame(moveTrollButton);
-    }, 16);
+// Animar el cubo
+function animate() {
+  requestAnimationFrame(animate);
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
 }
+animate();
 
-moveTrollButton();
+// Interactividad con GSAP
+const exploreButton = document.getElementById('explore-button');
+exploreButton.addEventListener('click', () => {
+  gsap.to(cube.scale, { duration: 1, x: 2, y: 2, z: 2, ease: "elastic.out(1, 0.5)" });
+});
+
+// Manejo del resize de la ventana
+window.addEventListener('resize', () => {
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+});
