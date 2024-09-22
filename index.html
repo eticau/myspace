@@ -3,128 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Etienne Cautures Portfolio">
     <title>Etienne Cautures</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.typed/2.0.0/jquery.typed.min.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <!-- AOS Animations -->
+    <!-- EmailJS script -->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "3moVSUz7NDcZAn6QB", // Tu Public Key de EmailJS
+            });
+        })();
+    </script>
 </head>
-
 <body class="light-mode">
-    <header class="navbar navbar-inverse navbar-fixed-top" id="menu">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"><i class="fa fa-globe"></i> EC</a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Me</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
+    <header>
+        <div class="logo" data-aos="fade-down" data-aos-duration="1000">EC</div>
+        <nav>
+            <a href="#home" data-en="Home" data-es="Inicio">Home</a>
+            <a href="#about" data-en="About Me" data-es="Sobre mí">About Me</a>
+            <a href="#links" data-en="Useful Links" data-es="Enlaces útiles">Useful Links</a>
+            <a href="#contact" data-en="Contact Me" data-es="Contáctame">Contact Me</a>
+        </nav>
+        <div class="controls">
+            <button id="theme-toggle" class="theme-toggle">
+                <img id="theme-icon" src="images/moon_icon.png" alt="Toggle Theme">
+            </button>
+            <button id="language-toggle" class="language-toggle" data-lang="en">
+                <img id="language-icon" src="images/united_states_flag.png" alt="Change Language">
+            </button>
         </div>
     </header>
 
-    <section id="home" class="profile-container splash">
-        <div class="container">
-            <img src="images/profile.jpg" alt="Profile Picture" class="profile-image">
-            <h1>HELLO!</h1>
-            <h1 class="intro-text"><span class="lead" id="typed">Hi, I'm Eti</span> 🤚🏻</h1>
-            <span class="continue"><a href="#about"><i class="fa fa-angle-down"></i></a></span>
-        </div>
-    </section>
-
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>About Me</h2>
-                    <hr class="star-light">
-                </div>
-                <div class="col-lg-4 col-lg-offset-2">
-                    <p class="content-text">I’m a passionate and curious mechanical engineering student...</p>
-                </div>
-                <div class="col-lg-4">
-                    <p class="content-text">I'm fueled by mate, based in Rosario, Argentina.</p>
+    <main>
+        <!-- Profile Section -->
+        <section id="home" class="profile-container">
+            <div class="profile" data-aos="zoom-in" data-aos-duration="1000">
+                <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
+                <div class="profile-text">
+                    <h1><span class="highlight" data-en="Hi, I'm" data-es="Hola, soy">Hi, I'm</span> <span class="highlight">Eti</span> <span class="waving-emoji">🤚🏻</span></h1>
+                    <p data-en="I'm a little crazy guy." data-es="Soy un chico un poco loco.">I'm a little crazy guy.</p>
+                    <ul class="details">
+                        <li data-en="🧉 fueled by mate" data-es="🧉 a base de mate">🧉 fueled by mate</li>
+                        <li data-en="🌍 from Rosario, Argentina" data-es="🌍 de Rosario, Argentina">🌍 from Rosario, Argentina</li>
+                        <li>📧 cautures@gmail.com</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div class="container-fluid portfolio-container-holder content-section" id="portfolio">
-        <div class="portfolio-container container">
-            <h1 class="text-center">My Portfolio</h1>
-            <hr class="star-portfolio">
-            <div class="row">
-                <div class="col-md-6 col-xs-12 col-sm-6 portfolio-card-holder">
-                    <div class="portfolio-card">
-                        <img src="project1.jpg" alt="Project 1" class="img-responsive portfolio-img">
-                        <div class="portfolio-img-desc"><p>Project 1 Description</p></div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xs-12 col-sm-6 portfolio-card-holder">
-                    <div class="portfolio-card">
-                        <img src="project2.jpg" alt="Project 2" class="img-responsive portfolio-img">
-                        <div class="portfolio-img-desc"><p>Project 2 Description</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!-- About Me Section -->
+        <section id="about" class="section about-me" data-aos="fade-up" data-aos-duration="1000">
+            <h2 data-en="About Me" data-es="Sobre mí">About Me</h2>
+            <p class="intro" data-en="I’m a passionate and curious..." data-es="Soy un apasionado...">
+                I’m a passionate and curious mechanical engineering student...
+            </p>
+        </section>
 
-    <section id="contact" class="section contact-me-container">
-        <div class="container">
-            <h2>Contact Me</h2>
+        <!-- Useful Links Section -->
+        <section id="links" class="section" data-aos="fade-left" data-aos-duration="1000">
+            <h2 data-en="Useful Links" data-es="Enlaces útiles">Useful Links</h2>
+            <p data-en="Useful resources and links..." data-es="Recursos y enlaces útiles...">Useful resources and links...</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact" data-aos="fade-right" data-aos-duration="1000">
+            <h2 data-en="Contact Me" data-es="Contáctame">Contact Me</h2>
             <form id="contact-form">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-default submit-button"><i class="fa fa-paper-plane"></i> Send</button>
+                <input type="text" name="name" id="name" placeholder="Your Name" required>
+                <input type="email" name="email" id="email" placeholder="Your Email" required>
+                <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+                <button type="submit" class="submit-btn">Send</button>
             </form>
+            <p id="form-status"></p>
+        </section>
+        <!-- Modal de Agradecimiento -->
+        <div id="thank-you-overlay"></div>
+        <div id="thank-you-modal">
+            <h3>Thank you for your message!</h3>
+            <p>Your message has been sent successfully. I'll get back to you soon!</p>
+            <button id="close-thank-you">Close</button>
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <p>Find me on social media:</p>
-            <a href="#" class="btn btn-default btn-lg social-button link-facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="btn btn-default btn-lg social-button link-linkedin"><i class="fa fa-linkedin"></i></a>
-            <a href="#" class="btn btn-default btn-lg social-button link-twitter"><i class="fa fa-twitter"></i></a>
-            <p>Created with ❤️ by Etienne Cautures © 2024</p>
-        </div>
-    </footer>
+        <footer>
+            <p class="footer-text" data-en="Created with ❤️ by Etienne Cautures © 2024" data-es="Creado con ❤️ por Etienne Cautures © 2024">Created with ❤️ by Etienne Cautures © 2024</p>
+        </footer>
+    </main>
 
-    <script src="scripts.js"></script>
+    <!-- AOS Animations script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        $(document).ready(function () {
-            AOS.init(); // Initialize AOS for animations
-
-            // Typed.js
-            $("#typed").typed({
-                strings: ["a web developer", "a geek", "a human being"],
-                typeSpeed: 50,
-                backDelay: 600,
-                loop: true
-            });
-        });
+        AOS.init();  // Initialize AOS animations
     </script>
+
+    <!-- Custom Scripts -->
+    <script src="scripts.js"></script>
 </body>
 </html>
