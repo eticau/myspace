@@ -7,6 +7,7 @@ body {
     color: #333;
     transition: background 0.3s ease, color 0.3s ease;
 }
+
 /* styles.css */
 * {
     margin: 0;
@@ -73,6 +74,7 @@ footer p {
         font-size: 20px;
     }
 }
+
 /* Modo oscuro */
 body.dark-mode {
     background: linear-gradient(135deg, #1a1a1a, #333);
@@ -127,7 +129,8 @@ header nav a:hover {
     gap: 10px;
 }
 
-.theme-toggle img, .language-toggle img {
+.theme-toggle img,
+.language-toggle img {
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -208,102 +211,78 @@ ul.details {
 body.dark-mode .socials img {
     filter: invert(1);
 }
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-}
-
-body {
-  background-color: #030712;
-}
 
 .wrapper {
-  margin-top: 2rem;
-  width: 90%;
-  max-width: 1536px;
-  margin-inline: auto;
-  height: 100px;
-  position: relative;
-  overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 1) 20%,
-    rgba(0, 0, 0, 1) 80%,
-    rgba(0, 0, 0, 0)
-  );
-}
-
-@keyframes scrollLeft {
-  to {
-    left: -200px;
-  }
-}
-
-@keyframes scrollRight {
-  to {
-    right: -200px;
-  }
+    margin-top: 2rem;
+    width: 90%;
+    max-width: 1536px;
+    margin-inline: auto;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 1) 20%,
+        rgba(0, 0, 0, 1) 80%,
+        rgba(0, 0, 0, 0)
+    );
 }
 
 .itemLeft,
 .itemRight {
-  width: 200px;
-  height: 100px;
-  background-color: #e11d48;
-  border-radius: 6px;
-  position: absolute;
-  animation-timing-function: linear;
-  animation-duration: 30s;
-  animation-iteration-count: infinite;
+    width: 200px;
+    height: 100px;
+    background-color: #e11d48;
+    border-radius: 6px;
+    position: absolute;
+    animation-timing-function: linear;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
 }
 
 .itemLeft {
-  left: max(calc(200px * 8), 100%);
-  animation-name: scrollLeft;
+    left: max(calc(200px * 8), 100%);
+    animation-name: scrollLeft;
 }
 
 .itemRight {
-  right: max(calc(200px * 8), calc(100% + 200px));
-  animation-name: scrollRight;
+    right: max(calc(200px * 8), calc(100% + 200px));
+    animation-name: scrollRight;
 }
 
 .item1 {
-  animation-delay: calc(30s / 8 * (8 - 1) * -1);
+    animation-delay: calc(30s / 8 * (8 - 1) * -1);
 }
 
 .item2 {
-  animation-delay: calc(30s / 8 * (8 - 2) * -1);
+    animation-delay: calc(30s / 8 * (8 - 2) * -1);
 }
 
 .item3 {
-  animation-delay: calc(30s / 8 * (8 - 3) * -1);
+    animation-delay: calc(30s / 8 * (8 - 3) * -1);
 }
 
 .item4 {
-  animation-delay: calc(30s / 8 * (8 - 4) * -1);
+    animation-delay: calc(30s / 8 * (8 - 4) * -1);
 }
 
 .item5 {
-  animation-delay: calc(30s / 8 * (8 - 5) * -1);
+    animation-delay: calc(30s / 8 * (8 - 5) * -1);
 }
 
 .item6 {
-  animation-delay: calc(30s / 8 * (8 - 6) * -1);
+    animation-delay: calc(30s / 8 * (8 - 6) * -1);
 }
 
 .item7 {
-  animation-delay: calc(30s / 8 * (8 - 7) * -1);
+    animation-delay: calc(30s / 8 * (8 - 7) * -1);
 }
 
 .item8 {
-  animation-delay: calc(30s / 8 * (8 - 8) * -1);
+    animation-delay: calc(30s / 8 * (8 - 8) * -1);
 }
+
 /* Sección About Me */
 .about-me {
     background: #f8f9fa;
@@ -351,7 +330,8 @@ body {
     align-items: center;
 }
 
-#contact-form input, #contact-form textarea {
+#contact-form input,
+#contact-form textarea {
     width: 80%;
     padding: 10px;
     margin: 10px 0;
@@ -390,44 +370,10 @@ body {
     max-width: 400px;
     background-color: white;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
 
-#thank-you-modal h3 {
-    color: #00bfa6;
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-#thank-you-modal p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-#thank-you-modal button {
-    padding: 10px 20px;
-    background-color: #00bfa6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#thank-you-modal button:hover {
-    background-color: #008f76;
-}
-
-#thank-you-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+#thank-you-modal.active {
+    display: block;
 }
