@@ -1,25 +1,12 @@
-<!DOCTYPE html> 
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etienne Cautures</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <!-- AOS Animations -->
-    <!-- EmailJS script -->
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init({
-                publicKey: "3moVSUz7NDcZAn6QB", // Tu Public Key de EmailJS
-            });
-        })();
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body class="light-mode">
     <header>
@@ -56,26 +43,29 @@
                 </div>
             </div>
         </section>
-<div class="wrapper">
-  <div class="itemLeft item1"></div>
-  <div class="itemLeft item2"></div>
-  <div class="itemLeft item3"></div>
-  <div class="itemLeft item4"></div>
-  <div class="itemLeft item5"></div>
-  <div class="itemLeft item6"></div>
-  <div class="itemLeft item7"></div>
-  <div class="itemLeft item8"></div>
-</div>
-<div class="wrapper">
-  <div class="itemRight item1"></div>
-  <div class="itemRight item2"></div>
-  <div class="itemRight item3"></div>
-  <div class="itemRight item4"></div>
-  <div class="itemRight item5"></div>
-  <div class="itemRight item6"></div>
-  <div class="itemRight item7"></div>
-  <div class="itemRight item8"></div>
-</div>
+
+        <div class="wrapper">
+            <div class="itemLeft item1"></div>
+            <div class="itemLeft item2"></div>
+            <div class="itemLeft item3"></div>
+            <div class="itemLeft item4"></div>
+            <div class="itemLeft item5"></div>
+            <div class="itemLeft item6"></div>
+            <div class="itemLeft item7"></div>
+            <div class="itemLeft item8"></div>
+        </div>
+
+        <div class="wrapper">
+            <div class="itemRight item1"></div>
+            <div class="itemRight item2"></div>
+            <div class="itemRight item3"></div>
+            <div class="itemRight item4"></div>
+            <div class="itemRight item5"></div>
+            <div class="itemRight item6"></div>
+            <div class="itemRight item7"></div>
+            <div class="itemRight item8"></div>
+        </div>
+
         <!-- About Me Section -->
         <section id="about" class="section about-me" data-aos="fade-up" data-aos-duration="1000">
             <h2 data-en="About Me" data-es="Sobre mí">About Me</h2>
@@ -101,6 +91,7 @@
             </form>
             <p id="form-status"></p>
         </section>
+
         <!-- Modal de Agradecimiento -->
         <div id="thank-you-overlay"></div>
         <div id="thank-you-modal">
@@ -109,26 +100,36 @@
             <button id="close-thank-you">Close</button>
         </div>
 
-        <!-- Google Maps Container -->
-  <section id="map" style="height: 500px;"></section>
+        <!-- OpenStreetMap Container -->
+        <section id="map"></section>
 
-    <!-- Footer with rotating heart -->
-    <footer>
-        <p>Created with <span class="heart">❤️</span> by Etienne Cautures © 2024</p>
-    </footer>
-
-    <!-- Load JavaScript -->
-   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="scripts.js"></script>
+        <!-- Footer with rotating heart -->
+        <footer>
+            <p>Created with <span class="heart">❤️</span> by Etienne Cautures © 2024</p>
+        </footer>
     </main>
 
-    <!-- AOS Animations script -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Load JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        AOS.init();  // Initialize AOS animations
-    </script>
+        // Initialize the map
+        const map = L.map('map').setView([-32.95718, -60.68281], 12); // Coordenadas de ejemplo
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-    <!-- Custom Scripts -->
-    <script src="scripts.js"></script>
+        // Manejo del cambio de idioma
+        const languageToggle = document.getElementById('language-toggle');
+        languageToggle.addEventListener('click', () => {
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-es');
+            });
+            languageToggle.src = 'images/spain_flag.png'; // Cambia el icono a la bandera española
+        });
+
+        // Inicializa AOS (Animate On Scroll)
+        AOS.init();
+    </script>
 </body>
 </html>
