@@ -41,6 +41,24 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('thank-you-overlay').style.display = 'none';
     });
 
+    // Initialize and add the map
+function initMap() {
+    // The location coordinates (e.g., Eiffel Tower)
+    const location = { lat: 48.8584, lng: 2.2945 };
+
+    // Create a map object centered at the location
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 14,
+        center: location,
+    });
+
+    // Create a marker at the location
+    const marker = new google.maps.Marker({
+        position: location,
+        map: map,
+    });
+}
+    
     // Inicializa AOS (Animate On Scroll)
     AOS.init();
 });
