@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Inicializa EmailJS con tu Public Key 
-    emailjs.init("3moVSUz7NDcZAn6QB");
-
     // Manejo del cambio de tema
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
@@ -12,53 +9,23 @@ document.addEventListener('DOMContentLoaded', function () {
     // Manejo del cambio de idioma
     const languageToggle = document.getElementById('language-toggle');
     languageToggle.addEventListener('click', () => {
+        const isSpanish = languageToggle.dataset.lang === 'es';
         document.querySelectorAll('[data-en]').forEach(el => {
-            el.textContent = document.body.classList.contains('dark-mode') ? el.getAttribute('data-es') : el.getAttribute('data-en');
+            el.textContent = isSpanish ? el.getAttribute('data-en') : el.getAttribute('data-es');
         });
-        languageToggle.src = document.body.classList.contains('dark-mode') ? 'images/spain_flag.png' : 'images/united_states_flag.png';
-    });
-
-    // Manejo del envío del formulario
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // Previene el comportamiento por defecto del formulario
-
-        const formData = new FormData(contactForm);
-        emailjs.sendForm('service_lixjepc', 'template_4wrbzhu', formData)
-            .then(response => {
-                document.getElementById('form-status').textContent = "Message sent successfully!";
-                document.getElementById('thank-you-modal').style.display = 'block';
-                document.getElementById('thank-you-overlay').style.display = 'block';
-                contactForm.reset();
-            }, error => {
-                document.getElementById('form-status').textContent = "Failed to send message. Please try again.";
-            });
-    });
-
-    // Cierra el modal de agradecimiento
-    document.getElementById('close-thank-you').addEventListener('click', function () {
-        document.getElementById('thank-you-modal').style.display = 'none';
-        document.getElementById('thank-you-overlay').style.display = 'none';
+        languageToggle.dataset.lang = isSpanish ? 'en' : 'es';
+        languageToggle.src = isSpanish ? 'images/united_states_flag.png' : 'images/spain_flag.png';
     });
 
     // Initialize and add the map
-function initMap() {
-    // The location coordinates (e.g., Eiffel Tower)
-    const location = { lat: 48.8584, lng: 2.2945 };
+    const map = L.map('map').setView([48.8584, 2.2945], 14); // Coordenadas de ejemplo
 
-    // Create a map object centered at the location
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 14,
-        center: location,
-    });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
 
-    // Create a marker at the location
-    const marker = new google.maps.Marker({
-        position: location,
-        map: map,
-    });
-}
-    
+    L.marker([48.8584, 2.2945]).addTo(map); // Marcador en la ubicación
+
     // Inicializa AOS (Animate On Scroll)
     AOS.init();
 });
