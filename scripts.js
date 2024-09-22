@@ -4,41 +4,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Manejo del cambio de tema
     const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            themeToggle.src = document.body.classList.contains('dark-mode') ? 'images/sun_icon.png' : 'images/moon_icon.png';
-        });
-    }
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        themeToggle.src = document.body.classList.contains('dark-mode') ? 'images/sun_icon.png' : 'images/moon_icon.png';
+    });
 
-    // Typed.js para el texto animado
-    $("#typed").typed({
-        strings: ["a web developer", "a geek", "a human being"],
-        typeSpeed: 50,
-        backDelay: 600,
-        loop: true
+    // Manejo del cambio de idioma
+    const languageToggle = document.getElementById('language-toggle');
+    languageToggle.addEventListener('click', () => {
+        document.querySelectorAll('[data-en]').forEach(el => {
+            el.textContent = document.body.classList.contains('dark-mode') ? el.getAttribute('data-es') : el.getAttribute('data-en');
+        });
+        languageToggle.src = document.body.classList.contains('dark-mode') ? 'images/spain_flag.png' : 'images/united_states_flag.png';
     });
 
     // Manejo del envío del formulario
     const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault(); // Previene el comportamiento por defecto del formulario
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = contactForm.querySelector('textarea').value;
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Previene el comportamiento por defecto del formulario
 
-            emailjs.send("service_lixjepc", "template_4wrbzhu", {
-                name: name,
-                email: email,
-                message: message
-            }).then(function () {
-                alert('Mensaje enviado con éxito!');
-                contactForm.reset(); // Resetea el formulario
-            }, function (error) {
-                alert('Error al enviar el mensaje: ' + JSON.stringify(error));
+        const formData = new FormData(contactForm);
+        emailjs.sendForm('service_lixjepc', 'template_4wrbzhu', formData)
+            .then(response => {
+                document.getElementById('form-status').textContent = "Message sent successfully!";
+                document.getElementById('thank-you-modal').style.display = 'block';
+                document.getElementById('thank-you-overlay').style.display = 'block';
+                contactForm.reset();
+            }, error => {
+                document.getElementById('form-status').textContent = "Failed to send message. Please try again.";
             });
-        });
-    }
+    });
+
+    // Cierra el modal de agradecimiento
+    document.getElementById('close-thank-you').addEventListener('click', function () {
+        document.getElementById('thank-you-modal').style.display = 'none';
+        document.getElementById('thank-you-overlay').style.display = 'none';
+    });
+
+    // Inicializa AOS (Animate On Scroll)
+    AOS.init();
 });
