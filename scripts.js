@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Inicializa EmailJS con tu Public Key
+    // Inicializa EmailJS con tu Public Key 
     emailjs.init("3moVSUz7NDcZAn6QB");
 
     // Manejo del cambio de tema
