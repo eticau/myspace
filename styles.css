@@ -19,14 +19,15 @@ body.dark-mode .about-me {
     background-color: #444;
     color: #fff;
 }
+
 .map-container {
-    width: 100%; /* Ajusta según sea necesario */
-    max-width: 800px; /* Máxima anchura del mapa */
-    height: 400px; /* Altura del mapa */
-    margin: 0 auto; /* Centra el mapa en su contenedor */
-    border: 2px solid #00bfa6; /* Opcional: agrega un borde */
-    border-radius: 8px; /* Opcional: redondea las esquinas */
-    overflow: hidden; /* Asegúrate de que no se salgan los bordes */
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto;
+    border: 2px solid #00bfa6;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 /* Header */
@@ -128,47 +129,7 @@ ul.details {
     background-color: #008f76;
 }
 
-/* Iconos de redes sociales */
-.socials {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.socials a {
-    margin: 5px 10px;
-}
-
-.socials img {
-    width: 40px;
-    height: 40px;
-    transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-.socials img:hover {
-    transform: scale(1.2);
-}
-
-body.dark-mode .socials img {
-    filter: invert(1);
-}
-
-/* Estilos para animaciones de los elementos */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-* {
-    margin: 0;
-}
-
-body {
-    background-color: #030712;
-}
-
+/* Redes sociales */
 .wrapper {
     margin-top: 2rem;
     width: 90%;
@@ -186,23 +147,10 @@ body {
     );
 }
 
-@keyframes scrollLeft {
-    to {
-        left: -200px;
-    }
-}
-
-@keyframes scrollRight {
-    to {
-        right: -200px;
-    }
-}
-
 .itemLeft,
 .itemRight {
-    width: 200px;
+    width: 100px;
     height: 100px;
-    background-color: #e11d48;
     border-radius: 6px;
     position: absolute;
     animation-timing-function: linear;
@@ -210,46 +158,31 @@ body {
     animation-iteration-count: infinite;
 }
 
+.itemLeft img,
+.itemRight img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .itemLeft {
-    left: max(calc(200px * 8), 100%);
+    left: 100%;
     animation-name: scrollLeft;
 }
 
 .itemRight {
-    right: max(calc(200px * 8), calc(100% + 200px));
+    right: 100%;
     animation-name: scrollRight;
 }
 
-.item1 {
-    animation-delay: calc(30s / 8 * (8 - 1) * -1);
+@keyframes scrollLeft {
+    0% { left: 100%; }
+    100% { left: -100px; }
 }
 
-.item2 {
-    animation-delay: calc(30s / 8 * (8 - 2) * -1);
-}
-
-.item3 {
-    animation-delay: calc(30s / 8 * (8 - 3) * -1);
-}
-
-.item4 {
-    animation-delay: calc(30s / 8 * (8 - 4) * -1);
-}
-
-.item5 {
-    animation-delay: calc(30s / 8 * (8 - 5) * -1);
-}
-
-.item6 {
-    animation-delay: calc(30s / 8 * (8 - 6) * -1);
-}
-
-.item7 {
-    animation-delay: calc(30s / 8 * (8 - 7) * -1);
-}
-
-.item8 {
-    animation-delay: calc(30s / 8 * (8 - 8) * -1);
+@keyframes scrollRight {
+    0% { right: 100%; }
+    100% { right: -100px; }
 }
 
 /* Sección About Me */
