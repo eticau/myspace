@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Inicializa EmailJS con tu Public Key
     emailjs.init("3moVSUz7NDcZAn6QB");
 
-    // Inicialización del mapa
+    // Inicialización del mapa usando las coordenadas correctas
     const map = L.map('map').setView([-32.96180, -60.65878], 10); // Coordenadas de Rosario, Argentina
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
