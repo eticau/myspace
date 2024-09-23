@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <!-- AOS Animations -->
-    <!-- EmailJS script -->
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    <!-- EmailJS scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
     <script type="text/javascript">
         (function(){
@@ -109,7 +108,10 @@
             <p>Your message has been sent successfully. I'll get back to you soon!</p>
             <button id="close-thank-you">Close</button>
         </div>
-
+        <section id="map-section">
+            <h2>Mapa</h2>
+            <div id="map" style="height: 400px;"></div> <!-- Asegúrate de que esta div tenga un height -->
+        </section>
         <footer>
             <p class="footer-text" data-en="Created with ❤️ by Etienne Cautures © 2024" data-es="Creado con ❤️ por Etienne Cautures © 2024">
                 Created with <span class="heart">❤️</span> by Etienne Cautures © 2024
@@ -124,6 +126,7 @@
     </script>
 
     <!-- Custom Scripts -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
