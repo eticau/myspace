@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etienne Cautures</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <!-- AOS Animations -->
+    <!-- EmailJS script -->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "3moVSUz7NDcZAn6QB", // Tu Public Key de EmailJS
+            });
+        })();
+    </script>
 </head>
 <body class="light-mode">
     <header>
@@ -54,7 +65,6 @@
             <div class="itemLeft item7"></div>
             <div class="itemLeft item8"></div>
         </div>
-
         <div class="wrapper">
             <div class="itemRight item1"></div>
             <div class="itemRight item2"></div>
@@ -69,7 +79,7 @@
         <!-- About Me Section -->
         <section id="about" class="section about-me" data-aos="fade-up" data-aos-duration="1000">
             <h2 data-en="About Me" data-es="Sobre mí">About Me</h2>
-            <p class="intro" data-en="I’m a passionate and curious..." data-es="Soy un apasionado...">
+            <p class="intro" data-en="I’m a passionate and curious mechanical engineering student..." data-es="Soy un apasionado...">
                 I’m a passionate and curious mechanical engineering student...
             </p>
         </section>
@@ -100,36 +110,20 @@
             <button id="close-thank-you">Close</button>
         </div>
 
-        <!-- OpenStreetMap Container -->
-        <section id="map"></section>
-
-        <!-- Footer with rotating heart -->
         <footer>
-            <p>Created with <span class="heart">❤️</span> by Etienne Cautures © 2024</p>
+            <p class="footer-text" data-en="Created with ❤️ by Etienne Cautures © 2024" data-es="Creado con ❤️ por Etienne Cautures © 2024">
+                Created with <span class="heart">❤️</span> by Etienne Cautures © 2024
+            </p>
         </footer>
     </main>
 
-    <!-- Load JavaScript -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- AOS Animations script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize the map
-        const map = L.map('map').setView([-32.95718, -60.68281], 12); // Coordenadas de ejemplo
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Manejo del cambio de idioma
-        const languageToggle = document.getElementById('language-toggle');
-        languageToggle.addEventListener('click', () => {
-            document.querySelectorAll('[data-en]').forEach(el => {
-                el.textContent = el.getAttribute('data-es');
-            });
-            languageToggle.src = 'images/spain_flag.png'; // Cambia el icono a la bandera española
-        });
-
-        // Inicializa AOS (Animate On Scroll)
-        AOS.init();
+        AOS.init();  // Initialize AOS animations
     </script>
+
+    <!-- Custom Scripts -->
+    <script src="scripts.js"></script>
 </body>
 </html>
