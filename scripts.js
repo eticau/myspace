@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     emailjs.init("3moVSUz7NDcZAn6QB");
 
     // Inicialización del mapa
-    const map = L.map('map').setView([-34.61, -58.38], 13); // Coordenadas de ejemplo
+    const map = L.map('map').setView([-32.96180, -60.65878], 13); // Coordenadas de ejemplo
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
