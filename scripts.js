@@ -1,62 +1,52 @@
-// Modo oscuro y claro
-const themeToggle = document.querySelector('.theme-toggle');
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-});
+document.addEventListener('DOMContentLoaded', function () {
+    // Inicializa EmailJS con tu Public Key
+    emailjs.init("3moVSUz7NDcZAn6QB");
 
-// Cambio de idioma
-const languageToggle = document.querySelector('.language-toggle');
-let currentLanguage = 'en';
-
-languageToggle.addEventListener('click', () => {
-    if (currentLanguage === 'en') {
-        document.querySelector('.about-me h2').textContent = 'Sobre mí';
-        document.querySelector('.about-me p').textContent = 'Soy un desarrollador apasionado por la tecnología y el diseño.';
-        currentLanguage = 'es';
-    } else {
-        document.querySelector('.about-me h2').textContent = 'About Me';
-        document.querySelector('.about-me p').textContent = 'I am a developer passionate about technology and design.';
-        currentLanguage = 'en';
-    }
-});
-
-// Manejo del formulario de contacto
-const contactForm = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Aquí podrías manejar el envío del formulario a un servidor
-    formStatus.textContent = 'Enviando...';
-
-    // Simulación de envío
-    setTimeout(() => {
-        formStatus.textContent = 'Gracias por tu mensaje!';
-        contactForm.reset();
-        showThankYouModal();
-    }, 2000);
-});
-
-// Mostrar modal de agradecimiento
-function showThankYouModal() {
-    const modal = document.getElementById('thank-you-modal');
-    const overlay = document.getElementById('thank-you-overlay');
-
-    modal.style.display = 'block';
-    overlay.style.display = 'block';
-
-    const closeButton = modal.querySelector('button');
-    closeButton.addEventListener('click', () => {
-        modal.style.display = 'none';
-        overlay.style.display = 'none';
+    // Manejo del cambio de tema
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        themeToggle.querySelector('img').src = document.body.classList.contains('dark-mode') ? 'images/sun_icon.png' : 'images/moon_icon.png';
     });
-}
 
-// Cerrar modal al hacer clic fuera
-const overlay = document.getElementById('thank-you-overlay');
-overlay.addEventListener('click', () => {
-    const modal = document.getElementById('thank-you-modal');
-    modal.style.display = 'none';
-    overlay.style.display = 'none';
+    // Manejo del cambio de idioma
+    const languageToggle = document.getElementById('language-toggle');
+    languageToggle.addEventListener('click', () => {
+        document.querySelectorAll('[data-en]').forEach(el => {
+            el.textContent = document.body.classList.contains('dark-mode') ? el.getAttribute('data-es') : el.getAttribute('data-en');
+        });
+        languageToggle.querySelector('img').src = document.body.classList.contains('dark-mode') ? 'images/spain_flag.png' : 'images/united_states_flag.png';
+    });
+
+    // Manejo del envío del formulario
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Previene el comportamiento por defecto del formulario
+
+        const formData = new FormData(contactForm);
+        emailjs.sendForm('service_lixjepc', 'template_4wrbzhu', formData)
+            .then(response => {
+                document.getElementById('form-status').textContent = "Message sent successfully!";
+                document.getElementById('thank-you-modal').style.display = 'block';
+                document.getElementById('thank-you-overlay').style.display = 'block';
+                contactForm.reset();
+            }, error => {
+                document.getElementById('form-status').textContent = "Failed to send message. Please try again.";
+            });
+    });
+
+    // Cierra el modal de agradecimiento
+    document.getElementById('close-thank-you').addEventListener('click', function () {
+        document.getElementById('thank-you-modal').style.display = 'none';
+        document.getElementById('thank-you-overlay').style.display = 'none';
+    });
+
+    // Cerrar modal al hacer clic fuera
+    document.getElementById('thank-you-overlay').addEventListener('click', function () {
+        document.getElementById('thank-you-modal').style.display = 'none';
+        this.style.display = 'none';
+    });
+
+    // Inicializa AOS (Animate On Scroll)
+    AOS.init();
 });
