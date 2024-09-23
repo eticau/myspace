@@ -2,6 +2,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Inicializa EmailJS con tu Public Key
     emailjs.init("3moVSUz7NDcZAn6QB");
 
+    // Inicialización del mapa
+    const map = L.map('map').setView([-34.61, -58.38], 13); // Coordenadas de ejemplo
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Marcador de ejemplo
+    const marker = L.marker([-34.61, -58.38]).addTo(map)
+        .bindPopup('<b>Hola!</b><br>Estoy aquí.')
+        .openPopup();
+
     // Manejo del cambio de tema
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
