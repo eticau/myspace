@@ -152,7 +152,12 @@ ul.details {
     animation-duration: 30s;
     animation-iteration-count: infinite;
 }
-
+.itemLeft a,
+.itemRight a {
+    display: block;
+    width: 100px;
+    height: 100px;
+}
 .itemLeft img,
 .itemRight img {
     width: 100%;
