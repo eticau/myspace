@@ -114,22 +114,7 @@ ul.details {
     padding: 0;
 }
 
-/* Botón principal */
-.main-btn {
-    padding: 10px 20px;
-    background-color: #00bfa6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.main-btn:hover {
-    background-color: #008f76;
-}
-
-/* Redes sociales */
+/* Redes sociales separadas */
 .wrapper {
     margin-top: 2rem;
     width: 90%;
