@@ -7,14 +7,10 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <!-- AOS Animations -->
-    <!-- EmailJS scripts -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            emailjs.init({
-                publicKey: "3moVSUz7NDcZAn6QB", // Tu Public Key de EmailJS
-            });
+            emailjs.init("3moVSUz7NDcZAn6QB");
         })();
     </script>
 </head>
@@ -47,32 +43,33 @@
                     <p data-en="I'm a geek" data-es="Soy un friki">I'm a geek</p>
                     <ul class="details">
                         <li data-en="☕ fueled by coffee" data-es="☕ a base de café">☕ fueled by coffee</li>
-                        <li data-en="📍 from Rosario, Argentina to the word 🌎" data-es="🌎 de Rosario, Argentina para el mundo 🌎">📍 from Rosario, Argentina to the word 🌎</li>
+                        <li data-en="📍 from Rosario, Argentina to the world 🌎" data-es="🌎 de Rosario, Argentina para el mundo 🌎">📍 from Rosario, Argentina to the world 🌎</li>
                         <li>📧 cautures@gmail.com</li>
                     </ul>
                 </div>
             </div>
         </section>
 
+        <!-- Redes sociales animadas -->
         <div class="wrapper">
-            <div class="itemLeft item1"></div>
-            <div class="itemLeft item2"></div>
-            <div class="itemLeft item3"></div>
-            <div class="itemLeft item4"></div>
-            <div class="itemLeft item5"></div>
-            <div class="itemLeft item6"></div>
-            <div class="itemLeft item7"></div>
-            <div class="itemLeft item8"></div>
+            <div class="itemLeft item1"><img src="images/whatsapp_icon.png" alt="WhatsApp"></div>
+            <div class="itemLeft item2"><img src="images/github_icon.png" alt="GitHub"></div>
+            <div class="itemLeft item3"><img src="images/twitter_icon.png" alt="Twitter"></div>
+            <div class="itemLeft item4"><img src="images/linkedin_icon.png" alt="LinkedIn"></div>
+            <div class="itemLeft item5"><img src="images/instagram_icon.png" alt="Instagram"></div>
+            <div class="itemLeft item6"><img src="images/youtube_icon.png" alt="YouTube"></div>
+            <div class="itemLeft item7"><img src="images/twitch_icon.png" alt="Twitch"></div>
+            <div class="itemLeft item8"><img src="images/reddit_icon.png" alt="Reddit"></div>
         </div>
         <div class="wrapper">
-            <div class="itemRight item1"></div>
-            <div class="itemRight item2"></div>
-            <div class="itemRight item3"></div>
-            <div class="itemRight item4"></div>
-            <div class="itemRight item5"></div>
-            <div class="itemRight item6"></div>
-            <div class="itemRight item7"></div>
-            <div class="itemRight item8"></div>
+            <div class="itemRight item1"><img src="images/spotify_icon.png" alt="Spotify"></div>
+            <div class="itemRight item2"><img src="images/telegram_icon.png" alt="Telegram"></div>
+            <div class="itemRight item3"><img src="images/snapchat_icon.png" alt="Snapchat"></div>
+            <div class="itemRight item4"><img src="images/paypal_icon.png" alt="PayPal"></div>
+            <div class="itemRight item5"><img src="images/vsco_icon.png" alt="VSCO"></div>
+            <div class="itemRight item6"><img src="images/discord_icon.png" alt="Discord"></div>
+            <div class="itemRight item7"><img src="images/binance_icon.png" alt="Binance"></div>
+            <div class="itemRight item8"><img src="images/pinterest_icon.png" alt="Pinterest"></div>
         </div>
 
         <!-- About Me Section -->
@@ -108,12 +105,15 @@
             <p>Your message has been sent successfully. I'll get back to you soon!</p>
             <button id="close-thank-you">Close</button>
         </div>
+
+        <!-- Map Section -->
         <section id="map-section">
             <h2>Mapa</h2>
-                    <div class="map-container">
+            <div class="map-container">
                 <div id="map"></div> <!-- Contenedor del mapa -->
             </div>
         </section>
+
         <footer>
             <p class="footer-text" data-en="Created with ❤️ by Etienne Cautures © 2024" data-es="Creado con ❤️ por Etienne Cautures © 2024">
                 Created with <span class="heart">❤️</span> by Etienne Cautures © 2024
@@ -123,9 +123,7 @@
 
     <!-- AOS Animations script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();  // Initialize AOS animations
-    </script>
+    <script>AOS.init();</script>
 
     <!-- Custom Scripts -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
