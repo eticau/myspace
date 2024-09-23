@@ -3,17 +3,16 @@ document.addEventListener('DOMContentLoaded', function () {
     emailjs.init("3moVSUz7NDcZAn6QB");
 
     // Inicialización del mapa
-    const map = L.map('map').setView([-32.96180, -60.65878], 13); // Coordenadas de ejemplo
+    const map = L.map('map').setView([-32.96180, -60.65878], 10); // Coordenadas de ejemplo
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '© OpenStreetMap'
     }).addTo(map);
 
-    // Marcador de ejemplo
-    const marker = L.marker([-34.61, -58.38]).addTo(map)
-        .bindPopup('<b>Hola!</b><br>Estoy aquí.')
-        .openPopup();
+    // Puedes agregar un marcador, si es necesario
+    const marker = L.marker([-34.6055, -58.3816]).addTo(map); // Ajusta las coordenadas del marcador
+    marker.bindPopup("<b>Hola!</b><br>Este es un marcador.").openPopup();
 
     // Manejo del cambio de tema
     const themeToggle = document.getElementById('theme-toggle');
