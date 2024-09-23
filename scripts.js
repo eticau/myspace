@@ -3,15 +3,15 @@ document.addEventListener('DOMContentLoaded', function () {
     emailjs.init("3moVSUz7NDcZAn6QB");
 
     // Inicialización del mapa
-    const map = L.map('map').setView([-32.96180, -60.65878], 10); // Coordenadas de ejemplo
+    const map = L.map('map').setView([-32.96180, -60.65878], 10); // Coordenadas de Rosario, Argentina
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap'
     }).addTo(map);
 
-    // Puedes agregar un marcador, si es necesario
-    const marker = L.marker([-34.6055, -58.3816]).addTo(map); // Ajusta las coordenadas del marcador
+    // Puedes agregar un marcador
+    const marker = L.marker([-32.96180, -60.65878]).addTo(map);
     marker.bindPopup("<b>Hola!</b><br>Este es un marcador.").openPopup();
 
     // Manejo del cambio de tema
@@ -24,10 +24,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Manejo del cambio de idioma
     const languageToggle = document.getElementById('language-toggle');
     languageToggle.addEventListener('click', () => {
+        const lang = languageToggle.getAttribute('data-lang');
+        const newLang = lang === 'en' ? 'es' : 'en';
+        languageToggle.setAttribute('data-lang', newLang);
+
         document.querySelectorAll('[data-en]').forEach(el => {
-            el.textContent = document.body.classList.contains('dark-mode') ? el.getAttribute('data-es') : el.getAttribute('data-en');
+            el.textContent = newLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
         });
-        languageToggle.querySelector('img').src = document.body.classList.contains('dark-mode') ? 'images/spain_flag.png' : 'images/united_states_flag.png';
+
+        languageToggle.querySelector('img').src = newLang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
     });
 
     // Manejo del envío del formulario
