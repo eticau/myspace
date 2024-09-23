@@ -19,6 +19,15 @@ body.dark-mode .about-me {
     background-color: #444;
     color: #fff;
 }
+.map-container {
+    width: 100%; /* Ajusta según sea necesario */
+    max-width: 800px; /* Máxima anchura del mapa */
+    height: 400px; /* Altura del mapa */
+    margin: 0 auto; /* Centra el mapa en su contenedor */
+    border: 2px solid #00bfa6; /* Opcional: agrega un borde */
+    border-radius: 8px; /* Opcional: redondea las esquinas */
+    overflow: hidden; /* Asegúrate de que no se salgan los bordes */
+}
 
 /* Header */
 header {
