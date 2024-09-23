@@ -145,8 +145,8 @@ ul.details {
 
 .itemLeft,
 .itemRight {
-    width: 100px; /* Ajustamos el ancho del ícono */
-    height: 100px; /* Ajustamos la altura del ícono */
+    width: 50px; /* Ajustamos el ancho del ícono */
+    height: 50px; /* Ajustamos la altura del ícono */
     position: absolute;
     animation-timing-function: linear;
     animation-duration: 30s;
