@@ -1,3 +1,20 @@
+/* Oculta el cursor predeterminado */
+body {
+    cursor: none; /* Oculta el cursor del sistema */
+}
+
+/* Estilos para la animación de partículas que sigue al cursor */
+#cursor-animation {
+    position: fixed; /* Mantén la animación siempre visible en la pantalla */
+    pointer-events: none; /* Evita que interfiera con los eventos del mouse */
+    width: 200px; /* Ajusta el tamaño de la animación */
+    height: 200px;
+    left: 0;
+    top: 0;
+    z-index: 9999; /* Asegura que esté por encima de todo */
+    transform: translate(-50%, -50%); /* Centra la animación en el cursor */
+}
+
 #contacto {
     text-align: center; /* Centrar el contenido */
     margin: 20px; /* Margen alrededor de la sección */
