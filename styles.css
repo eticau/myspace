@@ -1,3 +1,15 @@
+#contacto {
+    text-align: center; /* Centrar el contenido */
+    margin: 20px; /* Margen alrededor de la sección */
+}
+
+iframe {
+    border: 2px solid #ccc; /* Borde alrededor del mapa */
+    border-radius: 8px; /* Bordes redondeados */
+    width: 100%; /* Ancho completo en pantallas más pequeñas */
+    max-width: 600px; /* Ancho máximo */
+    height: 450px; /* Altura del mapa */
+}
 /* Estilos para el visor de Spline */
 .spline-viewer-section {
     width: 100vw;
