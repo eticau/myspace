@@ -1,3 +1,9 @@
+document.addEventListener('mousemove', function(event) {
+    const cursorAnimation = document.getElementById('cursor-animation');
+    cursorAnimation.style.left = event.pageX + 'px';
+    cursorAnimation.style.top = event.pageY + 'px';
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     // Inicializa EmailJS con tu Public Key
     emailjs.init("3moVSUz7NDcZAn6QB");
