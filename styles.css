@@ -32,7 +32,7 @@ iframe {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px; /* Separación entre los visores */
+    margin-bottom: 1px; /* Separación entre los visores */
 }
 
 spline-viewer {
