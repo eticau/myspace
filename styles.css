@@ -1,97 +1,8 @@
-/* General Styles */
+/* Oculta el cursor predeterminado */
 body {
-    font-family: 'Orbitron', sans-serif; /* Futurista */
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #EAE2B7, #F77F00); /* Fondo claro con degradado */
-    color: #003049; /* Color de texto oscuro */
-    transition: background 0.3s ease, color 0.3s ease; /* Transiciones suaves */
     cursor: none; /* Oculta el cursor del sistema */
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
-    background: linear-gradient(135deg, #003049, #D62828); /* Fondo oscuro */
-    color: #EAE2B7; /* Texto claro */
-}
-
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #003049; /* Color de fondo del encabezado */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
-
-body.dark-mode header {
-    background-color: #D62828; /* Fondo oscuro del encabezado */
-}
-
-header nav a {
-    margin-right: 20px;
-    color: #EAE2B7; /* Color de enlaces en encabezado */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-header nav a:hover {
-    color: #F77F00; /* Color de enlaces al pasar el mouse */
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #003049; /* Color de fondo del pie de página */
-}
-
-.footer-text {
-    color: #EAE2B7; /* Color de texto en el pie de página */
-}
-
-/* Buttons */
-button {
-    background-color: #D62828; /* Color de fondo del botón */
-    color: #EAE2B7; /* Color de texto del botón */
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Transiciones suaves */
-}
-
-button:hover {
-    background-color: #F77F00; /* Color del botón al pasar el mouse */
-}
-
-/* Map Container */
-.map-container {
-    width: 100%;
-    max-width: 800px;
-    height: 400px;
-    margin: 0 auto;
-    border: 2px solid #00bfa6;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-/* Spline Section */
-#spline-section {
-    position: relative; /* Permite que el spline esté posicionado dentro de esta sección */
-    width: 100%; /* O el tamaño que prefieras */
-    height: 400px; /* Ajusta según sea necesario */
-    overflow: hidden; /* Asegura que no se desborde */
-}
-
-.spline-viewer {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* Particles JS */
 #particles-js {
     position: fixed;
     width: 100%;
@@ -102,7 +13,6 @@ button:hover {
     pointer-events: none; /* Evita que las partículas bloqueen la interacción */
 }
 
-/* Contact Section */
 #contacto {
     text-align: center; /* Centrar el contenido */
     margin: 20px; /* Margen alrededor de la sección */
@@ -115,128 +25,141 @@ iframe {
     max-width: 600px; /* Ancho máximo */
     height: 450px; /* Altura del mapa */
 }
-
-/* About Me Section */
-.about-me {
-    background: #f8f9fa;
-    padding: 40px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-}
-
-.about-me h2 {
-    font-size: 28px;
-    color: #D62828; /* Color para el encabezado */
-    text-align: center;
-    letter-spacing: 1px;
-}
-
-.about-me p {
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    text-align: justify;
-}
-
-/* Form Styles */
-.contact {
-    padding: 40px;
-    background-color: #F4F4F4;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.contact h2 {
-    font-size: 28px;
-    color: #D62828; /* Color para el encabezado del formulario */
-    text-align: center;
-}
-
-#contact-form {
+/* Estilos para el visor de Spline */
+.spline-viewer-section {
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    margin-bottom: 1px; /* Separación entre los visores */
 }
 
-#contact-form input,
-#contact-form textarea {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#contact-form button {
-    padding: 10px 20px;
-    background-color: #D62828;
-    color: white;
+spline-viewer {
+    width: 100%;
+    height: 100%;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
-
-#contact-form button:hover {
-    background-color: #F77F00; /* Color del botón de formulario al pasar el mouse */
-}
-
-/* Modal Styles */
-#thank-you-modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 400px;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    text-align: center;
-    z-index: 1000;
-}
-
-#thank-you-modal h3 {
-    color: #D62828; /* Color para el encabezado del modal */
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-#thank-you-modal button {
-    padding: 10px 20px;
-    background-color: #D62828;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#thank-you-modal button:hover {
-    background-color: #F77F00; /* Color del botón del modal al pasar el mouse */
-}
-
-/* Responsive Design */
+/* Ajustes opcionales si necesitas reducir la altura en pantallas pequeñas */
 @media (max-width: 768px) {
     .spline-viewer-section {
         height: 60vh; /* Reduzco altura en pantallas pequeñas */
     }
-
-    header, footer {
-        padding: 10px;
-    }
-
-    button {
-        width: 100%; /* Botones a pantalla completa en móviles */
-    }
+}
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+    color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Additional Styles */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Orbitron', sans-serif; /* Estilo de fuente futurista para encabezados */
+/* Modo oscuro */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    color: #fff;
+}
+
+/* Ajuste de sección "About Me" en modo oscuro */
+body.dark-mode .about-me {
+    background-color: #444;
+    color: #fff;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto;
+    border: 2px solid #00bfa6;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode header {
+    background-color: #333;
+}
+
+header nav a {
+    margin-right: 20px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode header nav a {
+    color: #fff;
+}
+
+header nav a:hover {
+    color: #00bfa6;
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Botones de tema e idioma con iconos */
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+.theme-toggle img,
+.language-toggle img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* Imagen de perfil */
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #00bfa6;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedor del perfil */
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-text {
+    margin-left: 20px;
+}
+
+h1 .highlight {
+    color: #00bfa6;
+}
+
+ul.details {
+    list-style-type: none;
+    padding: 0;
 }
 
 .wrapper {
@@ -277,14 +200,12 @@ h1, h2, h3, h4, h5, h6 {
     animation-duration: 30s;
     animation-iteration-count: infinite;
 }
-
 .itemLeft a,
 .itemRight a {
     display: block;
     width: 100px;
     height: 100px;
 }
-
 .itemLeft img,
 .itemRight img {
     width: 50%;
@@ -312,4 +233,155 @@ h1, h2, h3, h4, h5, h6 {
 .item7 { animation-delay: calc(30s / 8 * (8 - 7) * -1); }
 .item8 { animation-delay: calc(30s / 8 * (8 - 8) * -1); }
 
+/* Sección About Me */
+.about-me {
+    background: #f8f9fa;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
 
+.about-me h2 {
+    font-size: 28px;
+    color: #00bfa6;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.about-me p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.about-me .highlight {
+    color: #00bfa6;
+}
+
+/* Formulario de contacto */
+.contact {
+    padding: 40px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact h2 {
+    font-size: 28px;
+    color: #00bfa6;
+    text-align: center;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#contact-form button {
+    padding: 10px 20px;
+    background-color: #00bfa6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: #008f76;
+}
+
+#form-status {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+
+/* Modal de agradecimiento */
+#thank-you-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+}
+
+#thank-you-modal h3 {
+    color: #00bfa6;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#thank-you-modal p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+#thank-you-modal button {
+    padding: 10px 20px;
+    background-color: #00bfa6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#thank-you-modal button:hover {
+    background-color: #008f76;
+}
+
+#thank-you-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.footer-text {
+    color: #333;
+}
+
+.footer-text .heart {
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 20%, 50%, 80%, 100% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(1.2);
+    }
+}
