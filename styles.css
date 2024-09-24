@@ -1,6 +1,11 @@
-/* Oculta el cursor predeterminado */
+/* Cursor personalizado para toda la página */
 body {
-    cursor: none; /* Oculta el cursor del sistema */
+    cursor: url('images/cursor_auto.png') 16 16, auto; /* Se verá en tamaño normal */
+}
+
+/* Cursor personalizado para enlaces (la manito) */
+a {
+    cursor: url('images/cursor_pointer.png') 16 16, pointer; /* Se verá en tamaño normal */
 }
 
 #particles-js {
