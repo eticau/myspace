@@ -1,13 +1,11 @@
 /* Cursor personalizado para toda la página */
 body {
-    cursor: url('images/cursor_auto.png') 16 16, auto; /* Se verá en tamaño normal */
+    cursor: url('https://eticau.github.io/myspace/images/cursor_auto.png'), auto; /* Cursor normal */
 }
 
-/* Cursor personalizado para enlaces (la manito) */
 a {
-    cursor: url('images/cursor_pointer.png') 16 16, pointer; /* Se verá en tamaño normal */
+    cursor: url('https://eticau.github.io/myspace/images/cursor_pointer.png'), pointer; /* Cursor cuando el enlace está sobre un botón o enlace */
 }
-
 #particles-js {
     position: fixed;
     width: 100%;
