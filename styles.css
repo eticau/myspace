@@ -1,3 +1,17 @@
+/* Estilos para el visor de Spline */
+.spline-viewer-section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+spline-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 /* Estilos generales */
 body {
     font-family: 'Roboto', sans-serif;
