@@ -17,12 +17,19 @@ iframe {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 40px; /* Separación entre los visores */
 }
 
 spline-viewer {
     width: 100%;
     height: 100%;
     border: none;
+}
+/* Ajustes opcionales si necesitas reducir la altura en pantallas pequeñas */
+@media (max-width: 768px) {
+    .spline-viewer-section {
+        height: 60vh; /* Reduzco altura en pantallas pequeñas */
+    }
 }
 /* Estilos generales */
 body {
