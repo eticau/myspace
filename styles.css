@@ -1,13 +1,14 @@
-/* Estilo para el visor de Spline que sigue al cursor */
-#cursor-follow {
-    position: fixed;
+#spline-section {
+    position: relative; /* Permite que el spline esté posicionado dentro de esta sección */
+    width: 100%; /* O el tamaño que prefieras */
+    height: 400px; /* Ajusta según sea necesario */
+    overflow: hidden; /* Asegura que no se desborde */
+}
+
+spline-viewer {
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 9999; /* Asegura que esté sobre todo el contenido */
-    pointer-events: none; /* Evita que interfiera con clics y eventos de mouse */
-}
+
 /* Oculta el cursor predeterminado */
 body {
     cursor: none; /* Oculta el cursor del sistema */
