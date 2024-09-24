@@ -1,7 +1,30 @@
-document.addEventListener('mousemove', function(event) {
-    const cursorAnimation = document.getElementById('cursor-animation');
-    cursorAnimation.style.left = event.pageX + 'px';
-    cursorAnimation.style.top = event.pageY + 'px';
+particlesJS('particles-js', {
+    particles: {
+        number: { value: 100 },
+        size: { value: 3 },
+        color: { value: "#00bfa6" },
+        move: { 
+            speed: 6, 
+            attract: { enable: true } 
+        },
+        line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#00bfa6",
+            opacity: 0.5,
+            width: 1
+        }
+    },
+    interactivity: {
+        events: {
+            onhover: { enable: true, mode: 'repulse' },
+            onclick: { enable: true, mode: 'push' }
+        },
+        modes: {
+            repulse: { distance: 100 },
+            push: { particles_nb: 4 }
+        }
+    }
 });
 
 document.addEventListener('DOMContentLoaded', function () {
