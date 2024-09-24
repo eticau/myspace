@@ -1,3 +1,13 @@
+/* Estilo para el visor de Spline que sigue al cursor */
+#cursor-follow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999; /* Asegura que esté sobre todo el contenido */
+    pointer-events: none; /* Evita que interfiera con clics y eventos de mouse */
+}
 /* Oculta el cursor predeterminado */
 body {
     cursor: none; /* Oculta el cursor del sistema */
