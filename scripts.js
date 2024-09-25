@@ -1,3 +1,179 @@
+const { useState, useReducer, useContext, useEffect, createContext } = React;
+const {render} = ReactDOM;
+ 
+// Context
+const actions = {
+  increment: "INCREMENT_CURRENT",
+  decrement: "DECREMENT_CURRENT",
+  reset: "RESET_CURRENT",
+  changeSession: "CHANGE_SESSION",
+};
+
+const initialContext = {
+  current: "work",
+  work: {
+    name: "work",
+    initialTime: 1500,
+    timeLeft: 1500
+  },
+  break: {
+    name: "break",
+    initialTime: 300,
+    timeLeft: 300
+  }
+};
+
+const reducer = (state, action) => {
+  const { current } = state;
+  let result;
+
+  switch (action.type) {
+    case actions.increment:
+      result = state[current].timeLeft + action.payload;
+      return {
+        ...state,
+        [current]: {
+          ...state[current],
+          timeLeft: result > 3600 ? 3600 : state[current].timeLeft + action.payload
+        }
+      };
+    case actions.decrement:
+      result = state[current].timeLeft - action.payload;
+      return {
+        ...state,
+        [current]: {
+          ...state[current],
+          timeLeft: result <= 0 ? 0 : state[current].timeLeft - action.payload
+        }
+      };
+    case actions.reset:
+      return {
+        ...state,
+        [current]: {
+          ...state[current],
+          timeLeft: state[current].initialTime
+        }
+      };
+    case actions.changeSession:
+      return {
+        ...state,
+        current: current === "work" ? "break" : "work"
+      };
+    default:
+      return {
+        ...state
+      };
+  }
+};
+
+const Context = createContext(initialContext);
+
+const ContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialContext);
+
+  return (
+    <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
+  );
+};
+
+// App
+const formatTime = time => {
+  const mins = String(Math.floor(time / 60)).padStart(2, "0");
+  const secs = String(Math.ceil(time - mins * 60)).padStart(2, "0");
+  return { mins, secs };
+};
+
+const TimeLeft = ({ timeLeft }) => {
+  const { mins, secs } = formatTime(timeLeft);
+  return <p className="timer__time">{`${mins}:${secs}`}</p>;
+};
+
+const TimerPad = ({ active, setActive }) => {
+  const { state, dispatch } = useContext(Context);
+
+  return (
+    <div className="timer__pad">
+      <button
+        type="button"
+                className={`btn ${active ? 'btn-red' : null} pad__start`}
+        onClick={() => setActive(!active)}
+      >
+        {active ? "Stop" : "Start"}
+      </button>
+      <button
+        type="button"
+        className="btn pad__plus-five"
+        onClick={() => dispatch({ type: actions.increment, payload: 300 })}
+      >
+        +5
+      </button>
+      <button
+        type="button"
+        className="btn pad__minus-five"
+        onClick={() => dispatch({ type: actions.decrement, payload: 300 })}
+      >
+        -5
+      </button>
+      <button
+        type="button"
+        className="btn pad__reset"
+        onClick={() => {
+          setActive(false);
+          dispatch({ type: actions.reset });
+        }}
+      >
+        Reset
+      </button>
+      <button
+        type="button"
+        className="btn pad__change"
+        onClick={() => {
+          setActive(false);
+          dispatch({ type: actions.changeSession });
+        }}
+      >
+        Change
+      </button>
+    </div>
+  );
+};
+
+const Timer = () => {
+  const { state, dispatch } = useContext(Context);
+  const [isActive, setIsActive] = useState(false);
+
+  const { current } = state;
+
+  useEffect(() => {
+    let interval = undefined;
+    if (!isActive) return;
+
+    interval = setInterval(
+      () => dispatch({ type: actions.decrement, payload: 1 }),
+      1000
+    );
+    return () => clearInterval(interval);
+  }, [state[current].timeLeft, isActive]);
+
+  return (
+    <div>
+      <div className="timer__card">
+        <p className="timer__current">{current}</p>
+        <TimeLeft timeLeft={state[current].timeLeft} />
+      </div>
+      <TimerPad active={isActive} setActive={setIsActive} />
+    </div>
+  );
+};
+
+const app = document.getElementById("app");
+render(
+  <ContextProvider>
+    <Timer />
+  </ContextProvider>,
+  app
+);
+
 const pauseIcon =
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"  height="24" color="#000000" fill="none"> <path d="M4 7C4 5.58579 4 4.87868 4.43934 4.43934C4.87868 4 5.58579 4 7 4C8.41421 4 9.12132 4 9.56066 4.43934C10 4.87868 10 5.58579 10 7V17C10 18.4142 10 19.1213 9.56066 19.5607C9.12132 20 8.41421 20 7 20C5.58579 20 4.87868 20 4.43934 19.5607C4 19.1213 4 18.4142 4 17V7Z" stroke="currentColor" stroke-width="1.5" /> <path d="M14 7C14 5.58579 14 4.87868 14.4393 4.43934C14.8787 4 15.5858 4 17 4C18.4142 4 19.1213 4 19.5607 4.43934C20 4.87868 20 5.58579 20 7V17C20 18.4142 20 19.1213 19.5607 19.5607C19.1213 20 18.4142 20 17 20C15.5858 20 14.8787 20 14.4393 19.5607C14 19.1213 14 18.4142 14 17V7Z" stroke="currentColor" stroke-width="1.5" /></svg>';
 const startIcon =
