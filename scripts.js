@@ -1,8 +1,29 @@
+document.addEventListener("DOMContentLoaded", function() {
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    var isAndroid = /Android/.test(navigator.userAgent);
+
+    if (isIOS) {
+        document.querySelectorAll('.spline-ios').forEach(function(iosViewer) {
+            iosViewer.style.display = 'block';
+        });
+        document.querySelectorAll('spline-viewer').forEach(function(viewer) {
+            viewer.style.display = 'none';
+        });
+    } else if (isAndroid) {
+        document.querySelectorAll('.spline-android').forEach(function(androidViewer) {
+            androidViewer.style.display = 'block';
+        });
+        document.querySelectorAll('spline-viewer').forEach(function(viewer) {
+            viewer.style.display = 'none';
+        });
+    }
+});
+
 particlesJS('particles-js', {
     particles: {
         number: { value: 100 },
         size: { value: 3 },
-        color: { value: "#00bfa6" },
+        color: { value: "#000000" },
         move: { 
             speed: 6, 
             attract: { enable: true } 
@@ -10,7 +31,7 @@ particlesJS('particles-js', {
         line_linked: {
             enable: true,
             distance: 150,
-            color: "#00bfa6",
+            color: "#000000",
             opacity: 0.5,
             width: 1
         }
