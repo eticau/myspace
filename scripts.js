@@ -1,24 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    var isAndroid = /Android/.test(navigator.userAgent);
-
-    if (isIOS) {
-        document.querySelectorAll('.spline-ios').forEach(function(iosViewer) {
-            iosViewer.style.display = 'block';
-        });
-        document.querySelectorAll('spline-viewer').forEach(function(viewer) {
-            viewer.style.display = 'none';
-        });
-    } else if (isAndroid) {
-        document.querySelectorAll('.spline-android').forEach(function(androidViewer) {
-            androidViewer.style.display = 'block';
-        });
-        document.querySelectorAll('spline-viewer').forEach(function(viewer) {
-            viewer.style.display = 'none';
-        });
-    }
-});
-
 particlesJS('particles-js', {
     particles: {
         number: { value: 100 },
