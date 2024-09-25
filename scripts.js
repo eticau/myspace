@@ -1,3 +1,28 @@
+    document.addEventListener("DOMContentLoaded", function() {
+        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        var isAndroid = /Android/.test(navigator.userAgent);
+
+        if (isIOS) {
+            document.querySelectorAll('.spline-ios').forEach(function(iosViewer) {
+                iosViewer.style.display = 'block'; // Muestra el iframe de iOS
+            });
+            document.querySelectorAll('spline-viewer').forEach(function(viewer) {
+                viewer.style.display = 'none'; // Oculta el visor de escritorio
+            });
+        } else if (isAndroid) {
+            document.querySelectorAll('.spline-android').forEach(function(androidViewer) {
+                androidViewer.style.display = 'block'; // Muestra el iframe de Android
+            });
+            document.querySelectorAll('spline-viewer').forEach(function(viewer) {
+                viewer.style.display = 'none'; // Oculta el visor de escritorio
+            });
+        } else {
+            // Muestra el visor de escritorio si no es iOS ni Android
+            document.querySelectorAll('spline-viewer').forEach(function(viewer) {
+                viewer.style.display = 'block';
+            });
+        }
+    });
 particlesJS('particles-js', {
     particles: {
         number: { value: 100 },
