@@ -2,18 +2,18 @@ html, body {
     padding: 0;
     margin: 0;
     overscroll-behavior: none; /* Evita la inercia de scroll */
-    overflow: hidden; /* Elimina el scroll */
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden; /* Evita el scroll horizontal, pero permite el vertical */
 }
 
 canvas {
-    position: absolute;
+    position: fixed; /* Fija el canvas en el fondo de la ventana */
     top: 0;
     left: 0;
     width: 100vw; /* Asegura que el canvas cubra el ancho completo */
     height: 100vh; /* Asegura que el canvas cubra el alto completo */
-    z-index: -1; /* Coloca el canvas detrás de otros elementos */
+    z-index: -1; /* Coloca el canvas detrás de todos los demás elementos */
 }
 
 #particles-js {
