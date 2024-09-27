@@ -4,17 +4,19 @@ html, body {
     overscroll-behavior: none; /* Evita la inercia de scroll */
     width: 100vw;
     height: 100vh;
-    overflow-x: hidden; /* Evita el scroll horizontal, pero permite el vertical */
+    overflow-x: hidden; /* Permite scroll vertical pero no horizontal */
 }
 
 canvas {
-    position: fixed; /* Fija el canvas en el fondo de la ventana */
+    position: fixed; /* Fija el canvas para que siempre esté visible */
     top: 0;
     left: 0;
-    width: 100vw; /* Asegura que el canvas cubra el ancho completo */
-    height: 100vh; /* Asegura que el canvas cubra el alto completo */
-    z-index: -1; /* Coloca el canvas detrás de todos los demás elementos */
+    width: 100vw; /* El canvas cubre todo el ancho de la ventana */
+    height: 100vh; /* El canvas cubre todo el alto de la ventana */
+    z-index: 9999; /* Asegura que esté por encima de todo el contenido */
+    pointer-events: none; /* Permite hacer clic a través del canvas */
 }
+
 
 #particles-js {
     position: fixed;
