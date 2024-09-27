@@ -1,3 +1,19 @@
+(function() {
+  // Inicializa EmailJS con la Public Key
+  emailjs.init("3moVSUz7NDcZAn6QB");
+})();
+
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();  // Evita que el formulario se envíe de manera tradicional
+
+  // Envía los datos del formulario usando EmailJS
+  emailjs.sendForm('service_lixjepc', 'template_4wrbzhu', this)
+    .then(function() {
+      alert('Mensaje enviado correctamente');
+    }, function(error) {
+      alert('Error al enviar el mensaje: ' + JSON.stringify(error));
+    });
+});
 particlesJS('particles-js', {
     particles: {
         number: { value: 100 },
