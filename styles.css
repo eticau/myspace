@@ -44,7 +44,8 @@ li::after {
     position: absolute;
     width: 200%;
     height: 200%;
-    transform: scale(2) translate(var(--tl));
+    transform-origin: center center;
+    transform: translate(var(--tl)) scale(2);
 }
 
 /* Custom positioning for each circle to simulate spiral */
