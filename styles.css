@@ -3,6 +3,13 @@
     cursor: none; /* Oculta el cursor del sistema */
 }
 
+body, html {
+    padding: 0;
+    margin: 0;
+	 overscroll-behavior: none;
+	 overflow: hidden;
+}
+
 #particles-js {
     position: fixed;
     width: 100%;
