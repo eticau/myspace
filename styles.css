@@ -1,5 +1,5 @@
 /* Oculta el cursor predeterminado */
-body {
+.spline-viewer-section {
     cursor: none; /* Oculta el cursor del sistema */
 }
 
