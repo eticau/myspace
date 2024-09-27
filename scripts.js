@@ -68,7 +68,7 @@ particlesJS('particles-js', {
         line_linked: {
             enable: true,
             distance: 150,
-            color: "#00bfa6",
+            color: "#000000",
             opacity: 0.5,
             width: 1
         }
@@ -101,26 +101,49 @@ document.addEventListener('DOMContentLoaded', function () {
     const marker = L.marker([-32.96180, -60.65878]).addTo(map);
     marker.bindPopup("<b>Hola!</b><br>Este es un marcador.").openPopup();
 
-    // Manejo del cambio de tema
+document.addEventListener('DOMContentLoaded', function () {
     const themeToggle = document.getElementById('theme-toggle');
+    const languageToggle = document.getElementById('language-toggle');
+
+    // Guardar en localStorage las preferencias de tema e idioma
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const savedLang = localStorage.getItem('lang') || 'en';
+
+    // Aplicar tema guardado
+    document.body.classList.toggle('dark-mode', savedTheme === 'dark');
+    themeToggle.querySelector('img').src = savedTheme === 'dark' ? 'images/sun_icon.png' : 'images/moon_icon.png';
+
+    // Aplicar idioma guardado
+    updateLanguage(savedLang);
+    languageToggle.setAttribute('data-lang', savedLang);
+    languageToggle.querySelector('img').src = savedLang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
+
+    // Cambiar tema
     themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        themeToggle.querySelector('img').src = document.body.classList.contains('dark-mode') ? 'images/sun_icon.png' : 'images/moon_icon.png';
+        const isDarkMode = document.body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        themeToggle.querySelector('img').src = isDarkMode ? 'images/sun_icon.png' : 'images/moon_icon.png';
     });
 
-    // Manejo del cambio de idioma
-    const languageToggle = document.getElementById('language-toggle');
+    // Cambiar idioma
     languageToggle.addEventListener('click', () => {
-        const lang = languageToggle.getAttribute('data-lang');
-        const newLang = lang === 'en' ? 'es' : 'en';
+        const currentLang = languageToggle.getAttribute('data-lang');
+        const newLang = currentLang === 'en' ? 'es' : 'en';
+        updateLanguage(newLang);
+        localStorage.setItem('lang', newLang);
         languageToggle.setAttribute('data-lang', newLang);
-
-        document.querySelectorAll('[data-en]').forEach(el => {
-            el.textContent = newLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
-        });
-
         languageToggle.querySelector('img').src = newLang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
     });
+
+    // Función para actualizar el idioma
+    function updateLanguage(lang) {
+        document.querySelectorAll('[data-en]').forEach(el => {
+            el.textContent = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+        });
+    }
+});
+
+    
   document.addEventListener('DOMContentLoaded', function () {
     const themeToggle = document.getElementById('theme-toggle');
     const languageToggle = document.getElementById('language-toggle');
