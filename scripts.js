@@ -80,34 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         languageToggle.querySelector('img').src = newLang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
     });
 
-    // Manejo del envío del formulario
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // Previene el comportamiento por defecto del formulario
 
-        const formData = new FormData(contactForm);
-        emailjs.sendForm('service_lixjepc', 'template_4wrbzhu', formData)
-            .then(response => {
-                document.getElementById('form-status').textContent = "Message sent successfully!";
-                document.getElementById('thank-you-modal').style.display = 'block';
-                document.getElementById('thank-you-overlay').style.display = 'block';
-                contactForm.reset();
-            }, error => {
-                document.getElementById('form-status').textContent = "Failed to send message. Please try again.";
-            });
-    });
-
-    // Cierra el modal de agradecimiento
-    document.getElementById('close-thank-you').addEventListener('click', function () {
-        document.getElementById('thank-you-modal').style.display = 'none';
-        document.getElementById('thank-you-overlay').style.display = 'none';
-    });
-
-    // Cerrar modal al hacer clic fuera
-    document.getElementById('thank-you-overlay').addEventListener('click', function () {
-        document.getElementById('thank-you-modal').style.display = 'none';
-        this.style.display = 'none';
-    });
 
     // Inicializa AOS (Animate On Scroll)
     AOS.init();
