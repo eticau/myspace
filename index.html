@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Etienne Cautures</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> <!-- AOS Animations -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init("3moVSUz7NDcZAn6QB");
-        })();
-    </script>
+    
     <!-- Spline Viewer -->
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.27/build/spline-viewer.js"></script>
 </head>
@@ -151,24 +147,21 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="section contact" data-aos="fade-right" data-aos-duration="1000">
-            <h2 data-en="Let's work together" data-es="Trabajemos juntos">Let's work together</h2>
-            <form id="contact-form">
-                <input type="text" name="name" id="name" placeholder="Your Name" required>
-                <input type="email" name="email" id="email" placeholder="Your Email" required>
-                <textarea name="message" id="message" placeholder="Your Message" required></textarea>
-                <button type="submit" class="submit-btn">Send</button>
-            </form>
-            <p id="form-status"></p>
-        </section>
+         <div class="contact-container">
+    <h2>Contáctame</h2>
+    <form id="contact-form">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="user_name" placeholder="Tu nombre" required>
 
-        <!-- Modal de Agradecimiento -->
-        <div id="thank-you-overlay"></div>
-        <div id="thank-you-modal">
-            <h3>Thank you for your message!</h3>
-            <p>Your message has been sent successfully. I'll get back to you soon!</p>
-            <button id="close-thank-you">Close</button>
-        </div>
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="user_email" placeholder="Tu correo electrónico" required>
+
+      <label for="message">Mensaje:</label>
+      <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí" required></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
 
 <section id="contacto">
     <h1>I'm here</h1>
@@ -204,6 +197,7 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <div id="particles-js"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
     <!-- Custom Scripts -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="scripts.js"></script>
