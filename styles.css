@@ -1,9 +1,3 @@
-/* Oculta el cursor predeterminado */
-.spline-viewer-section {
-    cursor: none; /* Oculta el cursor del sistema */
-}
-
-
 #particles-js {
     position: fixed;
     width: 100%;
@@ -26,27 +20,7 @@ iframe {
     max-width: 600px; /* Ancho máximo */
     height: 450px; /* Altura del mapa */
 }
-/* Estilos para el visor de Spline */
-.spline-viewer-section {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1px; /* Separación entre los visores */
-}
 
-spline-viewer {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-/* Ajustes opcionales si necesitas reducir la altura en pantallas pequeñas */
-@media (max-width: 768px) {
-    .spline-viewer-section {
-        height: 60vh; /* Reduzco altura en pantallas pequeñas */
-    }
-}
 /* Estilos generales */
 body {
     font-family: 'Roboto', sans-serif;
