@@ -1,3 +1,45 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const spline1WebURL = "https://prod.spline.design/qmlxheMFgqBtMZfa/scene.splinecode";
+    const spline2WebURL = "https://prod.spline.design/CQww0MEQ2qTO63gp/scene.splinecode";
+
+    const spline1iOSURL = "https://build.spline.design/Qv93ieky7C9vfdCz62FU/scene.splineswift";
+    const spline2iOSURL = "https://build.spline.design/jblHEs5Hno6WF5GCcvat/scene.splineswift";
+
+    const spline1AndroidURL = "https://build.spline.design/Qv93ieky7C9vfdCz62FU/scene.splinecontent";
+    const spline2AndroidURL = "https://build.spline.design/jblHEs5Hno6WF5GCcvat/scene.splinecontent";
+
+    function detectPlatform() {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        if (/android/i.test(userAgent)) {
+            return "android";
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            return "ios";
+        } else {
+            return "web";
+        }
+    }
+
+    function loadSplineViewers() {
+        const platform = detectPlatform();
+        
+        const splineViewer1 = document.getElementById('spline-viewer-1');
+        const splineViewer2 = document.getElementById('spline-viewer-2');
+        
+        if (platform === "android") {
+            splineViewer1.setAttribute("url", spline1AndroidURL);
+            splineViewer2.setAttribute("url", spline2AndroidURL);
+        } else if (platform === "ios") {
+            splineViewer1.setAttribute("url", spline1iOSURL);
+            splineViewer2.setAttribute("url", spline2iOSURL);
+        } else {
+            splineViewer1.setAttribute("url", spline1WebURL);
+            splineViewer2.setAttribute("url", spline2WebURL);
+        }
+    }
+
+    loadSplineViewers();
+
+
 (function() {
   // Inicializa EmailJS con la Public Key
   emailjs.init("3moVSUz7NDcZAn6QB");
@@ -79,7 +121,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
         languageToggle.querySelector('img').src = newLang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
     });
+  document.addEventListener('DOMContentLoaded', function () {
+    const themeToggle = document.getElementById('theme-toggle');
+    const languageToggle = document.getElementById('language-toggle');
 
+    // Aplicar las preferencias guardadas
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.classList.toggle('dark-mode', savedTheme === 'dark');
+        themeToggle.querySelector('img').src = savedTheme === 'dark' ? 'images/sun_icon.png' : 'images/moon_icon.png';
+    }
+
+    const savedLang = localStorage.getItem('lang') || 'en';
+    languageToggle.setAttribute('data-lang', savedLang);
+    updateLanguage(savedLang);
+
+    // Guardar la preferencia de tema
+    themeToggle.addEventListener('click', () => {
+        const isDarkMode = document.body.classList.toggle('dark-mode');
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        themeToggle.querySelector('img').src = isDarkMode ? 'images/sun_icon.png' : 'images/moon_icon.png';
+    });
+
+    // Guardar la preferencia de idioma
+    languageToggle.addEventListener('click', () => {
+        const lang = languageToggle.getAttribute('data-lang');
+        const newLang = lang === 'en' ? 'es' : 'en';
+        localStorage.setItem('lang', newLang);
+        languageToggle.setAttribute('data-lang', newLang);
+        updateLanguage(newLang);
+    });
+
+    function updateLanguage(lang) {
+        document.querySelectorAll('[data-en]').forEach(el => {
+            el.textContent = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+        });
+        languageToggle.querySelector('img').src = lang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
+    }
+});
 
 
     // Inicializa AOS (Animate On Scroll)
