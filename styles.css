@@ -1,238 +1,462 @@
-const canvas = document.querySelector("canvas");
-const ctx = canvas.getContext('2d');
-
-// for intro motion
-let mouseMoved = false;
-
-const pointer = {
-    x: .5 * window.innerWidth,
-    y: .5 * window.innerHeight,
-}
-const params = {
-    pointsNumber: 40,
-    widthFactor: .3,
-    mouseThreshold: .6,
-    spring: .4,
-    friction: .5
-};
-
-const trail = new Array(params.pointsNumber);
-for (let i = 0; i < params.pointsNumber; i++) {
-    trail[i] = {
-        x: pointer.x,
-        y: pointer.y,
-        dx: 0,
-        dy: 0,
-    }
+/* Estilos del body para toda la página */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
 }
 
-window.addEventListener("click", e => {
-    updateMousePosition(e.pageX, e.pageY);
-});
-window.addEventListener("mousemove", e => {
-    mouseMoved = true;
-    updateMousePosition(e.pageX, e.pageY);
-});
-window.addEventListener("touchmove", e => {
-    mouseMoved = true;
-    updateMousePosition(e.targetTouches[0].pageX, e.targetTouches[0].pageY);
-});
-
-function updateMousePosition(eX, eY) {
-    pointer.x = eX;
-    pointer.y = eY;
+/* Fondo de la primera sección */
+#background-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-setupCanvas();
-update(0);
-window.addEventListener("resize", setupCanvas);
-
-
-function update(t) {
-
-    // for intro motion
-    if (!mouseMoved) {
-        pointer.x = (.5 + .3 * Math.cos(.002 * t) * (Math.sin(.005 * t))) * window.innerWidth;
-        pointer.y = (.5 + .2 * (Math.cos(.005 * t)) + .1 * Math.cos(.01 * t)) * window.innerHeight;
-    }
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    trail.forEach((p, pIdx) => {
-        const prev = pIdx === 0 ? pointer : trail[pIdx - 1];
-        const spring = pIdx === 0 ? .4 * params.spring : params.spring;
-        p.dx += (prev.x - p.x) * spring;
-        p.dy += (prev.y - p.y) * spring;
-        p.dx *= params.friction;
-        p.dy *= params.friction;
-        p.x += p.dx;
-        p.y += p.dy;
-    });
-
-    ctx.lineCap = "round";
-	 ctx.beginPath();
-    ctx.moveTo(trail[0].x, trail[0].y);
-
-    for (let i = 1; i < trail.length - 1; i++) {
-        const xc = .5 * (trail[i].x + trail[i + 1].x);
-        const yc = .5 * (trail[i].y + trail[i + 1].y);
-        ctx.quadraticCurveTo(trail[i].x, trail[i].y, xc, yc);
-        ctx.lineWidth = params.widthFactor * (params.pointsNumber - i);
-        ctx.stroke();
-    }
-    ctx.lineTo(trail[trail.length - 1].x, trail[trail.length - 1].y);
-    ctx.stroke();
-    
-    window.requestAnimationFrame(update);
+ol {
+    all: unset;
+    display: grid;
+    grid-template-columns: repeat(34, 1fr);
+    grid-template-rows: repeat(21, 1fr);
+    list-style: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
-function setupCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+li {
+    background: var(--bg);
+    grid-area: var(--ga);
+    overflow: hidden;
+    position: relative;
 }
-(function() {
-  // Inicializa EmailJS con la Public Key
-  emailjs.init("3moVSUz7NDcZAn6QB");
-})();
 
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-  event.preventDefault();  // Evita que el formulario se envíe de manera tradicional
+li::after {
+    content: '';
+    display: block;
+    background-color: var(--bg);
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -100%;
+    left: -100%;
+    transform: var(--transform);
+}
 
-  // Envía los datos del formulario usando EmailJS
-  emailjs.sendForm('service_lixjepc', 'template_4wrbzhu', this)
-    .then(function() {
-      alert('Mensaje enviado correctamente');
-    }, function(error) {
-      alert('Error al enviar el mensaje: ' + JSON.stringify(error));
-    });
-});
-particlesJS('particles-js', {
-    particles: {
-        number: { value: 100 },
-        size: { value: 3 },
-        color: { value: "#00bfa6" },
-        move: { 
-            speed: 6, 
-            attract: { enable: true } 
-        },
-        line_linked: {
-            enable: true,
-            distance: 150,
-            color: "#000000",
-            opacity: 0.5,
-            width: 1
-        }
-    },
-    interactivity: {
-        events: {
-            onhover: { enable: true, mode: 'repulse' },
-            onclick: { enable: true, mode: 'push' }
-        },
-        modes: {
-            repulse: { distance: 100 },
-            push: { particles_nb: 4 }
-        }
+/* Ajustamos los colores, posiciones y rotaciones de los cuartos de círculo */
+li:nth-of-type(1) {
+    --bg: #e47a2c;
+    --ga: 1 / 1 / 22 / 22;
+    --transform: rotate(0deg);
+}
+li:nth-of-type(2) {
+    --bg: #baccc0;
+    --ga: 1 / 22 / 23 / 35;
+    --transform: rotate(90deg);
+}
+li:nth-of-type(3) {
+    --bg: #6c958f;
+    --ga: 14 / 27 / 22 / 35;
+    --transform: rotate(180deg);
+}
+li:nth-of-type(4) {
+    --bg: #40363f;
+    --ga: 17 / 22 / 22 / 27;
+    --transform: rotate(270deg);
+}
+li:nth-of-type(5) {
+    --bg: #d7a26c;
+    --ga: 14 / 22 / 17 / 25;
+    --transform: rotate(0deg);
+}
+li:nth-of-type(6) {
+    --bg: #ae4935;
+    --ga: 14 / 25 / 17 / 27;
+    --transform: rotate(90deg);
+}
+li:nth-of-type(7) {
+    --bg: #e47a2c;
+    --ga: 16 / 26 / 17 / 27;
+    --transform: rotate(180deg);
+}
+li:nth-of-type(8) {
+    --bg: #f7e6d4;
+    --ga: 16 / 25 / 17 / 26;
+    --transform: rotate(270deg);
+}
+
+/* Estilos del texto encima del fondo */
+.text-container {
+    position: relative; /* Mantén el texto encima */
+    z-index: 2; /* Asegúrate de que esté por encima del fondo */
+    text-align: center;
+    color: white; /* Color del texto */
+}
+
+.text-container h1 {
+    font-size: 3rem;
+    margin: 0 0 20px 0;
+}
+
+.text-container p {
+    font-size: 1.5rem;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    overscroll-behavior: none; /* Evita la inercia de scroll */
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden; /* Permite scroll vertical pero no horizontal */
+}
+
+canvas {
+    position: fixed; /* Fija el canvas para que siempre esté visible */
+    top: 0;
+    left: 0;
+    width: 100vw; /* El canvas cubre todo el ancho de la ventana */
+    height: 100vh; /* El canvas cubre todo el alto de la ventana */
+    z-index: 9999; /* Asegura que esté por encima de todo el contenido */
+    pointer-events: none; /* Permite hacer clic a través del canvas */
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Asegura que las partículas estén detrás de los otros elementos */
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Evita que las partículas bloqueen la interacción */
+}
+
+#contacto {
+    text-align: center; /* Centrar el contenido */
+    margin: 20px; /* Margen alrededor de la sección */
+}
+
+iframe {
+    border: 2px solid #ccc; /* Borde alrededor del mapa */
+    border-radius: 8px; /* Bordes redondeados */
+    width: 100%; /* Ancho completo en pantallas más pequeñas */
+    max-width: 600px; /* Ancho máximo */
+    height: 450px; /* Altura del mapa */
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+    color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    color: #fff;
+}
+
+/* Ajuste de sección "About Me" en modo oscuro */
+body.dark-mode .about-me {
+    background-color: #444;
+    color: #fff;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: 0 auto;
+    border: 2px solid #00bfa6;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode header {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    color: #fff;
+}
+
+header nav a {
+    margin-right: 20px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode header nav a {
+    color: #fff;
+}
+
+header nav a:hover {
+    color: #00bfa6;
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Botones de tema e idioma con iconos */
+.controls {
+    display: flex;
+    gap: 10px;
+}
+
+.theme-toggle img,
+.language-toggle img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* Imagen de perfil */
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #00bfa6;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedor del perfil */
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-text {
+    margin-left: 20px;
+}
+
+h1 .highlight {
+    color: #00bfa6;
+}
+
+ul.details {
+    list-style-type: none;
+    padding: 0;
+}
+
+.wrapper {
+    margin-top: 2rem;
+    width: 90%;
+    max-width: 1536px;
+    margin-inline: auto;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 1) 20%,
+        rgba(0, 0, 0, 1) 80%,
+        rgba(0, 0, 0, 0)
+    );
+}
+
+@keyframes scrollLeft {
+    to {
+        left: -200px;
     }
-});
+}
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Inicializa EmailJS con tu Public Key
-    emailjs.init("3moVSUz7NDcZAn6QB");
-
-    // Inicialización del mapa usando las coordenadas correctas
-    const map = L.map('map').setView([-32.96180, -60.65878], 10); // Coordenadas de Rosario, Argentina
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap'
-    }).addTo(map);
-
-    // Puedes agregar un marcador
-    const marker = L.marker([-32.96180, -60.65878]).addTo(map);
-    marker.bindPopup("<b>Hola!</b><br>Este es un marcador.").openPopup();
-
-document.addEventListener('DOMContentLoaded', function () {
-    const themeToggle = document.getElementById('theme-toggle');
-    const languageToggle = document.getElementById('language-toggle');
-
-    // Guardar en localStorage las preferencias de tema e idioma
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    const savedLang = localStorage.getItem('lang') || 'en';
-
-    // Aplicar tema guardado
-    document.body.classList.toggle('dark-mode', savedTheme === 'dark');
-    themeToggle.querySelector('img').src = savedTheme === 'dark' ? 'images/sun_icon.png' : 'images/moon_icon.png';
-
-    // Aplicar idioma guardado
-    updateLanguage(savedLang);
-    languageToggle.setAttribute('data-lang', savedLang);
-    languageToggle.querySelector('img').src = savedLang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
-
-    // Cambiar tema
-    themeToggle.addEventListener('click', () => {
-        const isDarkMode = document.body.classList.toggle('dark-mode');
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        themeToggle.querySelector('img').src = isDarkMode ? 'images/sun_icon.png' : 'images/moon_icon.png';
-    });
-
-    // Cambiar idioma
-    languageToggle.addEventListener('click', () => {
-        const currentLang = languageToggle.getAttribute('data-lang');
-        const newLang = currentLang === 'en' ? 'es' : 'en';
-        updateLanguage(newLang);
-        localStorage.setItem('lang', newLang);
-        languageToggle.setAttribute('data-lang', newLang);
-        languageToggle.querySelector('img').src = newLang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
-    });
-
-    // Función para actualizar el idioma
-    function updateLanguage(lang) {
-        document.querySelectorAll('[data-en]').forEach(el => {
-            el.textContent = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
-        });
+@keyframes scrollRight {
+    to {
+        right: -200px;
     }
-});
+}
 
-    
-  document.addEventListener('DOMContentLoaded', function () {
-    const themeToggle = document.getElementById('theme-toggle');
-    const languageToggle = document.getElementById('language-toggle');
+.itemLeft,
+.itemRight {
+    width: 50px; /* Ajustamos el ancho del ícono */
+    height: 50px; /* Ajustamos la altura del ícono */
+    position: absolute;
+    animation-timing-function: linear;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+}
+.itemLeft a,
+.itemRight a {
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+.itemLeft img,
+.itemRight img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain; /* Para que el ícono se ajuste bien */
+}
 
-    // Aplicar las preferencias guardadas
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.body.classList.toggle('dark-mode', savedTheme === 'dark');
-        themeToggle.querySelector('img').src = savedTheme === 'dark' ? 'images/sun_icon.png' : 'images/moon_icon.png';
+.itemLeft {
+    left: max(calc(100px * 8), 100%);
+    animation-name: scrollLeft;
+}
+
+.itemRight {
+    right: max(calc(100px * 8), calc(100% + 100px));
+    animation-name: scrollRight;
+}
+
+/* Ajustamos los retrasos de animación para sincronizarlos correctamente */
+.item1 { animation-delay: calc(30s / 8 * (8 - 1) * -1); }
+.item2 { animation-delay: calc(30s / 8 * (8 - 2) * -1); }
+.item3 { animation-delay: calc(30s / 8 * (8 - 3) * -1); }
+.item4 { animation-delay: calc(30s / 8 * (8 - 4) * -1); }
+.item5 { animation-delay: calc(30s / 8 * (8 - 5) * -1); }
+.item6 { animation-delay: calc(30s / 8 * (8 - 6) * -1); }
+.item7 { animation-delay: calc(30s / 8 * (8 - 7) * -1); }
+.item8 { animation-delay: calc(30s / 8 * (8 - 8) * -1); }
+
+/* Sección About Me */
+.about-me {
+    background: #f8f9fa;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.about-me h2 {
+    font-size: 28px;
+    color: #00bfa6;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.about-me p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.about-me .highlight {
+    color: #00bfa6;
+}
+
+/* Contenedor de la sección de contacto */
+.contact-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 50px auto; /* Centramos el formulario */
+  text-align: center; /* Centramos el contenido */
+}
+
+/* Título de la sección */
+.contact-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #00bfa6; /* Cambiamos color para que coincida con el tema */
+}
+
+/* Inputs del formulario */
+.contact-container input, .contact-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+.contact-container input:focus, .contact-container textarea:focus {
+  border-color: #00bfa6;
+  outline: none;
+}
+
+/* Botón de envío */
+.contact-container button {
+  background-color: #00bfa6;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-container button:hover {
+  background-color: #008f83;
+}
+
+/* Modo oscuro para la sección de contacto */
+body.dark-mode .contact-container {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode .contact-container input, 
+body.dark-mode .contact-container textarea {
+  background-color: #444;
+  border: 1px solid #666;
+  color: #fff;
+}
+
+body.dark-mode .contact-container input:focus, 
+body.dark-mode .contact-container textarea:focus {
+  border-color: #00bfa6;
+}
+
+
+}
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.footer-text {
+    color: #333;
+}
+
+.footer-text .heart {
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 20%, 50%, 80%, 100% {
+        transform: scale(1);
     }
-
-    const savedLang = localStorage.getItem('lang') || 'en';
-    languageToggle.setAttribute('data-lang', savedLang);
-    updateLanguage(savedLang);
-
-    // Guardar la preferencia de tema
-    themeToggle.addEventListener('click', () => {
-        const isDarkMode = document.body.classList.toggle('dark-mode');
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-        themeToggle.querySelector('img').src = isDarkMode ? 'images/sun_icon.png' : 'images/moon_icon.png';
-    });
-
-    // Guardar la preferencia de idioma
-    languageToggle.addEventListener('click', () => {
-        const lang = languageToggle.getAttribute('data-lang');
-        const newLang = lang === 'en' ? 'es' : 'en';
-        localStorage.setItem('lang', newLang);
-        languageToggle.setAttribute('data-lang', newLang);
-        updateLanguage(newLang);
-    });
-
-    function updateLanguage(lang) {
-        document.querySelectorAll('[data-en]').forEach(el => {
-            el.textContent = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
-        });
-        languageToggle.querySelector('img').src = lang === 'en' ? 'images/united_states_flag.png' : 'images/argentina_flag.png';
+    10% {
+        transform: scale(1.2);
     }
-});
-
-
-    // Inicializa AOS (Animate On Scroll)
-    AOS.init();
-});
+}
