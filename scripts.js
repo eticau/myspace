@@ -44,6 +44,7 @@ move(14.5, 18, 0, 0, 0, 1);
 typing
 https://github.com/daybrush/scenejs-effects
 */
+import { shake, flip, fadeIn, wipeIn } from "@scenejs/effects";
 scene.set({
   "[data-typing='i']": Scene.typing({ text: "I ", duration: 1}),
   "[data-typing='frontend']": {
