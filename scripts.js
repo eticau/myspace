@@ -1,12 +1,13 @@
 /*
 https://github.com/daybrush/scenejs
 */
+
+import Scene from "scenejs";
 const scene = new Scene({
   ".container": {}
 }, {
   selector: true,
 });
-
 const item = scene.getItem(".container");
 
 
