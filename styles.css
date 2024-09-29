@@ -1,3 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
+
+html, body {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Raleway', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.intro-wrapper {
+  position: relative; /* Evita interferencias con el resto */
+  z-index: 10; /* Asegúrate de que esté por encima */
+}
+
+.wrapper {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(20px) scale(1.5);
+  overflow: hidden;
+}
+
+.container {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+}
+
+[data-typing] {
+  position: absolute;
+  top: 0;
+  transform-origin: 0% 0%;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+  top: 100px;
+  line-height: 1;
+  color: #333;
+}
+
+[data-typing="i"] {
+  top: 0;
+  left: 50px;
+  font-size: 90px;
+  height: 70px;
+  line-height: 70px;
+}
+
+[data-typing="frontend"] {
+  top: 3px;
+  left: 80px;
+  font-size: 27px;
+  letter-spacing: 1px;
+}
+
+[data-typing="engineer"] {
+  top: 30px;
+  left: 80px;     
+  font-size: 40px;
+  letter-spacing: 1px;
+}
+
+[data-typing="with"] {
+  top: 74px;
+  left: 265px;
+  font-size: 36px;
+  transform: rotate(90deg);
+  background: #333;
+  color: #fff;
+  padding: 0px 4px;
+}
+
+[data-typing="javascript"],
+[data-typing="typescript"],
+[data-typing="css"],
+[data-typing="nodejs"],
+[data-typing="animation"],
+[data-typing="scenejs"] {
+  font-size: 35px;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+body .scenejs-editor-timeline {
+  position: fixed;
+  bottom: 0;
+  max-height: 300px;
+}
 ol {
   all: unset;
   display: grid;
