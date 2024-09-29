@@ -68,6 +68,7 @@ ol {
 }
 
 html, body {
+    cursor: none;
     padding: 0;
     margin: 0;
     overscroll-behavior: none; /* Evita la inercia de scroll */
@@ -117,7 +118,6 @@ body {
     background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
     color: #333;
     transition: background 0.3s ease, color 0.3s ease;
-    cursor: none;
 
 }
 
