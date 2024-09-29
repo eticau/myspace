@@ -1,85 +1,85 @@
-/*
-https://github.com/daybrush/scenejs
-*/
+const elts = {
+  text1: document.getElementById("text1"),
+  text2: document.getElementById("text2")
+};
 
-import Scene from "scenejs";
-const scene = new Scene({
-  ".container": {}
-}, {
-  selector: true,
-});
-const item = scene.getItem(".container");
+const texts = [
+  "I'am",
+  "Etienne",
+  "Cautures",
+  "Future Engineer",
+  "Geek",
+  "Tech Enthusiast",
+  ":)"
+];
 
+const morphTime = 1;
+const cooldownTime = 0.25;
 
-function move(startTime, endTime, left, top, rotate, scale) {
-  item.set({
-    [`${startTime}, ${endTime}`]: Scene.kineticFrame({
-      left: `${left}px`,
-      top: `${top}px`
-    }).set({
-      transform: {
-        rotate: `${rotate}deg`,
-        scale,
-      }
-    }),
-  });
+let textIndex = texts.length - 1;
+let time = new Date();
+let morph = 0;
+let cooldown = cooldownTime;
+
+elts.text1.textContent = texts[textIndex % texts.length];
+elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+
+function doMorph() {
+  morph -= cooldown;
+  cooldown = 0;
+  
+  let fraction = morph / morphTime;
+  
+  if (fraction > 1) {
+    cooldown = cooldownTime;
+    fraction = 1;
+  }
+  
+  setMorph(fraction);
 }
 
+function setMorph(fraction) {
+  elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+  elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+  
+  fraction = 1 - fraction;
+  elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+  elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+  
+  elts.text1.textContent = texts[textIndex % texts.length];
+  elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+}
 
+function doCooldown() {
+  morph = 0;
+  elts.text2.style.filter = "";
+  elts.text2.style.opacity = "100%";
+  elts.text1.style.filter = "";
+  elts.text1.style.opacity = "0%";
+}
 
-move(0, 0, 90, 115, 0, 5);
-move(1, 1, 90, 115, 0, 2);
-move(2, 3, 0, 115, 0, 1);
-move(4, 4.5, -100, 0, -90, 2);
-move(5.5, 6, -52, -18, -90, 1.6);
-move(7, 7.5, 30, 45, 0, 2);
-move(8.5, 9,  10, 30, 0, 3);
-move(10, 10.5, 28, 0, 0, 2.2);
-move(11.5, 12, 50, -35, 0, 1.65);
-move(13, 13.5, 35, -70, 0, 2);
-move(14.5, 18, 0, 0, 0, 1);
+function animate() {
+  requestAnimationFrame(animate);
+  
+  let newTime = new Date();
+  let shouldIncrementIndex = cooldown > 0;
+  let dt = (newTime - time) / 1000;
+  time = newTime;
+  
+  cooldown -= dt;
+  
+  if (cooldown <= 0) {
+    if (shouldIncrementIndex) {
+      textIndex++;
+    }
+    doMorph();
+  } else {
+    doCooldown();
+  }
+}
 
+animate();
 
-/*
-typing
-https://github.com/daybrush/scenejs-effects
-*/
-import { shake, flip, fadeIn, wipeIn } from "@scenejs/effects";
-scene.set({
-  "[data-typing='i']": Scene.typing({ text: "I ", duration: 1}),
-  "[data-typing='frontend']": {
-    1: Scene.typing({ text: "'m Front-End", duration: 1}),
-  },
-  "[data-typing='engineer']": {
-    1.5: Scene.typing({ text: "Engineer", duration: 1}),
-  },
-  "[data-typing='with']": {
-    3.3: Scene.typing({ text: "with", duration: 0.5}),
-  },
-  "[data-typing='javascript']": {
-    4.5: Scene.typing({ text: "JavaScript", duration: 1}),
-  },
-  "[data-typing='typescript']": {
-    6: Scene.typing({ text: "TypeScript", duration: 1}),
-  },
-  "[data-typing='css']": {
-    7.5: Scene.typing({ text: "CSS", duration: 0.7}),
-  },
-  "[data-typing='nodejs']": {
-    9: Scene.typing({ text: "Node.js", duration: 1}),
-  },
-  "[data-typing='animation']": {
-    10.5: Scene.typing({ text: "Animation", duration: 1}),
-  },
-  "[data-typing='scenejs']": {
-    12: Scene.typing({ text: "Scene.js", duration: 1}),
-  },
-});
-
-scene.setPlaySpeed(1);
-scene.setEasing("ease-in-out");
-scene.setIterationCount("infinite");
-scene.play();
 // Cambiar fondo del header al hacer scroll
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
