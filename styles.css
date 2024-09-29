@@ -1,115 +1,70 @@
-/* Estilos globales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+ol {
+  all: unset;
+  display: grid;
+  grid-template-columns: repeat(34, 1fr);
+  grid-template-rows: repeat(21, 1fr);
+  list-style: none;
 
-html, body {
-    width: 100%;
-    height: 100%;
+  li {
+    aspect-ratio: 1 / 1;
+    background: var(--bg);
+    grid-area: var(--ga);
     overflow: hidden;
-}
-
-#background-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas */
-    grid-template-rows: 1fr 1fr;    /* Dos filas */
-    width: 100vw;
-    height: 100vh;
     position: relative;
-}
 
-/* Sección grande naranja */
-.section-1 {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    background-color: #e47a2c;
-    clip-path: circle(100% at 100% 100%); /* Círculo grande en la esquina inferior derecha */
-}
+    &::after {
+      aspect-ratio: 1 / 1;
+      background-color: rgba(255, 255, 255, .3);
+      border-radius: 50%;
+      content: '';
+      display: block;
+      inset: 0;
+      position: absolute;
+      scale: 2;
+      translate: var(--tl);
+    }
 
-/* Sección grande gris */
-.section-2 {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    background-color: #baccc0;
-    clip-path: circle(100% at 0% 100%); /* Círculo grande en la esquina inferior izquierda */
-}
-
-/* Sección pequeña gris */
-.section-3 {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    background-color: #6c958f;
-    clip-path: circle(50% at 0% 0%); /* Círculo pequeño en la esquina superior izquierda */
-}
-
-/* Sección pequeña marrón oscuro */
-.section-4 {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    background-color: #40363f;
-    clip-path: circle(50% at 100% 0%); /* Círculo pequeño en la esquina superior derecha */
-}
-
-/* Subdivisiones de las secciones pequeñas */
-.sub-section-1 {
-    position: absolute;
-    bottom: 0;
-    right: 50%;
-    width: 15%;
-    height: 15%;
-    background-color: #d7a26c; /* Color beige */
-}
-
-.sub-section-2 {
-    position: absolute;
-    bottom: 0;
-    right: 35%;
-    width: 10%;
-    height: 10%;
-    background-color: #ae4935; /* Color rojizo */
-}
-
-.sub-section-3 {
-    position: absolute;
-    bottom: 0;
-    right: 25%;
-    width: 5%;
-    height: 5%;
-    background-color: #f7e6d4; /* Color crema */
-}
-
-.sub-section-4 {
-    position: absolute;
-    bottom: 0;
-    right: 20%;
-    width: 2.5%;
-    height: 2.5%;
-    background-color: #e47a2c; /* Color naranja */
-}
-
-/* Título de la sección */
-.titulo {
-    position: absolute;
-    color: white;
-    font-size: 3vw;
-    text-align: center;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-}
-
-.intro-text {
-    position: absolute;
-    color: white;
-    font-size: 1.5vw;
-    text-align: center;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
+    &:nth-of-type(1) {
+      --bg: #e47a2c;
+      --ga: 1 / 1 / 22 / 22;
+      --tl: 50% 50%;
+    }
+    &:nth-of-type(2) {
+      --bg: #baccc0 ;
+      --ga: 1 / 22 / 23 / 35;
+      --tl: -50% 50%;
+    }
+    &:nth-of-type(3) {
+      --bg: #6c958f;
+      --ga: 14 / 27 / 22 / 35;
+      --tl: -50% -50%;
+    }
+    &:nth-of-type(4) {
+      --bg: #40363f;
+      --ga: 17 / 22 / 22 / 27;
+      --tl: 50% -50%;
+    }
+    &:nth-of-type(5) {
+      --bg: #d7a26c;
+      --ga: 14 / 22 / 17 / 25;
+      --tl: 50% 50%;
+    }
+    &:nth-of-type(6) {
+      --bg: #ae4935;
+      --ga: 14 / 25 / 17 / 27;
+      --tl: -50% 50%;
+    }
+    &:nth-of-type(7) {
+      --bg: #e47a2c;
+      --ga: 16 / 26 / 17 / 27;
+      --tl: -50% -50%;
+    }
+    &:nth-of-type(8) {
+      --bg: #f7e6d4;
+      --ga: 16 / 25 / 17 / 26;
+      --tl: 50% -50%;
+    }
+  }
 }
 
 html, body {
