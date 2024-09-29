@@ -39,21 +39,20 @@
   <li></li>
   <li></li>
 </ol>
-
-    <div class="wrapper">
-  <div class="container">
-    <a href="https://github.com/daybrush" target="_blank" data-typing="i">I</a>
-    <a href="https://github.com/daybrush" target="_blank" data-typing="frontend">'m Front-End</a>
-    <a href="https://github.com/daybrush" target="_blank" data-typing="engineer">Engineer</a>
-    <p data-typing="with">with</p>
-    <p data-typing="javascript">JavaScript</p>
-    <p data-typing="typescript">TypeScript</p>
-    <p data-typing="css">CSS</p>
-    <p data-typing="nodejs">Node.js</p>
-    <p data-typing="animation">Animation</p>
-    <a href="https://github.com/daybrush/scenejs" target="_blank" data-typing="scenejs">Scene.js</a>
-  </div>
-</div>
+ 
+    <!-- SVG para el filtro de animación -->
+  <svg id="filters">
+    <defs>
+      <filter id="threshold">
+        <feColorMatrix in="SourceGraphic"
+            type="matrix"
+            values="1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    0 0 0 255 -140" />
+      </filter>
+    </defs>
+  </svg>
 
         <!-- Redes sociales separadas en Left y Right -->
        <div class="wrapper">
@@ -207,9 +206,7 @@
     <script>AOS.init();</script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <div id="particles-js"></div>
-    <script src="https://unpkg.com/scenejs@1.1.0/dist/scene.min.js"></script>
-    <script src="https://daybrush.com/scenejs/release/latest/dist/scene.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/scenejs"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
     <!-- Custom Scripts -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
