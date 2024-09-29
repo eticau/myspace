@@ -1,3 +1,13 @@
+// Cambiar fondo del header al hacer scroll
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > window.innerHeight - 55) {
+        header.classList.remove('transparent');
+    } else {
+        header.classList.add('transparent');
+    }
+});
+
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext('2d');
 
@@ -109,7 +119,7 @@ particlesJS('particles-js', {
     particles: {
         number: { value: 100 },
         size: { value: 3 },
-        color: { value: "#00bfa6" },
+        color: { value: "#ffffff" },
         move: { 
             speed: 6, 
             attract: { enable: true } 
@@ -117,7 +127,7 @@ particlesJS('particles-js', {
         line_linked: {
             enable: true,
             distance: 150,
-            color: "#000000",
+            color: "#ffffff",
             opacity: 0.5,
             width: 1
         }
