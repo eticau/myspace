@@ -1,5 +1,5 @@
 const elts = {
-  text1: document.getElementById("text1")
+  text1: document.getElementById("text1"),
 
 };
 
