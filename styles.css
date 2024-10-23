@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
 
 #container {
-  position: fixed; /* Cambiado a 'fixed' para que se mantenga en su lugar al scrollear */
+  position: absolute; 
   width: 100vw;
   height: 80pt;
   top: 0; /* Fijo en la parte superior */
