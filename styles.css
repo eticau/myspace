@@ -14,7 +14,7 @@
   filter: url(#threshold) blur(0.6px);
 }
 
-#text1, #text2 {
+#text1 {
     width: 100%;
   font-family: 'Raleway', sans-serif;
   font-size: 80pt;
