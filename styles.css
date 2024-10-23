@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
 
 #container {
-  position: absolute;
-  margin: auto;
+  position: fixed; /* Cambiado a 'fixed' para que se mantenga en su lugar al scrollear */
   width: 100vw;
   height: 80pt;
-  top: 0;
-  bottom: 0;
+  top: 0; /* Fijo en la parte superior */
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center; /* Centrando horizontalmente */
+  align-items: center; /* Centrando verticalmente dentro del contenedor */
+  z-index: 999; /* Asegura que esté por delante de otros elementos */
   filter: url(#threshold) blur(0.6px);
 }
 
 #text1, #text2 {
-  position: absolute;
-  width: 100%;
-  display: inline-block;
+    width: 100%;
   font-family: 'Raleway', sans-serif;
   font-size: 80pt;
   text-align: center;
