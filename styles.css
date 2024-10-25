@@ -1,18 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
 
 #container {
-	position: absolute;
-	margin: auto;
+	/* Eliminar 'position: absolute' para que el contenedor no esté fijo */
 	width: 100vw;
 	height: 80pt;
-	top: 0;
-	left: 0;
-	right: 0;
-	
+	margin: 0 auto; /* Centrar horizontalmente */
 	/* Mantén el filtro si lo necesitas */
 	filter: url(#threshold) blur(0.6px);
-
-	/* Este z-index asegura que el texto esté visible sobre otros elementos */
+	/* Este z-index asegura que el texto esté visible sobre otros elementos iniciales */
 	z-index: 100;
 }
 
