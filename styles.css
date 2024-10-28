@@ -1,14 +1,58 @@
+/* barra scroll */
+
+
+body {
+  --sb-track-color: #fbfbfb;
+  --sb-thumb-color: #000000;
+  --sb-size: 3px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+  
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}
+/* about me */
+#typedtext {
+  font-family: 'Waiting for the Sunrise', cursive; 
+  font-size:30px; 
+  margin: 10px 50px; 
+  letter-spacing: 6px; 
+  font-weight: bold;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
 
+.main-wrapper {
+  position: relative;
+}
+
 #container {
-	/* Eliminar 'position: absolute' para que el contenedor no esté fijo */
-	width: 100vw;
-	height: 80pt;
-	margin: 0 auto; /* Centrar horizontalmente */
-	/* Mantén el filtro si lo necesitas */
-	filter: url(#threshold) blur(0.6px);
-	/* Este z-index asegura que el texto esté visible sobre otros elementos iniciales */
-	z-index: 100;
+	  position: absolute;
+  top: 270px; /* Ajusta para posicionar la animación */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 80pt;
+  margin: 0 auto;
+  filter: url(#threshold) blur(0.6px);
+  z-index: 200; /* Asegura que el texto animado esté al frente */
 }
 
 #text1, #text2 { 
@@ -21,6 +65,25 @@ position: absolute;
 	user-select: none;
 }
 
+.container1 {
+  width: 100vw;
+	height: 380pt;
+	margin: 0 auto;
+  position: relative;
+  z-index: 100;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em; /* Ajusta el tamaño según prefieras */
+  font-weight: bold;
+  color: #333; /* Cambia el color según el fondo */
+  z-index: 10; /* Asegura que esté al frente */
+  text-align: center;
+}
 
 ol {
   all: unset;
@@ -28,8 +91,10 @@ ol {
   grid-template-columns: repeat(34, 1fr);
   grid-template-rows: repeat(21, 1fr);
   list-style: none;
+  position: relative; /* Importante para superponer elementos */
+}
 
-  li {
+li {
     aspect-ratio: 1 / 1;
     background: var(--bg);
     grid-area: var(--ga);
@@ -90,7 +155,6 @@ ol {
     }
   }
 }
-
 html, body {
     padding: 0;
     margin: 0;
