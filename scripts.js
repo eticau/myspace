@@ -87,9 +87,10 @@ next()
 // set up text to print, each item in array is new line
 var aText = new Array(
 "I really enjoy solving problems and making things",
- "that are nice and easy to use. I can't stop learning",
-  "new things; the more, the better. I also love gaming,",
-  "a hobby I've had since I was a kid. Oh, and coffee;",
+ "that are nice and easy to use. I can't stop ",
+  "learning new things; the more, the better. ",
+  "I also love gaming, a hobby I've had since", 
+  "I was a kid. Oh, and coffee;",
   " I'm passionate about coffee!"
  
 );
