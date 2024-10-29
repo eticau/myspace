@@ -1,3 +1,134 @@
+.tools-container {
+    display: flex; /* Usar flex para alinear horizontalmente */
+    justify-content: space-between; /* Espacio entre playlists y Pomodoro */
+    align-items: flex-start; /* Alinear en la parte superior */
+}
+
+
+.pomodoro-container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.5);
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 20px;
+    width: 225px;
+    margin-right: 200px;
+}
+
+.pomodoro-item {
+    width: 100%;
+}
+
+.label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #00bfa6;
+}
+
+.row-pomodoro {
+    margin: 8px 0 16px 0;
+    text-align: center;
+}
+
+.playerButton {
+    border-top: solid 3px #000000;
+    padding-top: 12px;
+}
+
+.buttonRow {
+    display: flex;
+    justify-content: space-around;
+}
+
+.lengthTime {
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 35px;
+}
+
+.btn-updown {
+    font-size: 1.5rem;
+    width: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #000000;
+    background: transparent;
+    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.3);
+}
+
+.btn-controller {
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    background-color: transparent;
+    color: #000000;
+}
+
+/* Pomodoro item row */
+#timeLeft {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.notification-banner {
+    background-color: #ffd800; /* Color de fondo */
+    color: #000; /* Color del texto */
+    padding: 10px; /* Espaciado interno */
+    text-align: center; /* Alinear el texto al centro */
+    position: absolute; /* Posicionarlo en la parte superior */
+    top: 10px; /* Espaciado desde la parte superior */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translateX(-50%); /* Ajustar para centrar */
+    border-radius: 5px; /* Bordes redondeados */
+    z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
+    transition: opacity 0.5s ease; /* Transición suave */
+}
+
+
+
+/* Estilo general de la sección */
+.spotify-section {
+  max-width: 500px;
+  margin-left: 200px; /* Agrega espacio desde el lado izquierdo */
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+}
+
+/* Título de la sección */
+.spotify-section h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+/* Contenedor de las playlists */
+.spotify-playlists {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Estilos de cada iframe de playlist */
+.spotify-playlists iframe {
+  width: 450px;
+  height: 80px; /* Altura compacta */
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto hover */
+.spotify-playlists iframe:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
 /* barra scroll */
 
 
@@ -394,7 +525,7 @@ ul.details {
 #typedtext {
   font-family: 'Waiting for the Sunrise', cursive; 
   font-size:30px; 
-  margin: 10px 50px; 
+  margin: 0px 80px; 
   letter-spacing: 6px; 
   font-weight: bold;
 }
@@ -415,9 +546,9 @@ a {
 .photo {
   position: relative;
   display: block;
-  width: 200px; /* Controla el ancho de la imagen */
+  width: 290px; /* Controla el ancho de la imagen */
   text-align: center;
-  margin-right: 20px;
+  margin-left: 100px;
 }
 
 .photo img {
