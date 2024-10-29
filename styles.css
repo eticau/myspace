@@ -90,8 +90,10 @@ button:hover {
 }
 
 .row-pomodoro {
-    margin: 8px 0 16px 0;
-    text-align: center;
+    display: flex;               /* Usa flexbox */
+    align-items: center;         /* Centra los elementos verticalmente */
+    justify-content: center;     /* Centra los elementos horizontalmente */
+    margin: 8px 0 16px 0;       /* Margen superior e inferior */
 }
 
 .playerButton {
@@ -111,15 +113,17 @@ button:hover {
 }
 
 .btn-updown {
-    font-size: 1.5rem;
-    width: 30px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    color: #000000;
-    background: transparent;
-    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.3);
+    font-size: 1.5rem;          /* Tamaño del texto */
+    width: 30px;                /* Ancho del botón */
+    height: 30px;               /* Altura del botón */
+    border: none;               /* Sin borde */
+    border-radius: 50%;         /* Hace el botón circular */
+    cursor: pointer;            /* Cambia el cursor al pasar el ratón */
+    color: #000000;             /* Color del texto */
+    background: transparent;    /* Fondo transparente */
+    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.3); /* Sombra */
 }
+
 
 .btn-controller {
     border: none;
