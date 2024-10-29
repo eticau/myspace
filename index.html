@@ -251,34 +251,35 @@
   
 </section>
 
-        <!-- Contact Section -->
-         <div class="contact-container">
-    <h2>Contáctame</h2>
-    <form id="contact-form">
-      <label for="name">Nombre:</label>
-      <input type="text" id="name" name="user_name" placeholder="Tu nombre" required>
-
-      <label for="email">Correo electrónico:</label>
-      <input type="email" id="email" name="user_email" placeholder="Tu correo electrónico" required>
-
-      <label for="message">Mensaje:</label>
-      <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí" required></textarea>
-
-      <button type="submit">Enviar</button>
+          <!-- Contact Section -->
+      <form id="contact-form">
     </form>
-  </div>
-
-<section id="contacto">
-    <h1>I'm here</h1>
-    <h4><span class="glyphicon glyphicon-map-marker"></span> Las coordenadas de mi ser</h4>
-    
-    <iframe 
-        src="https://www.openstreetmap.org/export/embed.html?bbox=-60.75%2C-33.0%2C-60.6%2C-32.9&amp;layer=mapnik" 
-        width="600" 
-        height="450" 
-        style="border: 1px solid black;" 
-        allowfullscreen>
-    </iframe>
+  
+         <div class="containermap">
+        <div class="map-section">
+            <h2>Dónde Estoy</h2>
+            <p>¡Me encantaría recibir tu mensaje!</p>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107166.8991438101!2d-60.745664231436606!3d-32.92550714403582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b6539335d7d75b%3A0xec4086e90258a557!2sRosario%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1729985077470!5m2!1ses!2sar" 
+                width="100%" 
+                height="300" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <div class="contact-section">
+            <h2>Contáctame</h2>
+            <p>Pasa por una taza de café o déjame una nota:</p>
+            <form>
+                <input type="text" name="name" placeholder="Nombre" required>
+                <input type="email" name="email" placeholder="Correo Electrónico" required>
+                <textarea name="comment" placeholder="Comentario" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
     
 </section>
 
