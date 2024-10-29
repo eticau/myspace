@@ -178,14 +178,78 @@
 </div>
  
        
+<!-- Useful Tools Section -->
+<section id="links" class="section" data-aos="fade-left" data-aos-duration="1000">
+    <h2 data-en="Useful Tools" data-es="Herramientas útiles">Useful Tools</h2>
 
-        <!-- Useful Tools Section -->
-        <section id="links" class="section" data-aos="fade-left" data-aos-duration="1000">
-            <h2 data-en="Useful Tools" data-es="Herramientas útiles">Useful Tools</h2>
-           
-          
-          
-        </section>
+    <!-- Contenedor Principal -->
+    <div class="tools-container">
+        <!-- Sección de Playlists de Spotify -->
+        <div class="spotify-section">
+            <h2>Mis Playlists Favoritas</h2>
+            <div class="spotify-playlists">
+                <iframe src="https://open.spotify.com/embed/playlist/7hp7RVkG5tF6F0bz3fWbH7" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe src="https://open.spotify.com/embed/playlist/1QxqUc7aN2yIq9mkMnNm0k" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXd9zR7tdziuQ" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe src="https://open.spotify.com/embed/playlist/6zCID88oNjNv9zx6puDHKj" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+        </div>
+
+        <!-- Pomodoro Container -->
+        <div class="pomodoro-container">
+            <!-- Session -->
+            <div class="pomodoro-item">
+                <div id="labelSessionBreak" class="label">Session</div>
+                <div class="row-pomodoro">
+                    <div id="timeLeft">25:00</div>
+                </div>
+            </div>
+
+            <!-- Session Length -->
+            <div class="pomodoro-item">
+                <div class="label">Session Length</div>
+                <div class="row-pomodoro">
+                    <button id="sessionDecrement" class="btn-updown">-</button>
+                    <div id="sessionLength" class="row-pomodoro lengthTime">25</div>
+                    <button id="sessionIncrement" class="btn-updown">+</button>
+                </div>
+            </div>
+
+            <!-- Break Length -->
+            <div class="pomodoro-item">
+                <div class="label">Break Length</div>
+                <div class="row-pomodoro">
+                    <button id="breakDecrement" class="btn-updown">-</button>
+                    <div id="breakLength" class="row-pomodoro lengthTime">5</div>
+                    <button id="breakIncrement" class="btn-updown">+</button>
+                </div>
+            </div>
+
+            <!-- Play/Pause/Reset -->
+            <div class="pomodoro-item playerButton">
+                <div class="row-pomodoro buttonRow">
+                    <button id="buttonPlay" class="btn-controller">
+                        <i id="playIcon" class="fas fa-play" aria-hidden="true"></i>
+                    </button>
+                    <button id="buttonReset" class="btn-controller"> 
+                        <i class="fas fa-sync" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  
+    <!-- Sound -->
+    <audio id="beep" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
+  
+<!-- Notification Banner -->
+<div id="notificationBanner" class="notification-banner" style="display: none;">
+    <p>¡Tiempo terminado! Tu sesión o descanso ha terminado.</p>
+</div>
+  
+  
+</section>
 
         <!-- Contact Section -->
          <div class="contact-container">
@@ -237,6 +301,7 @@
     <script>AOS.init();</script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <div id="particles-js"></div>
+    <script src="https://kit.fontawesome.com/ed4e9fbefd.js" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
     <!-- Custom Scripts -->
