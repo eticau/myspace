@@ -380,13 +380,6 @@ canvas {
     margin: 20px; /* Margen alrededor de la sección */
 }
 
-iframe {
-    border: 2px solid #ccc; /* Borde alrededor del mapa */
-    border-radius: 8px; /* Bordes redondeados */
-    width: 100%; /* Ancho completo en pantallas más pequeñas */
-    max-width: 600px; /* Ancho máximo */
-    height: 450px; /* Altura del mapa */
-}
 
 /* Estilos generales */
 body {
@@ -410,15 +403,6 @@ body.dark-mode .about-me {
     color: #fff;
 }
 
-.map-container {
-    width: 100%;
-    max-width: 800px;
-    height: 400px;
-    margin: 0 auto;
-    border: 2px solid #00bfa6;
-    border-radius: 8px;
-    overflow: hidden;
-}
 
 /* Header */
 header {
@@ -688,61 +672,6 @@ h1 {
 
 .about-me .highlight {
     color: #00bfa6;
-}
-
-
-
-
-/* Contenedor de la sección de contacto */
-.contact-container {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  margin: 50px auto; /* Centramos el formulario */
-  text-align: center; /* Centramos el contenido */
-}
-
-/* Título de la sección */
-.contact-container h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #00bfa6; /* Cambiamos color para que coincida con el tema */
-}
-
-/* Inputs del formulario */
-.contact-container input, .contact-container textarea {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s ease;
-}
-
-.contact-container input:focus, .contact-container textarea:focus {
-  border-color: #00bfa6;
-  outline: none;
-}
-
-/* Botón de envío */
-.contact-container button {
-  background-color: #00bfa6;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.contact-container button:hover {
-  background-color: #008f83;
 }
 
 /* Modo oscuro para la sección de contacto */
