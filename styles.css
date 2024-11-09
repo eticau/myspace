@@ -1,7 +1,7 @@
 /* boton cv*/
 
 .download-button {
-  margin-top: 350px; 
+  margin-top: 0px; 
   position: relative;
   border-width: 0;
   color: white;
@@ -10,6 +10,7 @@
   cursor: pointer;
   border-radius: 4px;
   z-index: 1;
+  background-color: #eca26c;
 }
 
 .download-button .docs {
@@ -25,6 +26,20 @@
   border: solid 1px #e8e8e82d;
   transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
+.docs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 4px;
+  z-index: 1;
+  background-color: #242a35;
+  border: solid 1px #e8e8e82d;
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
 
 .download-button:hover {
   box-shadow:
@@ -75,6 +90,8 @@
     transform: translateY(0%);
   }
 }
+
+
 
 .containermap {
     display: flex;
@@ -128,7 +145,7 @@ input, textarea {
 button {
     padding: 10px;
     border: none;
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0); /* 100% de transparencia */
     color: white;
     font-size: 1em;
     border-radius: 4px;
@@ -137,7 +154,7 @@ button {
 }
 
 button:hover {
-    background-color: #555;
+    background-color: rgba(85, 85, 85, 0); /* 100% de transparencia */
 }
 
 
@@ -364,6 +381,20 @@ position: absolute;
   }
   .dud{
     color: #000000;
+  }
+
+.container4{
+  margin-top: 210px; 
+  position: absolute;
+  top: 100px; /* Ajusta para ubicarlo en la posición deseada */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 300; /* Coloca el contenedor sobre todo */
   }
 
 ol {
