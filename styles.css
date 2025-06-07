@@ -1,1 +1,849 @@
+/* boton cv*/
+
+.download-button {
+  margin-top: 0px; 
+  position: relative;
+  border-width: 0;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 1;
+  background-color: #eca26c;
+}
+
+.download-button .docs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 4px;
+  z-index: 1;
+  background-color: #242a35;
+  border: solid 1px #e8e8e82d;
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.docs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 4px;
+  z-index: 1;
+  background-color: #242a35;
+  border: solid 1px #e8e8e82d;
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+
+.download-button:hover {
+  box-shadow:
+    rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px,
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.download {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 65%;
+  max-height: 65%;
+  margin: 0 auto;
+  margin-top: 10px;
+  z-index: -1;
+  border-radius: 4px;
+  transform: translateY(0%);
+  background-color: #01e056;
+  border: solid 1px #01e0572d;
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.download-button:hover .download {
+  transform: translateY(100%);
+}
+
+.download svg polyline,
+.download svg line {
+  animation: docs 1s infinite;
+}
+
+@keyframes docs {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(-15%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+
+
+.containermap {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    gap: 20px;
+    padding-top: 50px;
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    justify-content: center; /* Opcional: alinea los elementos hijos si quieres que estén centrados */
+}
+
+.map-section, .contact-section {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.map-section h2, .contact-section h2 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.map-section p, .contact-section p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+iframe {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    border: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background-color: rgba(51, 51, 51, 0); /* 100% de transparencia */
+    color: white;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: rgba(85, 85, 85, 0); /* 100% de transparencia */
+}
+
+
+.tools-container {
+    display: flex;
+    justify-content: space-around; /* Espacio equitativo entre elementos */
+    align-items: center; /* Centra verticalmente si el contenedor tiene suficiente altura */
+}
+
+
+.pomodoro-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye el contenido verticalmente */
+    align-items: stretch; /* Expande los elementos a lo ancho */
+    flex-direction: column;
+    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.5);
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 20px;
+    width: 225px;
+    height: 455px;
+    margin-right: 400px;
+}
+
+.pomodoro-item {
+    width: 100%;
+}
+
+.label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #00bfa6;
+}
+
+.row-pomodoro {
+    display: flex;               /* Usa flexbox */
+    align-items: center;         /* Centra los elementos verticalmente */
+    justify-content: center;     /* Centra los elementos horizontalmente */
+    margin: 8px 0 16px 0;       /* Margen superior e inferior */
+}
+
+.playerButton {
+    border-top: solid 3px #000000;
+    padding-top: 12px;
+}
+
+.buttonRow {
+    display: flex;
+    justify-content: space-around;
+}
+
+.lengthTime {
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 35px;
+}
+
+.btn-updown {
+     font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+  height: 50px; /* Añadido para hacer el botón redondo */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #000000;
+    font-weight: bold;
+    background: transparent;
+    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.3);
+}
+
+
+.btn-controller {
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    background-color: transparent;
+    color: #000000;
+}
+
+/* Pomodoro item row */
+#timeLeft {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.notification-banner {
+    background-color: #ffd800; /* Color de fondo */
+    color: #000; /* Color del texto */
+    padding: 10px; /* Espaciado interno */
+    text-align: center; /* Alinear el texto al centro */
+    position: absolute; /* Posicionarlo en la parte superior */
+    top: 10px; /* Espaciado desde la parte superior */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translateX(-50%); /* Ajustar para centrar */
+    border-radius: 5px; /* Bordes redondeados */
+    z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
+    transition: opacity 0.5s ease; /* Transición suave */
+}
+
+
+
+/* Estilo general de la sección */
+.spotify-section {
+  max-width: 500px;
+  margin-left: 200px; /* Agrega espacio desde el lado izquierdo */
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+}
+
+/* Título de la sección */
+.spotify-section h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+/* Contenedor de las playlists */
+.spotify-playlists {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Estilos de cada iframe de playlist */
+.spotify-playlists iframe {
+  width: 450px;
+  height: 80px; /* Altura compacta */
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto hover */
+.spotify-playlists iframe:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* barra scroll */
+
+
+body {
+  --sb-track-color: #fbfbfb;
+  --sb-thumb-color: #000000;
+  --sb-size: 3px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+  
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
+
+.main-wrapper {
+  position: relative;
+}
+
+#container {
+	  position: absolute;
+  top: 270px; /* Ajusta para posicionar la animación */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 80pt;
+  margin: 0 auto;
+  filter: url(#threshold) blur(0.6px);
+  z-index: 200; /* Asegura que el texto animado esté al frente */
+}
+
+#text1, #text2 { 
+position: absolute;
+	width: 100%;
+	display: inline-block;
+	font-family: 'Raleway', sans-serif;
+	font-size: 80pt;
+	text-align: center;
+	user-select: none;
+}
+
+@import ('https://fonts.googleapis.com/css?family=Roboto+Mono:100'
+);
+
+.container3{
+  position: absolute;
+  top: 70px; /* Ajusta para ubicarlo en la posición deseada */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 300; /* Coloca el contenedor sobre todo */
+  }
+  .text3{
+  font-weight: 100;
+  font-size: 38px;
+  color: #3d3838;
+  }
+  .dud{
+    color: #000000;
+  }
+
+.container4{
+  margin-top: 150px; 
+  position: absolute;
+  top: 100px; /* Ajusta para ubicarlo en la posición deseada */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  z-index: 300; /* Coloca el contenedor sobre todo */
+  }
+
+ol {
+  all: unset;
+  display: grid;
+  grid-template-columns: repeat(34, 1fr);
+  grid-template-rows: repeat(21, 1fr);
+  list-style: none;
+  position: relative; /* Importante para superponer elementos */
+}
+
+li {
+    aspect-ratio: 1 / 1;
+    background: var(--bg);
+    grid-area: var(--ga);
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      aspect-ratio: 1 / 1;
+      background-color: rgba(255, 255, 255, .3);
+      border-radius: 50%;
+      content: '';
+      display: block;
+      inset: 0;
+      position: absolute;
+      scale: 2;
+      translate: var(--tl);
+    }
+
+    &:nth-of-type(1) {
+      --bg: #e47a2c;
+      --ga: 1 / 1 / 22 / 22;
+      --tl: 50% 50%;
+    }
+    &:nth-of-type(2) {
+      --bg: #baccc0 ;
+      --ga: 1 / 22 / 23 / 35;
+      --tl: -50% 50%;
+    }
+    &:nth-of-type(3) {
+      --bg: #6c958f;
+      --ga: 14 / 27 / 22 / 35;
+      --tl: -50% -50%;
+    }
+    &:nth-of-type(4) {
+      --bg: #40363f;
+      --ga: 17 / 22 / 22 / 27;
+      --tl: 50% -50%;
+    }
+    &:nth-of-type(5) {
+      --bg: #d7a26c;
+      --ga: 14 / 22 / 17 / 25;
+      --tl: 50% 50%;
+    }
+    &:nth-of-type(6) {
+      --bg: #ae4935;
+      --ga: 14 / 25 / 17 / 27;
+      --tl: -50% 50%;
+    }
+    &:nth-of-type(7) {
+      --bg: #e47a2c;
+      --ga: 16 / 26 / 17 / 27;
+      --tl: -50% -50%;
+    }
+    &:nth-of-type(8) {
+      --bg: #f7e6d4;
+      --ga: 16 / 25 / 17 / 26;
+      --tl: 50% -50%;
+    }
+  }
+}
+html, body {
+    padding: 0;
+    margin: 0;
+    overscroll-behavior: none; /* Evita la inercia de scroll */
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden; /* Permite scroll vertical pero no horizontal */
+  cursor: none;
+}
+
+canvas {
+    position: fixed; /* Fija el canvas para que siempre esté visible */
+    top: 0;
+    left: 0;
+    width: 100vw; /* El canvas cubre todo el ancho de la ventana */
+    height: 100vh; /* El canvas cubre todo el alto de la ventana */
+    z-index: 9999; /* Asegura que esté por encima de todo el contenido */
+    pointer-events: none; /* Permite hacer clic a través del canvas */
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Asegura que las partículas estén detrás de los otros elementos */
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Evita que las partículas bloqueen la interacción */
+}
+
+#contacto {
+    text-align: center; /* Centrar el contenido */
+    margin: 20px; /* Margen alrededor de la sección */
+}
+
+
+/* Estilos generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+    color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+  
+}
+
+/* Modo oscuro */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a1a, #333);
+    color: #fff;
+}
+
+/* Ajuste de sección "About Me" en modo oscuro */
+body.dark-mode .about-me {
+    background-color: #444;
+    color: #fff;
+}
+
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Color por defecto */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header.transparent {
+    background-color: transparent;
+    box-shadow: none; /* Sin sombra cuando está transparente */
+}
+
+body.dark-mode header.transparent {
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo oscuro transparente para modo oscuro */
+}
+
+header nav a {
+    margin-right: 20px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode header nav a {
+    color: #fff;
+}
+
+header nav a:hover {
+    color: #00bfa6;
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Botones de tema e idioma con iconos */
+.controls {
+    display: flex;
+    gap: 10px;
+   margin-right: 30px;
+}
+
+.theme-toggle img,
+.language-toggle img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* Imagen de perfil */
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 5px solid #00bfa6;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedor del perfil */
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-text {
+    margin-left: 20px;
+}
+
+h1 .highlight {
+    color: #00bfa6;
+}
+
+ul.details {
+    list-style-type: none;
+    padding: 0;
+}
+
+.wrapper {
+    margin-top: 2rem;
+    width: 90%;
+    max-width: 1536px;
+    margin-inline: auto;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 1) 20%,
+        rgba(0, 0, 0, 1) 80%,
+        rgba(0, 0, 0, 0)
+    );
+}
+
+@keyframes scrollLeft {
+    to {
+        left: -200px;
+    }
+}
+
+@keyframes scrollRight {
+    to {
+        right: -200px;
+    }
+}
+
+.itemLeft,
+.itemRight {
+    width: 50px; /* Ajustamos el ancho del ícono */
+    height: 50px; /* Ajustamos la altura del ícono */
+    position: absolute;
+    animation-timing-function: linear;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+}
+.itemLeft a,
+.itemRight a {
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+.itemLeft img,
+.itemRight img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain; /* Para que el ícono se ajuste bien */
+}
+
+.itemLeft {
+    left: max(calc(100px * 8), 100%);
+    animation-name: scrollLeft;
+}
+
+.itemRight {
+    right: max(calc(100px * 8), calc(100% + 100px));
+    animation-name: scrollRight;
+}
+
+/* Ajustamos los retrasos de animación para sincronizarlos correctamente */
+.item1 { animation-delay: calc(30s / 8 * (8 - 1) * -1); }
+.item2 { animation-delay: calc(30s / 8 * (8 - 2) * -1); }
+.item3 { animation-delay: calc(30s / 8 * (8 - 3) * -1); }
+.item4 { animation-delay: calc(30s / 8 * (8 - 4) * -1); }
+.item5 { animation-delay: calc(30s / 8 * (8 - 5) * -1); }
+.item6 { animation-delay: calc(30s / 8 * (8 - 6) * -1); }
+.item7 { animation-delay: calc(30s / 8 * (8 - 7) * -1); }
+.item8 { animation-delay: calc(30s / 8 * (8 - 8) * -1); }
+
+/* about me */
+#typedtext {
+  font-family: 'Waiting for the Sunrise', cursive; 
+  font-size:30px; 
+  margin: 0px 80px; 
+  letter-spacing: 6px; 
+  font-weight: bold;
+   text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+   margin-left: 80px; /* Espacio entre la foto y el texto, ajusta si es necesario */
+}
+}
+.section {
+  padding: 40px;
+}
+
+.about-content {
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+
+  
+}
+a {
+  color: #111;
+  text-decoration: none;
+}
+
+.photo {
+  position: relative;
+  display: block;
+  width: 290px; /* Controla el ancho de la imagen */
+  text-align: center;
+  margin-left: 350px;
+}
+
+.photo img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(120%);
+  box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, .2);
+  transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.photo:hover img {
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, .1);
+}
+
+.photo .glow-wrap {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.photo .glow {
+  position: absolute;
+  width: 40%;
+  height: 200%;
+  background: rgba(255, 255, 255, .2);
+  top: 0;
+  filter: blur(5px);
+  transform: rotate(45deg) translate(-450%, 0);
+  transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.photo:hover .glow {
+  transform: rotate(45deg) translate(450%, 0);
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+h1 {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Montserrat', sans-serif;
+  color: #FAFAFA;
+  font-size: 24px;
+  font-weight: 100;
+  margin: 0;
+  line-height: 1.2;
+}
+/* Sección About Me */
+.about-me {
+    background: #f8f9fa;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.about-me h2 {
+    font-size: 28px;
+    color: #00bfa6;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.about-me p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.about-me .highlight {
+    color: #00bfa6;
+}
+
+/* Modo oscuro para la sección de contacto */
+body.dark-mode .contact-container {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode .contact-container input, 
+body.dark-mode .contact-container textarea {
+  background-color: #444;
+  border: 1px solid #666;
+  color: #fff;
+}
+
+body.dark-mode .contact-container input:focus, 
+body.dark-mode .contact-container textarea:focus {
+  border-color: #00bfa6;
+}
+
+
+}
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.footer-text {
+    color: #333;
+}
+
+.footer-text .heart {
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 20%, 50%, 80%, 100% {
+        transform: scale(1);
+    }
+    10% {
+        transform: scale(1.2);
+    }
+}
 
