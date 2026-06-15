@@ -1,476 +1,155 @@
-/* =============================================================
-   scripts.js — Etienne Cautures personal site
-   ============================================================= */
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+html, body {
+    margin: 0; padding: 0;
+    width: 100vw; height: 100vh;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    cursor: none;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+    color: #333;
+    transition: background .3s ease, color .3s ease;
+}
+body.dark-mode { background: linear-gradient(135deg, #1a1a1a, #333); color: #fff; }
 
-/* ─── AOS Init ───────────────────────────────────────────── */
-AOS.init();
-
-/* ─── Theme & Language (single initialisation) ───────────── */
-(function initPreferences() {
-  const themeToggle    = document.getElementById('theme-toggle');
-  const languageToggle = document.getElementById('language-toggle');
-
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  const savedLang  = localStorage.getItem('lang')  || 'en';
-
-  // Apply saved theme
-  document.body.classList.toggle('dark-mode', savedTheme === 'dark');
-  themeToggle.querySelector('img').src = savedTheme === 'dark'
-    ? 'images/sun_icon.png'
-    : 'images/moon_icon.png';
-
-  // Apply saved language
-  applyLanguage(savedLang);
-  languageToggle.setAttribute('data-lang', savedLang);
-
-  // Toggle theme on click
-  themeToggle.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    themeToggle.querySelector('img').src = isDark
-      ? 'images/sun_icon.png'
-      : 'images/moon_icon.png';
-  });
-
-  // Toggle language on click
-  languageToggle.addEventListener('click', () => {
-    const current = languageToggle.getAttribute('data-lang');
-    const next    = current === 'en' ? 'es' : 'en';
-    applyLanguage(next);
-    localStorage.setItem('lang', next);
-    languageToggle.setAttribute('data-lang', next);
-  });
-
-  function applyLanguage(lang) {
-    document.querySelectorAll('[data-en]').forEach(el => {
-      el.textContent = lang === 'en'
-        ? el.getAttribute('data-en')
-        : el.getAttribute('data-es');
-    });
-    languageToggle.querySelector('img').src = lang === 'en'
-      ? 'images/united_states_flag.png'
-      : 'images/argentina_flag.png';
-  }
-})();
-
-/* ─── Header transparency on scroll ─────────────────────── */
-window.addEventListener('scroll', () => {
-  const header = document.querySelector('header');
-  header.classList.toggle('transparent', window.scrollY <= window.innerHeight - 55);
-});
-
-/* ─── Morphing text animation ────────────────────────────── */
-const morphElts = {
-  text1: document.getElementById('text1'),
-  text2: document.getElementById('text2'),
-};
-
-const morphTexts   = ["I'm", 'Etienne', 'Cautures', 'Future Engineer', 'Geek', 'Tech Enthusiast', ':)'];
-const MORPH_TIME   = 1;
-const COOLDOWN_TIME = 0.25;
-
-let morphIndex    = morphTexts.length - 1;
-let morphTime_    = new Date();
-let morph         = 0;
-let cooldown      = COOLDOWN_TIME;
-
-morphElts.text1.textContent = morphTexts[morphIndex % morphTexts.length];
-morphElts.text2.textContent = morphTexts[(morphIndex + 1) % morphTexts.length];
-
-function doMorph() {
-  morph    -= cooldown;
-  cooldown  = 0;
-
-  let fraction = morph / MORPH_TIME;
-  if (fraction > 1) {
-    cooldown = COOLDOWN_TIME;
-    fraction = 1;
-  }
-  setMorphFraction(fraction);
+/* ── Canvas & Particles ───────────────────────────────────────────────────── */
+canvas {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 9999; pointer-events: none;
+}
+#particles-js {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1; pointer-events: none;
 }
 
-function setMorphFraction(fraction) {
-  morphElts.text2.style.filter  = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-  morphElts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+/* ── Header ───────────────────────────────────────────────────────────────── */
+header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(255,255,255,.9);
+    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    transition: background-color .3s ease, box-shadow .3s ease;
+}
+header.transparent            { background-color: transparent; box-shadow: none; }
+body.dark-mode header.transparent { background-color: rgba(0,0,0,.3); }
+header nav a { margin-right: 20px; color: #333; text-decoration: none; transition: color .3s; }
+body.dark-mode header nav a  { color: #fff; }
+header nav a:hover            { color: #00bfa6; }
+.logo  { font-size: 24px; font-weight: bold; }
+.controls { display: flex; gap: 10px; }
+.theme-toggle img, .language-toggle img { width: 30px; height: 30px; cursor: pointer; }
 
-  fraction = 1 - fraction;
-  morphElts.text1.style.filter  = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-  morphElts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+/* ── Geometric ol blocks ──────────────────────────────────────────────────── */
+ol {
+    all: unset; display: grid;
+    grid-template-columns: repeat(34,1fr);
+    grid-template-rows: repeat(21,1fr);
+    list-style: none;
+}
+ol li {
+    aspect-ratio: 1/1; background: var(--bg); grid-area: var(--ga);
+    overflow: hidden; position: relative;
+}
+ol li::after {
+    content: ''; display: block; aspect-ratio: 1/1;
+    background-color: rgba(255,255,255,.3); border-radius: 50%;
+    position: absolute; inset: 0; scale: 2; translate: var(--tl);
+}
+ol li:nth-of-type(1) { --bg:#e47a2c; --ga:1/1/22/22;    --tl:50% 50%;   }
+ol li:nth-of-type(2) { --bg:#baccc0; --ga:1/22/23/35;   --tl:-50% 50%;  }
+ol li:nth-of-type(3) { --bg:#6c958f; --ga:14/27/22/35;  --tl:-50% -50%; }
+ol li:nth-of-type(4) { --bg:#40363f; --ga:17/22/22/27;  --tl:50% -50%;  }
+ol li:nth-of-type(5) { --bg:#d7a26c; --ga:14/22/17/25;  --tl:50% 50%;   }
+ol li:nth-of-type(6) { --bg:#ae4935; --ga:14/25/17/27;  --tl:-50% 50%;  }
+ol li:nth-of-type(7) { --bg:#e47a2c; --ga:16/26/17/27;  --tl:-50% -50%; }
+ol li:nth-of-type(8) { --bg:#f7e6d4; --ga:16/25/17/26;  --tl:50% -50%;  }
 
-  morphElts.text1.textContent = morphTexts[morphIndex % morphTexts.length];
-  morphElts.text2.textContent = morphTexts[(morphIndex + 1) % morphTexts.length];
+/* ── Typing animation ─────────────────────────────────────────────────────── */
+.text-animation-wrapper {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%); text-align: center;
+}
+[data-typing]                { display: block; font-size: 40px; color: #333; margin: 10px 0; }
+[data-typing="i"]            { font-size: 80px; }
+[data-typing="mechanic"],
+[data-typing="engineer"]     { font-size: 50px; }
+[data-typing="passion"],
+[data-typing="creating"],
+[data-typing="innovative"],
+[data-typing="solutions"]    { font-size: 35px; }
+
+/* ── Social icon carousels ────────────────────────────────────────────────── */
+.wrapper {
+    margin-top: 2rem; width: 90%; max-width: 1536px;
+    margin-inline: auto; height: 100px; position: relative; overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+.itemLeft, .itemRight { width: 50px; height: 50px; position: absolute; animation-timing-function: linear; animation-duration: 30s; animation-iteration-count: infinite; }
+.itemLeft a, .itemRight a { display: block; width: 100px; height: 100px; }
+.itemLeft img, .itemRight img { width: 50%; height: 50%; object-fit: contain; }
+.itemLeft  { left:  max(calc(100px * 8), 100%);             animation-name: scrollLeft;  }
+.itemRight { right: max(calc(100px * 8), calc(100% + 100px)); animation-name: scrollRight; }
+@keyframes scrollLeft  { to { left:  -200px; } }
+@keyframes scrollRight { to { right: -200px; } }
+.item1 { animation-delay: calc(30s / 8 * (8 - 1) * -1); }
+.item2 { animation-delay: calc(30s / 8 * (8 - 2) * -1); }
+.item3 { animation-delay: calc(30s / 8 * (8 - 3) * -1); }
+.item4 { animation-delay: calc(30s / 8 * (8 - 4) * -1); }
+.item5 { animation-delay: calc(30s / 8 * (8 - 5) * -1); }
+.item6 { animation-delay: calc(30s / 8 * (8 - 6) * -1); }
+.item7 { animation-delay: calc(30s / 8 * (8 - 7) * -1); }
+.item8 { animation-delay: calc(30s / 8 * (8 - 8) * -1); }
+
+/* ── About Me ─────────────────────────────────────────────────────────────── */
+.about-me {
+    background: #f8f9fa; padding: 40px 20px;
+    border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,.1); margin-top: 20px;
+}
+body.dark-mode .about-me { background-color: #444; color: #fff; }
+.about-me h2  { font-size: 28px; color: #00bfa6; text-align: center; letter-spacing: 1px; }
+.about-me p   { font-size: 18px; line-height: 1.6; margin-bottom: 15px; text-align: justify; }
+
+/* ── Contact form ─────────────────────────────────────────────────────────── */
+.contact-container {
+    background-color: #fff; padding: 30px; border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    max-width: 500px; margin: 50px auto; text-align: center;
+}
+.contact-container h2 { font-size: 24px; margin-bottom: 20px; color: #00bfa6; }
+.contact-container input,
+.contact-container textarea {
+    width: 100%; padding: 15px; margin-bottom: 20px; font-size: 16px;
+    border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;
+    background-color: #f9f9f9; transition: border-color .3s;
+}
+.contact-container input:focus,
+.contact-container textarea:focus { border-color: #00bfa6; outline: none; }
+.contact-container button {
+    background-color: #00bfa6; color: #fff; padding: 12px 20px;
+    font-size: 16px; border: none; border-radius: 5px; cursor: pointer;
+    transition: background-color .3s;
+}
+.contact-container button:hover { background-color: #008f83; }
+body.dark-mode .contact-container              { background-color: #333; color: #fff; }
+body.dark-mode .contact-container input,
+body.dark-mode .contact-container textarea     { background-color: #444; border-color: #666; color: #fff; }
+body.dark-mode .contact-container input:focus,
+body.dark-mode .contact-container textarea:focus { border-color: #00bfa6; }
+
+/* ── Map ──────────────────────────────────────────────────────────────────── */
+#contacto { text-align: center; margin: 20px; }
+.map-container {
+    width: 100%; max-width: 800px; height: 400px;
+    margin: 0 auto; border: 2px solid #00bfa6;
+    border-radius: 8px; overflow: hidden;
 }
 
-function doCooldown() {
-  morph = 0;
-  morphElts.text2.style.filter  = '';
-  morphElts.text2.style.opacity = '100%';
-  morphElts.text1.style.filter  = '';
-  morphElts.text1.style.opacity = '0%';
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+footer { text-align: center; padding: 20px; background-color: #fff; }
+@keyframes heartbeat {
+    0%,20%,50%,80%,100% { transform: scale(1); }
+    10%                  { transform: scale(1.2); }
 }
-
-function animateMorph() {
-  requestAnimationFrame(animateMorph);
-
-  const now               = new Date();
-  const shouldIncrement   = cooldown > 0;
-  const dt                = (now - morphTime_) / 1000;
-  morphTime_              = now;
-  cooldown               -= dt;
-
-  if (cooldown <= 0) {
-    if (shouldIncrement) morphIndex++;
-    doMorph();
-  } else {
-    doCooldown();
-  }
-}
-
-animateMorph();
-
-/* ─── Text Scramble ──────────────────────────────────────── */
-class TextScramble {
-  constructor(el) {
-    this.el     = el;
-    this.chars  = '!<>-_\\/[]{}—=+*^?#________';
-    this.update = this.update.bind(this);
-  }
-
-  setText(newText) {
-    const oldText = this.el.innerText;
-    const length  = Math.max(oldText.length, newText.length);
-    const promise = new Promise(resolve => (this.resolve = resolve));
-
-    this.queue = [];
-    for (let i = 0; i < length; i++) {
-      const from  = oldText[i] || '';
-      const to    = newText[i] || '';
-      const start = Math.floor(Math.random() * 40);
-      const end   = start + Math.floor(Math.random() * 40);
-      this.queue.push({ from, to, start, end });
-    }
-
-    cancelAnimationFrame(this.frameRequest);
-    this.frame = 0;
-    this.update();
-    return promise;
-  }
-
-  update() {
-    let output   = '';
-    let complete = 0;
-
-    for (let i = 0, n = this.queue.length; i < n; i++) {
-      let { from, to, start, end, char } = this.queue[i];
-
-      if (this.frame >= end) {
-        complete++;
-        output += to;
-      } else if (this.frame >= start) {
-        if (!char || Math.random() < 0.28) {
-          char = this.randomChar();
-          this.queue[i].char = char;
-        }
-        output += `<span class="dud">${char}</span>`;
-      } else {
-        output += from;
-      }
-    }
-
-    this.el.innerHTML = output;
-
-    if (complete === this.queue.length) {
-      this.resolve();
-    } else {
-      this.frameRequest = requestAnimationFrame(this.update);
-      this.frame++;
-    }
-  }
-
-  randomChar() {
-    return this.chars[Math.floor(Math.random() * this.chars.length)];
-  }
-}
-
-const scrambleEl     = document.querySelector('.text3');
-const scrambleFx     = new TextScramble(scrambleEl);
-const scramblePhrases = ['My', 'greatest', 'skills', 'are', 'eating', 'and', 'sleeping'];
-let   scrambleIndex   = 0;
-
-function nextScramble() {
-  scrambleFx.setText(scramblePhrases[scrambleIndex]).then(() => {
-    setTimeout(nextScramble, 800);
-  });
-  scrambleIndex = (scrambleIndex + 1) % scramblePhrases.length;
-}
-
-nextScramble();
-
-/* ─── Typewriter ─────────────────────────────────────────── */
-const typeLines = [
-  'I really enjoy solving problems and making things',
-  "that are nice and easy to use. I can't stop ",
-  'learning new things; the more, the better. ',
-  "I also love gaming, a hobby I've had since",
-  'I was a kid. Oh, and coffee;',
-  " I'm passionate about coffee!",
-];
-
-const TYPE_SPEED  = 100;   // ms between characters
-const SCROLL_AT   = 20;    // start scrolling at this many lines
-
-let typeIndex   = 0;
-let typeTextPos = 0;
-let typeContents = '';
-let typeArrLength = typeLines[0].length;
-
-function typewriter() {
-  const destination = document.getElementById('typedtext');
-  let row = Math.max(0, typeIndex - SCROLL_AT);
-
-  typeContents = ' ';
-  while (row < typeIndex) {
-    typeContents += typeLines[row++] + '<br>';
-  }
-
-  destination.innerHTML = typeContents + typeLines[typeIndex].substring(0, typeTextPos) + '_';
-
-  if (typeTextPos++ === typeArrLength) {
-    typeTextPos   = 0;
-    typeIndex++;
-    if (typeIndex !== typeLines.length) {
-      typeArrLength = typeLines[typeIndex].length;
-      setTimeout(typewriter, 500);
-    }
-  } else {
-    setTimeout(typewriter, TYPE_SPEED);
-  }
-}
-
-typewriter();
-
-/* ─── Custom cursor trail (canvas) ──────────────────────── */
-const canvas = document.getElementById('cursor-canvas');
-const ctx    = canvas.getContext('2d');
-
-let mouseMoved = false;
-
-const pointer = {
-  x: 0.5 * window.innerWidth,
-  y: 0.5 * window.innerHeight,
-};
-
-const trailParams = {
-  pointsNumber:   40,
-  widthFactor:    0.3,
-  spring:         0.4,
-  friction:       0.5,
-};
-
-const trail = Array.from({ length: trailParams.pointsNumber }, () => ({
-  x: pointer.x,
-  y: pointer.y,
-  dx: 0,
-  dy: 0,
-}));
-
-function updatePointer(x, y) {
-  pointer.x = x;
-  pointer.y = y;
-}
-
-window.addEventListener('click',     e => updatePointer(e.pageX, e.pageY));
-window.addEventListener('mousemove', e => { mouseMoved = true; updatePointer(e.pageX, e.pageY); });
-window.addEventListener('touchmove', e => { mouseMoved = true; updatePointer(e.targetTouches[0].pageX, e.targetTouches[0].pageY); });
-
-function setupCanvas() {
-  canvas.width  = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
-function animateTrail(t) {
-  if (!mouseMoved) {
-    pointer.x = (0.5 + 0.3 * Math.cos(0.002 * t) * Math.sin(0.005 * t)) * window.innerWidth;
-    pointer.y = (0.5 + 0.2 * Math.cos(0.005 * t) + 0.1 * Math.cos(0.01 * t)) * window.innerHeight;
-  }
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  trail.forEach((p, i) => {
-    const prev   = i === 0 ? pointer : trail[i - 1];
-    const spring = i === 0 ? 0.4 * trailParams.spring : trailParams.spring;
-    p.dx += (prev.x - p.x) * spring;
-    p.dy += (prev.y - p.y) * spring;
-    p.dx *= trailParams.friction;
-    p.dy *= trailParams.friction;
-    p.x  += p.dx;
-    p.y  += p.dy;
-  });
-
-  ctx.lineCap = 'round';
-  ctx.beginPath();
-  ctx.moveTo(trail[0].x, trail[0].y);
-
-  for (let i = 1; i < trail.length - 1; i++) {
-    const xc = 0.5 * (trail[i].x + trail[i + 1].x);
-    const yc = 0.5 * (trail[i].y + trail[i + 1].y);
-    ctx.quadraticCurveTo(trail[i].x, trail[i].y, xc, yc);
-    ctx.lineWidth = trailParams.widthFactor * (trailParams.pointsNumber - i);
-    ctx.stroke();
-  }
-
-  ctx.lineTo(trail[trail.length - 1].x, trail[trail.length - 1].y);
-  ctx.stroke();
-
-  requestAnimationFrame(animateTrail);
-}
-
-setupCanvas();
-animateTrail(0);
-window.addEventListener('resize', setupCanvas);
-
-/* ─── Particles.js ───────────────────────────────────────── */
-particlesJS('particles-js', {
-  particles: {
-    number: { value: 100 },
-    size:   { value: 3 },
-    color:  { value: '#ffffff' },
-    move: {
-      speed:   6,
-      attract: { enable: true },
-    },
-    line_linked: {
-      enable:   true,
-      distance: 150,
-      color:    '#ffffff',
-      opacity:  0.5,
-      width:    1,
-    },
-  },
-  interactivity: {
-    events: {
-      onhover: { enable: true, mode: 'repulse' },
-      onclick: { enable: true, mode: 'push' },
-    },
-    modes: {
-      repulse: { distance: 100 },
-      push:    { particles_nb: 4 },
-    },
-  },
-});
-
-/* ─── Pomodoro Timer ─────────────────────────────────────── */
-const buttonPlay       = document.getElementById('buttonPlay');
-const playIcon         = document.getElementById('playIcon');
-const buttonReset      = document.getElementById('buttonReset');
-const timeLeftDOM      = document.getElementById('timeLeft');
-const labelSessionBreak = document.getElementById('labelSessionBreak');
-const sessionLengthDOM = document.getElementById('sessionLength');
-const breakLengthDOM   = document.getElementById('breakLength');
-const sessionDecrement = document.getElementById('sessionDecrement');
-const sessionIncrement = document.getElementById('sessionIncrement');
-const breakDecrement   = document.getElementById('breakDecrement');
-const breakIncrement   = document.getElementById('breakIncrement');
-
-let timeLeft      = 25 * 60;
-let isPlaying     = false;
-let isSession     = false;
-let breakLength   = 5  * 60;
-let sessionLength = 25 * 60;
-let pomodoroInterval;
-
-function toMMSS(seconds) {
-  const m = String(Math.floor(seconds / 60)).padStart(2, '0');
-  const s = String(seconds % 60).padStart(2, '0');
-  return `${m}:${s}`;
-}
-
-function showNotificationBanner() {
-  const banner = document.getElementById('notificationBanner');
-  banner.hidden  = false;
-  banner.style.opacity = '1';
-  setTimeout(() => {
-    banner.style.opacity = '0';
-    setTimeout(() => { banner.hidden = true; }, 500);
-  }, 5000);
-}
-
-function handleTick() {
-  if (timeLeft <= 0) {
-    showNotificationBanner();
-    if (isSession) {
-      labelSessionBreak.textContent = 'Session';
-      timeLeft = sessionLength;
-    } else {
-      labelSessionBreak.textContent = 'Break';
-      timeLeft = breakLength;
-      const beep = document.getElementById('beep');
-      beep.currentTime = 0;
-      beep.play();
-    }
-    isSession = !isSession;
-  } else {
-    timeLeft--;
-    timeLeftDOM.textContent = toMMSS(timeLeft);
-  }
-}
-
-buttonPlay.addEventListener('click', () => {
-  isPlaying = !isPlaying;
-  if (isPlaying) {
-    clearInterval(pomodoroInterval);
-    pomodoroInterval = setInterval(handleTick, 1000);
-    playIcon.classList.replace('fa-play', 'fa-pause');
-  } else {
-    clearInterval(pomodoroInterval);
-    playIcon.classList.replace('fa-pause', 'fa-play');
-  }
-});
-
-buttonReset.addEventListener('click', () => {
-  clearInterval(pomodoroInterval);
-  isPlaying     = false;
-  breakLength   = 5  * 60;
-  sessionLength = 25 * 60;
-  timeLeft      = sessionLength;
-  breakLengthDOM.textContent   = '5';
-  sessionLengthDOM.textContent = '25';
-  timeLeftDOM.textContent      = '25:00';
-  playIcon.classList.replace('fa-pause', 'fa-play');
-});
-
-function adjustLength(displayEl, isBreak, increment) {
-  let value  = parseInt(displayEl.textContent);
-  value      = increment ? value + 1 : Math.max(1, value - 1);
-  displayEl.textContent = value;
-
-  const seconds = value * 60;
-  if (isBreak) {
-    breakLength = seconds;
-    if (!isSession) {
-      timeLeft = seconds;
-      timeLeftDOM.textContent = toMMSS(seconds);
-    }
-  } else {
-    sessionLength = seconds;
-    if (isSession) {
-      timeLeft = seconds;
-      timeLeftDOM.textContent = toMMSS(seconds);
-    }
-  }
-}
-
-sessionDecrement.addEventListener('click', () => adjustLength(sessionLengthDOM, false, false));
-sessionIncrement.addEventListener('click', () => adjustLength(sessionLengthDOM, false, true));
-breakDecrement.addEventListener('click',   () => adjustLength(breakLengthDOM,   true,  false));
-breakIncrement.addEventListener('click',   () => adjustLength(breakLengthDOM,   true,  true));
-
-/* ─── EmailJS (single init) ──────────────────────────────── */
-emailjs.init('3moVSUz7NDcZAn6QB');
-
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  emailjs.sendForm('service_lixjepc', 'template_4wrbzhu', this)
-    .then(() => alert('Mensaje enviado correctamente 👍'))
-    .catch(err => alert('Error al enviar: ' + JSON.stringify(err)));
-});
