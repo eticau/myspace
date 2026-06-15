@@ -1,274 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Etienne Cautures</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Waiting+for+the+Sunrise&family=Raleway:wght@900&display=swap" rel="stylesheet">
-
-  <!-- Libraries CSS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Etienne Cautures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 </head>
-
 <body class="light-mode">
+    <canvas></canvas>
+    <div id="particles-js"></div>
 
-  <!-- Custom cursor canvas -->
-  <canvas id="cursor-canvas"></canvas>
+    <header class="transparent">
+        <div class="logo" data-aos="fade-down" data-aos-duration="1000">EC</div>
+        <nav>
+            <a href="#home"    data-en="Home"          data-es="Inicio">Home</a>
+            <a href="#about"   data-en="About Me"       data-es="Sobre mí">About Me</a>
+            <a href="#links"   data-en="Useful Links"   data-es="Enlaces útiles">Useful Links</a>
+            <a href="#contact" data-en="Contact Me"     data-es="Contáctame">Contact Me</a>
+        </nav>
+        <div class="controls">
+            <button id="theme-toggle" class="theme-toggle">
+                <img id="theme-icon" src="images/moon_icon.png" alt="Toggle Theme">
+            </button>
+            <button id="language-toggle" class="language-toggle" data-lang="en">
+                <img id="language-icon" src="images/united_states_flag.png" alt="Change Language">
+            </button>
+        </div>
+    </header>
 
-  <!-- Particle background -->
-  <div id="particles-js"></div>
-
-  <!-- ===================== HEADER ===================== -->
-  <header class="transparent">
-    <div class="logo" data-aos="fade-down" data-aos-duration="1000">EC</div>
-    <nav>
-      <a href="#home"    data-en="Home"         data-es="Inicio">Home</a>
-      <a href="#about"   data-en="About Me"      data-es="Sobre mí">About Me</a>
-      <a href="#links"   data-en="Useful Tools"  data-es="Herramientas útiles">Useful Tools</a>
-      <a href="#contact" data-en="Contact Me"    data-es="Contáctame">Contact Me</a>
-    </nav>
-    <div class="controls">
-      <button id="theme-toggle" class="theme-toggle">
-        <img id="theme-icon" src="images/moon_icon.png" alt="Toggle Theme">
-      </button>
-      <button id="language-toggle" class="language-toggle" data-lang="en">
-        <img id="language-icon" src="images/united_states_flag.png" alt="Change Language">
-      </button>
-    </div>
-  </header>
-
-  <!-- ===================== HERO / HOME ===================== -->
-  <main>
-    <section id="home" class="main-wrapper">
-
-      <!-- Morphing text animation -->
-      <div id="container">
-        <span id="text1"></span>
-        <span id="text2"></span>
-      </div>
-
-      <!-- Scramble text -->
-      <div class="container3">
-        <div class="text3"></div>
-      </div>
-
-      <!-- CV Download button -->
-      <div class="container4">
-        <a href="https://drive.google.com/uc?export=download&id=14-QVHZCfSngwXtytimX184DLceOK0Nap" download="Mi_CV.pdf">
-          <button class="download-button">
-            <div class="docs">
-              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
-              CV
-            </div>
-            <div class="download">
-              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-            </div>
-          </button>
-        </a>
-      </div>
-
-      <!-- Decorative grid tiles -->
-      <ol>
+    <ol>
         <li></li><li></li><li></li><li></li>
         <li></li><li></li><li></li><li></li>
-      </ol>
+    </ol>
 
-    </section>
-
-    <!-- SVG filter for morphing text animation -->
-    <svg id="filters" aria-hidden="true">
-      <defs>
-        <filter id="threshold">
-          <feColorMatrix in="SourceGraphic" type="matrix"
-            values="1 0 0 0 0
-                    0 1 0 0 0
-                    0 0 1 0 0
-                    0 0 0 255 -140" />
-        </filter>
-      </defs>
-    </svg>
-
-    <!-- ===================== ABOUT ME ===================== -->
-    <section id="about" class="section about-me" data-aos="fade-up" data-aos-duration="1000">
-      <h2 data-en="About Me" data-es="Sobre mí">About Me</h2>
-
-      <div class="about-content">
-        <!-- Profile photo with glow effect -->
-        <a href="#" class="photo">
-          <h1>Etienne Cautures</h1>
-          <img src="https://i.ibb.co/8gb9k6r3/Imagen-de-Whats-App-2025-06-06-a-las-21-18-58-8893e9fc.jpg" alt="Foto de Etienne Cautures">
-          <div class="glow-wrap">
-            <i class="glow"></i>
-          </div>
-        </a>
-
-        <!-- Typewriter text -->
-        <div id="typedtext"></div>
-      </div>
-    </section>
-
-    <!-- ===================== SOCIAL LINKS - LEFT ===================== -->
-    <div class="wrapper">
-      <div class="itemLeft item1"><a href="https://wa.me/5492477344114" target="_blank"><img src="images/whatsapp_icon.png" alt="WhatsApp"></a></div>
-      <div class="itemLeft item2"><a href="https://github.com/eticau" target="_blank"><img src="images/github-icon.png" alt="GitHub"></a></div>
-      <div class="itemLeft item3"><a href="https://x.com/etiennecautures" target="_blank"><img src="images/twitter_icon.png" alt="Twitter/X"></a></div>
-      <div class="itemLeft item4"><a href="https://www.linkedin.com/in/etienne-cautures" target="_blank"><img src="images/linkedin-icon.png" alt="LinkedIn"></a></div>
-      <div class="itemLeft item5"><a href="https://www.instagram.com/etiennecautures" target="_blank"><img src="images/instagram-icon.png" alt="Instagram"></a></div>
-      <div class="itemLeft item6"><a href="https://www.youtube.com/@etiennecautures2877" target="_blank"><img src="images/youtube_icon.png" alt="YouTube"></a></div>
-      <div class="itemLeft item7"><a href="https://www.twitch.tv/eticau" target="_blank"><img src="images/twitch_icon.png" alt="Twitch"></a></div>
-      <div class="itemLeft item8"><a href="https://www.reddit.com/user/etiennecautures/" target="_blank"><img src="images/reddit_icon.png" alt="Reddit"></a></div>
-    </div>
-
-    <!-- ===================== SOCIAL LINKS - RIGHT ===================== -->
-    <div class="wrapper">
-      <div class="itemRight item1"><a href="https://open.spotify.com/user/31yimezgzgq3gndjvcdae7tskena" target="_blank"><img src="images/spotify_icon.png" alt="Spotify"></a></div>
-      <div class="itemRight item2"><a href="https://t.me/eticau" target="_blank"><img src="images/telegram-icon.png" alt="Telegram"></a></div>
-      <div class="itemRight item3"><a href="https://www.snapchat.com/add/etiennecautures" target="_blank"><img src="images/snapchat_icon.png" alt="Snapchat"></a></div>
-      <div class="itemRight item4"><a href="https://paypal.me/cautures" target="_blank"><img src="images/paypal_icon.png" alt="PayPal"></a></div>
-      <div class="itemRight item5"><a href="https://vsco.co/3713nn3/gallery" target="_blank"><img src="images/vsco_icon.png" alt="VSCO"></a></div>
-      <div class="itemRight item6"><a href="https://discord.gg/6hrJjxQZff" target="_blank"><img src="images/discord_icon.png" alt="Discord"></a></div>
-      <div class="itemRight item7"><a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00N3UKN92P" target="_blank"><img src="images/binance_icon.png" alt="Binance"></a></div>
-      <div class="itemRight item8"><a href="https://ar.pinterest.com/cautures1209/" target="_blank"><img src="images/pinterest_icon.png" alt="Pinterest"></a></div>
-    </div>
-
-    <!-- ===================== USEFUL TOOLS ===================== -->
-    <section id="links" class="section" data-aos="fade-left" data-aos-duration="1000">
-      <h2 data-en="Useful Tools" data-es="Herramientas útiles">Useful Tools</h2>
-
-      <div class="tools-container">
-
-        <!-- Spotify Playlists -->
-        <div class="spotify-section">
-          <h2>My Favorite Playlists</h2>
-          <div class="spotify-playlists">
-            <iframe src="https://open.spotify.com/embed/playlist/7hp7RVkG5tF6F0bz3fWbH7" frameborder="0" allowtransparency="true" allow="encrypted-media" title="Playlist 1"></iframe>
-            <iframe src="https://open.spotify.com/embed/playlist/1QxqUc7aN2yIq9mkMnNm0k" frameborder="0" allowtransparency="true" allow="encrypted-media" title="Playlist 2"></iframe>
-            <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXd9zR7tdziuQ" frameborder="0" allowtransparency="true" allow="encrypted-media" title="Playlist 3"></iframe>
-            <iframe src="https://open.spotify.com/embed/playlist/6zCID88oNjNv9zx6puDHKj" frameborder="0" allowtransparency="true" allow="encrypted-media" title="Playlist 4"></iframe>
-          </div>
-        </div>
-
-        <!-- Pomodoro Timer -->
-        <div class="pomodoro-container">
-
-          <div class="pomodoro-item">
-            <div id="labelSessionBreak" class="label">Session</div>
-            <div class="row-pomodoro">
-              <div id="timeLeft">25:00</div>
-            </div>
-          </div>
-
-          <div class="pomodoro-item">
-            <div class="label">Session Length</div>
-            <div class="row-pomodoro">
-              <button id="sessionDecrement" class="btn-updown">-</button>
-              <div id="sessionLength" class="row-pomodoro lengthTime">25</div>
-              <button id="sessionIncrement" class="btn-updown">+</button>
-            </div>
-          </div>
-
-          <div class="pomodoro-item">
-            <div class="label">Break Length</div>
-            <div class="row-pomodoro">
-              <button id="breakDecrement" class="btn-updown">-</button>
-              <div id="breakLength" class="row-pomodoro lengthTime">5</div>
-              <button id="breakIncrement" class="btn-updown">+</button>
-            </div>
-          </div>
-
-          <div class="pomodoro-item playerButton">
-            <div class="row-pomodoro buttonRow">
-              <button id="buttonPlay" class="btn-controller">
-                <i id="playIcon" class="fas fa-play" aria-hidden="true"></i>
-              </button>
-              <button id="buttonReset" class="btn-controller">
-                <i class="fas fa-sync" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Pomodoro audio & notification -->
-      <audio id="beep" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
-      <div id="notificationBanner" class="notification-banner" hidden>
-        <p>¡Tiempo terminado! Tu sesión o descanso ha terminado.</p>
-      </div>
-
-    </section>
-
-    <!-- ===================== CONTACT ===================== -->
-    <section id="contact" class="section" data-aos="fade-up" data-aos-duration="1000">
-
-      <div class="containermap">
-        <div class="map-section">
-          <h2>You can find me here</h2>
-          <p>Swing by for a cup of coffee</p>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107166.8991438101!2d-60.745664231436606!3d-32.92550714403582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b6539335d7d75b%3A0xec4086e90258a557!2sRosario%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1729985077470!5m2!1ses!2sar"
-            width="100%" height="300"
-            style="border:0;" allowfullscreen loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Rosario, Santa Fe">
-          </iframe>
-        </div>
-
-        <div class="contact-section">
-          <h2>Contact me</h2>
-          <p>Work inquiries, commissions, speaking requests, funny jokes, and just-saying-hi's can be sent to:</p>
-          <form id="contact-form">
-            <input type="text"  name="name"    placeholder="Name"    required>
-            <input type="email" name="email"   placeholder="E-mail"  required>
-            <textarea           name="comment" placeholder="Comment" required></textarea>
-            <button type="submit">GO!</button>
-          </form>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ===================== FOOTER ===================== -->
-    <footer>
-      <div class="footer-below">
+    <div class="text-animation-wrapper">
         <div class="container">
-          Created with <i class="fas fa-heart fa-spin" style="color:red;font-size:20px;" aria-hidden="true"></i> by Etienne Cautures &copy; 2024
+            <a href="#" data-typing="i">I</a>
+            <a href="#" data-typing="mechanic">'m Mechanic</a>
+            <a href="#" data-typing="engineer">Engineer</a>
+            <p data-typing="with">with</p>
+            <p data-typing="passion">a Passion for</p>
+            <p data-typing="creating">Creating</p>
+            <p data-typing="innovative">Innovative</p>
+            <p data-typing="solutions">Solutions</p>
         </div>
-      </div>
+    </div>
+
+    <!-- Social icons LEFT -->
+    <div class="wrapper">
+        <div class="itemLeft item1"><a href="https://wa.me/5492477344114" target="_blank"><img src="images/whatsapp_icon.png" alt="WhatsApp"></a></div>
+        <div class="itemLeft item2"><a href="https://github.com/eticau" target="_blank"><img src="images/github-icon.png" alt="GitHub"></a></div>
+        <div class="itemLeft item3"><a href="https://x.com/etiennecautures" target="_blank"><img src="images/twitter_icon.png" alt="Twitter"></a></div>
+        <div class="itemLeft item4"><a href="https://www.linkedin.com/in/etienne-cautures" target="_blank"><img src="images/linkedin-icon.png" alt="LinkedIn"></a></div>
+        <div class="itemLeft item5"><a href="https://www.instagram.com/etiennecautures" target="_blank"><img src="images/instagram-icon.png" alt="Instagram"></a></div>
+        <div class="itemLeft item6"><a href="https://www.youtube.com/@etiennecautures2877" target="_blank"><img src="images/youtube_icon.png" alt="YouTube"></a></div>
+        <div class="itemLeft item7"><a href="https://www.twitch.tv/eticau" target="_blank"><img src="images/twitch_icon.png" alt="Twitch"></a></div>
+        <div class="itemLeft item8"><a href="https://www.reddit.com/user/etiennecautures/" target="_blank"><img src="images/reddit_icon.png" alt="Reddit"></a></div>
+    </div>
+
+    <!-- Social icons RIGHT -->
+    <div class="wrapper">
+        <div class="itemRight item1"><a href="https://open.spotify.com/user/31yimezgzgq3gndjvcdae7tskena" target="_blank"><img src="images/spotify_icon.png" alt="Spotify"></a></div>
+        <div class="itemRight item2"><a href="https://t.me/eticau" target="_blank"><img src="images/telegram-icon.png" alt="Telegram"></a></div>
+        <div class="itemRight item3"><a href="https://www.snapchat.com/add/etiennecautures" target="_blank"><img src="images/snapchat_icon.png" alt="Snapchat"></a></div>
+        <div class="itemRight item4"><a href="https://paypal.me/cautures" target="_blank"><img src="images/paypal_icon.png" alt="PayPal"></a></div>
+        <div class="itemRight item5"><a href="https://vsco.co/3713nn3/gallery" target="_blank"><img src="images/vsco_icon.png" alt="VSCO"></a></div>
+        <div class="itemRight item6"><a href="https://discord.gg/6hrJjxQZff" target="_blank"><img src="images/discord_icon.png" alt="Discord"></a></div>
+        <div class="itemRight item7"><a href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_00N3UKN92P" target="_blank"><img src="images/binance_icon.png" alt="Binance"></a></div>
+        <div class="itemRight item8"><a href="https://ar.pinterest.com/cautures1209/" target="_blank"><img src="images/pinterest_icon.png" alt="Pinterest"></a></div>
+    </div>
+
+    <!-- About Me -->
+    <section id="about" class="section about-me" data-aos="fade-up" data-aos-duration="1000">
+        <h2 data-en="About Me" data-es="Sobre mí">About Me</h2>
+        <p class="intro" data-en="I'm a passionate and curious mechanical engineering student..." data-es="Soy un apasionado...">
+            I'm a passionate and curious mechanical engineering student...
+        </p>
+    </section>
+
+    <!-- Useful Links -->
+    <section id="links" class="section" data-aos="fade-left" data-aos-duration="1000">
+        <h2 data-en="Useful Links" data-es="Enlaces útiles">Useful Links</h2>
+        <p data-en="Useful resources and links..." data-es="Recursos y enlaces útiles...">Useful resources and links...</p>
+    </section>
+
+    <!-- Contact Form -->
+    <div id="contact" class="contact-container">
+        <h2 data-en="Contact Me" data-es="Contáctame">Contact Me</h2>
+        <form id="contact-form">
+            <label for="name" data-en="Name:" data-es="Nombre:">Name:</label>
+            <input type="text" id="name" name="user_name" placeholder="Your name" required>
+            <label for="email" data-en="Email:" data-es="Correo electrónico:">Email:</label>
+            <input type="email" id="email" name="user_email" placeholder="Your email" required>
+            <label for="message" data-en="Message:" data-es="Mensaje:">Message:</label>
+            <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+            <button type="submit" data-en="Send" data-es="Enviar">Send</button>
+        </form>
+    </div>
+
+    <!-- Map -->
+    <section id="contacto">
+        <h1 data-en="I'm here" data-es="Estoy aquí">I'm here</h1>
+        <div id="map" class="map-container"></div>
+    </section>
+
+    <footer>
+        <div class="footer-below">
+            <div class="container">
+                Created with <i class="fas fa-heart fa-spin" style="color:red;font-size:24px"></i> by Etienne Cautures © 2024
+            </div>
+        </div>
     </footer>
 
-  </main>
-
-  <!-- ===================== SCRIPTS ===================== -->
-  <!-- AOS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Particles.js -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <!-- Font Awesome Kit -->
-  <script src="https://kit.fontawesome.com/ed4e9fbefd.js" crossorigin="anonymous"></script>
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
-  <!-- Custom scripts -->
-  <script src="scripts.js"></script>
-
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/scenejs@1.1.0/dist/scene.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
